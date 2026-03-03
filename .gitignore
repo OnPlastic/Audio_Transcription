@@ -1,0 +1,21 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Runtime
+output/
+logs/
+
+# Audio (Ordnerstruktur bleibt via .gitkeep)
+input/audio/*
+!input/audio/.gitkeep
+
+input/recordings/*
+!input/recordings/.gitkeep
+
+# Secrets
+.env
+
+# Editor
+.vscode/
