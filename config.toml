@@ -4,7 +4,7 @@ model_name = "large-v3"
 language = "de"
 
 # du nutzt bereits output/transcripts
-output_dir = "output/transcripts"
+output_dir = "output"
 
 [mail]
 smtp_host = "smtp.gmail.com"
