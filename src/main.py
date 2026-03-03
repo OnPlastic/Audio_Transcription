@@ -6,13 +6,13 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-from .logging_setup import setup_logging
-from .config import load_config
-from .paths import normalize_input_path, build_output_txt_path
-from .output import write_txt
-from .whisper_asr import transcribe_file_de
-from .mailer import SmtpSettings, send_mail_text
-from .recorder import record_until_enter
+from logging_setup import setup_logging
+from config import load_config
+from paths import normalize_input_path, build_output_txt_path
+from output import write_txt
+from whisper_asr import transcribe_file_de
+from mailer import SmtpSettings, send_mail_text
+from recorder import record_until_enter
 
 
 load_dotenv()
@@ -39,7 +39,7 @@ def ask_choice(prompt: str, choices: tuple[str, ...]) -> str:
 def main() -> int:
     print("\n--- Spracherkennung by sIn ---\n")
 
-    project_root = Path(__file__).resolve().parents[2]
+    project_root = Path(__file__).resolve().parents[1]
     cfg = load_config(project_root)
 
     setup_logging(cfg.log_dir, cfg.log_level)
