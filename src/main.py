@@ -6,13 +6,13 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-from .logging_setup import setup_logging
-from .config import load_config
-from .paths import normalize_input_path, build_output_txt_path
-from .output import write_txt
-from .whisper_asr import transcribe_file_de
-from .mailer import SmtpSettings, send_mail_text
-from .recorder import record_until_enter
+from logging_setup import setup_logging
+from config import load_config
+from paths import normalize_input_path, build_output_txt_path
+from output import write_txt
+from whisper_asr import transcribe_file_de
+from mailer import SmtpSettings, send_mail_text
+from recorder import record_until_enter
 
 
 load_dotenv()
@@ -39,7 +39,7 @@ def ask_choice(prompt: str, choices: tuple[str, ...]) -> str:
 def main() -> int:
     print("\n--- Spracherkennung by sIn ---\n")
 
-    project_root = Path(__file__).resolve().parents[2]
+    project_root = Path(__file__).resolve().parents[1]
     cfg = load_config(project_root)
 
     setup_logging(cfg.log_dir, cfg.log_level)
@@ -54,8 +54,17 @@ def main() -> int:
     audio_path: Path | None = None
 
     if audio_vorhanden:
-        raw = input("Bitte Pfad zur Audio-Datei angeben: ").strip()
-        audio_path = normalize_input_path(raw)
+        raw = input("Bitte Dateiname oder Pfad zur Audio-Datei angeben: ").strip()
+
+        # Default: input/audio (für Handy-Upload via scp)
+        default_audio_dir = project_root / "input" / "audio"
+
+        # Wenn nur Dateiname, dann im default_audio_dir suchen
+        if raw and ("/" not in raw) and ("\\" not in raw) and (not raw.startswith("~")):
+            audio_path = (default_audio_dir / raw).resolve()
+        else:
+            audio_path = normalize_input_path(raw)
+
         if not audio_path.exists():
             print("Datei nicht gefunden:", audio_path)
             return 2
