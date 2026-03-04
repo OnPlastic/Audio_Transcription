@@ -54,8 +54,17 @@ def main() -> int:
     audio_path: Path | None = None
 
     if audio_vorhanden:
-        raw = input("Bitte Pfad zur Audio-Datei angeben: ").strip()
-        audio_path = normalize_input_path(raw)
+        raw = input("Bitte Dateiname oder Pfad zur Audio-Datei angeben: ").strip()
+
+        # Default: input/audio (für Handy-Upload via scp)
+        default_audio_dir = project_root / "input" / "audio"
+
+        # Wenn nur Dateiname, dann im default_audio_dir suchen
+        if raw and ("/" not in raw) and ("\\" not in raw) and (not raw.startswith("~")):
+            audio_path = (default_audio_dir / raw).resolve()
+        else:
+            audio_path = normalize_input_path(raw)
+
         if not audio_path.exists():
             print("Datei nicht gefunden:", audio_path)
             return 2
