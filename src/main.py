@@ -76,10 +76,25 @@ def main() -> int:
                     break
 
                 print("Datei nicht gefunden:", audio_path)
-                if not ask_yes_no("Nochmal versuchen? (J/N): "):
+                if ask_yes_no("Nochmal versuchen? (J/N): "):
+                    continue
+
+                action = ask_choice(
+                    "Programm beenden (B) oder Audio aufnehmen (A)? ",
+                    ("B", "A")
+                )
+
+                if action == "B":
                     return 2
+                
+                # --- action == "A" -> Wechsel in den Recorder-Pfad, nach der Mode-Abfrage ---
+                audio_vorhanden = False
+                audio_path = None
+                print("Recorder startet automatisch nach der nächsten Abfrage.")
+                break
+
         else:
-            print("Recorder wird automatisch nach der nächsten Abfrage gestartet.")
+            print("Recorder startet automatisch nach der nächsten Abfrage.")
 
         # ---2. Abfrage ---
         mode = ask_choice(
