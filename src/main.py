@@ -120,10 +120,14 @@ def main() -> int:
                 use_ssl=True,
                 user=os.environ["SMTP_USER"],
                 app_password=os.environ["SMTP_APP_PASSWORD"],
-                from_name="Spracherkennung CLI",
+                from_name="Spracherkennung by sIn - with Whisper ASR",
             )
 
             subject = f"[Transkript] {out_txt.stem}"
+
+            if to_addr is None or not to_addr.strip():
+                raise RuntimeError("to_addr should not be None when mode is M.")
+            to_addr = to_addr.strip()
 
             send_mail_text(
                 smtp=smtp,
