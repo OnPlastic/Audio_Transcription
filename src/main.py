@@ -25,7 +25,7 @@ def ask_yes_no(prompt: str) -> bool:
             return True
         if ans in ("n", "nein", "no"):
             return False
-        print("Bitte J oder N eingeben.")
+        print("Bitte J/N eingeben.")
 
 
 def ask_choice(prompt: str, choices: tuple[str, ...]) -> str:
@@ -105,8 +105,13 @@ def main() -> int:
         # --- 3. Abfrage (nur bei Mail) ---
         to_addr: str | None = None
         if mode == "M":
-            to_addr = input("Bitte Mailadresse eingeben: ").strip()
-            print("Mailadresse:", to_addr)
+            while True:
+                to_addr = input("Bitte Mailadresse eingeben: ").strip()
+
+                if "@" in to_addr and "." in to_addr:
+                    print("Mailadresse:", to_addr)
+                    break
+                print("Ungültige Mailadresse!!! Bitte erneut eingeben.")
 
         # --- Recorder nach der 3. Abfrage ---
         if not audio_vorhanden:
