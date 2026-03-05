@@ -52,37 +52,42 @@ def main() -> int:
 
         output_dir = cfg.output_dir.resolve()
 
-        # 1. Abfrage
+        # --- 1. Abfrage ---
         audio_vorhanden = ask_yes_no("Audio vorhanden? (J/N): ")
 
         audio_path: Path | None = None
 
         if audio_vorhanden:
-            raw = input("Bitte Dateiname oder Pfad zur Audio-Datei angeben: ").strip()
 
-            # Default: input/audio (für Handy-Upload via scp)
+            # --- Default: input/audio (für Handy-Upload via scp) ---
             default_audio_dir = project_root / "input" / "audio"
 
-            # Wenn nur Dateiname, dann im default_audio_dir suchen
-            if raw and ("/" not in raw) and ("\\" not in raw) and (not raw.startswith("~")):
-                audio_path = (default_audio_dir / raw).resolve()
-            else:
-                audio_path = normalize_input_path(raw)
+            while True:
+                raw = input("Bitte Dateiname oder Pfad zur Audio-Datei angeben: ").strip()
 
-            if not audio_path.exists():
+                # --- Wenn nur Dateiname, dann im default_audio_dir suchen ---
+                if raw and ("/" not in raw) and ("\\" not in raw) and (not raw.startswith("~")):
+                    audio_path = (default_audio_dir / raw).resolve()
+                else:
+                    audio_path = normalize_input_path(raw)
+
+                if audio_path.exists():
+                    print("Datei gewählt:", audio_path)
+                    break
+
                 print("Datei nicht gefunden:", audio_path)
-                return 2
-            print("Pfad gewählt:", audio_path)
+                if not ask_yes_no("Nochmal versuchen? (J/N): "):
+                    return 2
         else:
-            print("Recorder wird nach der dritten Abfrage gestartet.")
+            print("Recorder wird automatisch nach der nächsten Abfrage gestartet.")
 
-        # 2. Abfrage
+        # ---2. Abfrage ---
         mode = ask_choice(
             "Ergebnis in .txt speichern (S), oder Mail senden (M)? ",
             ("S", "M"),
         )
 
-        # 3. Abfrage (nur bei Mail)
+        # --- 3. Abfrage (nur bei Mail) ---
         to_addr: str | None = None
         if mode == "M":
             to_addr = input("Bitte Mailadresse eingeben: ").strip()
