@@ -46,6 +46,6 @@ def transcribe_file(audio_path: Path, model_name: str, language: str) -> str:
     )
 
     dt = perf_counter() - t0
-    text = (result.get("text") or "").strip()
+    text = str(result.get("text", "")).strip()
     log.info("Transcription finished in %.2f s | chars=%d", dt, len(text))
     return text
