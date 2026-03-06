@@ -9,8 +9,8 @@ output_dir = "output"
 [mail]
 smtp_host = "smtp.gmail.com"
 smtp_port = 465
-use_ssl = true
-from_name = "Spracherkennung CLI"
+smtp_use_ssl = true
+from_name = "Spracherkennung by sIn"
 subject_prefix = "[Transkript]"
 
 [logging]
