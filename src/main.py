@@ -10,7 +10,7 @@ from logging_setup import setup_logging
 from config import load_config
 from paths import normalize_input_path, build_output_txt_path
 from output import write_txt
-from whisper_asr import transcribe_file_de
+from whisper_asr import transcribe_file
 from mailer import SmtpSettings, send_mail_text
 from recorder import record_until_enter
 
@@ -126,7 +126,11 @@ def main() -> int:
         # --- Transkription ---
         log.info("Mode selected: %s", mode)
         print("\nTranskription startet...\n")
-        txt = transcribe_file_de(audio_path)
+        txt = transcribe_file(
+            audio_path,
+            cfg.model_name,
+            cfg.language,
+        )
 
         # --- Datei speichern ---
         out_txt = build_output_txt_path(output_dir, audio_path)
@@ -140,15 +144,15 @@ def main() -> int:
             log.info("Mail requested to: %s", to_addr)
 
             smtp = SmtpSettings(
-                host="smtp.gmail.com",
-                port=465,
-                use_ssl=True,
+                host=cfg.smtp_host,
+                port=cfg.smtp_port,
+                use_ssl=cfg.smtp_use_ssl,
                 user=os.environ["SMTP_USER"],
                 app_password=os.environ["SMTP_APP_PASSWORD"],
-                from_name="Spracherkennung by sIn - with Whisper ASR",
+                from_name=cfg.from_name,
             )
 
-            subject = f"[Transkript] {out_txt.stem}"
+            subject = f"{cfg.subject_prefix} {out_txt.stem}"
 
             if to_addr is None or not to_addr.strip():
                 raise RuntimeError("to_addr should not be None when mode is M.")
