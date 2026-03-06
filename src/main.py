@@ -13,27 +13,10 @@ from output import write_txt
 from whisper_asr import transcribe_file
 from mailer import SmtpSettings, send_mail_text
 from recorder import record_until_enter
+from input_utils import ask_choice
 
 
 load_dotenv()
-
-
-def ask_yes_no(prompt: str) -> bool:
-    while True:
-        ans = input(prompt).strip().lower()
-        if ans in ("j", "ja", "y", "yes"):
-            return True
-        if ans in ("n", "nein", "no"):
-            return False
-        print("Bitte J/N eingeben.")
-
-
-def ask_choice(prompt: str, choices: tuple[str, ...]) -> str:
-    while True:
-        ans = input(prompt).strip().upper()
-        if ans in choices:
-            return ans
-        print(f"Bitte {'/'.join(choices)} eingeben.")
 
 
 def main() -> int:
@@ -53,7 +36,10 @@ def main() -> int:
         output_dir = cfg.output_dir.resolve()
 
         # --- 1. Abfrage ---
-        audio_vorhanden = ask_yes_no("Audio vorhanden? (J/N): ")
+        audio_vorhanden = ask_choice(
+            "Audio-Datei vorhanden? ",
+            {"j": True, "n": False}
+        )
 
         audio_path: Path | None = None
 
@@ -76,15 +62,21 @@ def main() -> int:
                     break
 
                 print("Datei nicht gefunden:", audio_path)
-                if ask_yes_no("Nochmal versuchen? (J/N): "):
+
+                retry = ask_choice(
+                    "Nochmal versuchen? ",
+                    {"j": True, "n": False}
+                )
+
+                if retry:
                     continue
 
                 action = ask_choice(
-                    "Programm beenden (B) oder Audio aufnehmen (A)? ",
-                    ("B", "A")
+                    "Programm beenden oder Audio aufnehmen? ",
+                    {"b": "beenden", "a": "aufnehmen"}
                 )
 
-                if action == "B":
+                if action == "beenden":
                     return 2
                 
                 # --- action == "A" -> Wechsel in den Recorder-Pfad, nach der Mode-Abfrage ---
@@ -98,13 +90,13 @@ def main() -> int:
 
         # ---2. Abfrage ---
         mode = ask_choice(
-            "Ergebnis in .txt speichern (S), oder Mail senden (M)? ",
-            ("S", "M"),
+            "Ergebnis in .txt speichern(s), oder zusätzliche Mail(m) senden? ",
+            {"s": "save", "m": "mail"},
         )
 
         # --- 3. Abfrage (nur bei Mail) ---
         to_addr: str | None = None
-        if mode == "M":
+        if mode == "mail":
             while True:
                 to_addr = input("Bitte Mailadresse eingeben: ").strip()
 
@@ -140,7 +132,7 @@ def main() -> int:
         print("\nGespeichert:", out_txt)
 
         # --- Mailversand ---
-        if mode == "M":
+        if mode == "mail":
             log.info("Mail requested to: %s", to_addr)
 
             smtp = SmtpSettings(
