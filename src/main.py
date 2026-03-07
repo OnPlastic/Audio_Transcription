@@ -13,7 +13,7 @@ from output import write_txt
 from whisper_asr import transcribe_file
 from mailer import SmtpSettings, send_mail_text
 from recorder import record_until_enter
-from input_utils import ask_choice
+from input_utils import ask_choice, ask_email
 
 
 load_dotenv()
@@ -97,13 +97,7 @@ def main() -> int:
         # --- 3. Abfrage (nur bei Mail) ---
         to_addr: str | None = None
         if mode == "mail":
-            while True:
-                to_addr = input("Bitte Mailadresse eingeben: ").strip()
-
-                if "@" in to_addr and "." in to_addr:
-                    print("Mailadresse:", to_addr)
-                    break
-                print("Ungültige Mailadresse!!! Bitte erneut eingeben.")
+            to_addr = ask_email()
 
         # --- Recorder nach der 3. Abfrage ---
         if not audio_vorhanden:
