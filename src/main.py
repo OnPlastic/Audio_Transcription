@@ -8,12 +8,12 @@ from dotenv import load_dotenv
 
 from logging_setup import setup_logging
 from config import load_config
-from paths import normalize_input_path, build_output_txt_path
+from paths import build_output_txt_path
 from output import write_txt
 from whisper_asr import transcribe_file
 from mailer import SmtpSettings, send_mail_text
 from recorder import record_until_enter
-from input_utils import ask_choice, ask_email
+from input_utils import ask_choice, ask_email, ask_audio_path
 
 
 load_dotenv()
@@ -44,53 +44,17 @@ def main() -> int:
         audio_path: Path | None = None
 
         if audio_vorhanden:
+            audio_path = ask_audio_path(project_root)
 
-            # --- Default: input/audio (für Handy-Upload via scp) ---
-            default_audio_dir = project_root / "input" / "audio"
-
-            while True:
-                raw = input("Bitte Dateiname oder Pfad zur Audio-Datei angeben: ").strip()
-
-                # --- Wenn nur Dateiname, dann im default_audio_dir suchen ---
-                if raw and ("/" not in raw) and ("\\" not in raw) and (not raw.startswith("~")):
-                    audio_path = (default_audio_dir / raw).resolve()
-                else:
-                    audio_path = normalize_input_path(raw)
-
-                if audio_path.exists():
-                    print("Datei gewählt:", audio_path)
-                    break
-
-                print("Datei nicht gefunden:", audio_path)
-
-                retry = ask_choice(
-                    "Nochmal versuchen? ",
-                    {"j": True, "n": False}
-                )
-
-                if retry:
-                    continue
-
-                action = ask_choice(
-                    "Programm beenden oder Audio aufnehmen? ",
-                    {"b": "beenden", "a": "aufnehmen"}
-                )
-
-                if action == "beenden":
-                    return 2
-                
-                # --- action == "A" -> Wechsel in den Recorder-Pfad, nach der Mode-Abfrage ---
+            if audio_path is None:
                 audio_vorhanden = False
-                audio_path = None
-                print("Recorder startet automatisch nach der nächsten Abfrage.")
-                break
-
+                print("\n-> Die Audioaufnahme startet gleich automatisch...\n")
         else:
-            print("Recorder startet automatisch nach der nächsten Abfrage.")
+            print("\n-> Die Audioaufnahme startet gleich automatisch...\n")
 
         # ---2. Abfrage ---
         mode = ask_choice(
-            "Ergebnis in .txt speichern(s), oder zusätzliche Mail(m) senden? ",
+            "Ergebnis in .txt speichern(s), oder zusätzlich Mail(m) versenden? ",
             {"s": "save", "m": "mail"},
         )
 

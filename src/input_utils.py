@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+from pathlib import Path
+from paths import normalize_input_path
+
 
 def ask_choice(question: str, choices: dict[str, object]) -> object:
     """
@@ -51,3 +54,50 @@ def ask_email() -> str:
             return addr
         
         print("Ungültige E-Mail-Adresse! Bitte versuchen Sie es erneut.")
+
+
+def ask_audio_path(project_root: Path) -> Path:
+    """
+    Ask the user for an audio file, with a default directory for convenience.
+    If only a filename is provided, it will be searched for in the default 
+    input/audio directory.
+
+    Returns:
+    - Path: The resolved path to the audio file.
+    - None: If the user decides to start the recorder instead of providing a file.
+    """
+
+    # --- Default: input/audio (für Handy-Upload via scp) ---
+    default_audio_dir = project_root / "input" / "audio"
+
+    while True:
+        raw = input("Bitte Dateiname oder Pfad zur Audio-Datei angeben: ").strip()
+
+        if raw and ("/" not in raw) and ("\\" not in raw) and (not raw.startswith("~")):
+            audio_path = (default_audio_dir / raw).resolve()
+        else:
+            audio_path = normalize_input_path(raw)
+
+        if audio_path.exists():
+            print("Datei gewählt: ", audio_path)
+            return audio_path
+        
+        print("Datei nicht gefunden: ", audio_path)
+
+        retry = ask_choice(
+            "Nochmal versuchen? ",
+            {"j": True, "n": False}
+        )
+
+        if retry:
+            continue
+
+        action = ask_choice(
+            "Programm beenden oder Audio aufnehmen? ",
+            {"b": "beenden", "a": "aufnehmen"}
+        )
+
+        if action == "beenden":
+            raise SystemExit(2)
+        
+        return None  # Signal to start the recorder instead of providing a file
