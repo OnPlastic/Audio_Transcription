@@ -5,6 +5,7 @@ from paths import normalize_input_path
 
 
 def ask_choice(question: str, choices: dict[str, object]) -> object:
+    
     """
     Ask the user to choose from predefined options.
     
@@ -37,6 +38,7 @@ def ask_choice(question: str, choices: dict[str, object]) -> object:
 
 
 def ask_email() -> str:
+    
     """
     Ask the user for an email address and validate it.
     
@@ -47,7 +49,7 @@ def ask_email() -> str:
     """
 
     while True:
-        addr = input("Bitte geben Sie eine gültige E-Mail-Adresse ein: ").strip()
+        addr = input("Bitte eine gültige E-Mail-Adresse eingeben: ").strip()
 
         if "@" in addr and "." in addr:
             print("Mailadresse: ", addr)
@@ -56,15 +58,18 @@ def ask_email() -> str:
         print("Ungültige E-Mail-Adresse! Bitte versuchen Sie es erneut.")
 
 
-def ask_audio_path(project_root: Path) -> Path:
+def ask_audio_path(project_root: Path) -> Path | None:
+    
     """
     Ask the user for an audio file, with a default directory for convenience.
     If only a filename is provided, it will be searched for in the default 
     input/audio directory.
 
-    Returns:
-    - Path: The resolved path to the audio file.
-    - None: If the user decides to start the recorder instead of providing a file.
+    Returns
+    -------
+    Path | None
+        The path to the audio file if found, or None if the user opts to start
+        the recorder instead.
     """
 
     # --- Default: input/audio (für Handy-Upload via scp) ---
@@ -93,11 +98,11 @@ def ask_audio_path(project_root: Path) -> Path:
             continue
 
         action = ask_choice(
-            "Programm beenden oder Audio aufnehmen? ",
+            "Programm (b)eenden, oder Audio (a)ufnehmen? ",
             {"b": "beenden", "a": "aufnehmen"}
         )
 
         if action == "beenden":
             raise SystemExit(2)
-        
+
         return None  # Signal to start the recorder instead of providing a file

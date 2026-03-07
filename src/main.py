@@ -54,7 +54,7 @@ def main() -> int:
 
         # ---2. Abfrage ---
         mode = ask_choice(
-            "Ergebnis in .txt speichern(s), oder zusätzlich Mail(m) versenden? ",
+            "Ergebnis in .txt (s)peichern, oder zusätzlich E(m)ail versenden? ",
             {"s": "save", "m": "mail"},
         )
 
