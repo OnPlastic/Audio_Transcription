@@ -26,7 +26,7 @@ def record_until_enter(
     settings: RecordingSettings = RecordingSettings(),
 ) -> Path:
     """
-    Start microphone recording and stopo on ENTER.
+    Start microphone recording and stop on ENTER.
     Saves WAV into output_dir and returns the path.
     """
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -41,7 +41,7 @@ def record_until_enter(
         out_path,
     )
 
-    print("\nAufnahme läuft... Drücke <ENTER> zum Stoppen.\n")
+    print("\n-> Aufnahme läuft... Drücke <ENTER> zum Stoppen.")
 
     frames: list[np.ndarray] = []
     t0 = perf_counter()
@@ -74,6 +74,8 @@ def record_until_enter(
 
     seconds = audio.shape[0] / float(settings.samplerate)
     log.info("Recording finished in %.2f s | audio_len=%.2f s", dt, seconds)
-    print(f"\nAufnahme gespeichert: {out_path}\n")
+    
+    print(f"Aufnahme beendet nach {seconds:.2f} s")
+    print(f"Aufnahme gespeichert: {out_path}")
 
     return out_path

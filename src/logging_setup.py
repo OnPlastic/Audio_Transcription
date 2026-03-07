@@ -19,11 +19,13 @@ def setup_logging(log_dir: Path, level: str = "INFO") -> Path:
 
     fmt = logging.Formatter("%(asctime)s | %(levelname)s | %(name)s | %(message)s")
 
+    """"
     ch = logging.StreamHandler()
     ch.setLevel(numeric_level)
     ch.setFormatter(fmt)
     root.addHandler(ch)
-
+    """
+    
     fh = logging.FileHandler(logfile, encoding="utf-8")
     fh.setLevel(numeric_level)
     fh.setFormatter(fmt)

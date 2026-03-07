@@ -21,8 +21,10 @@ load_dotenv()
 
 def main() -> int:
     
-    print("\n----- Spracherkennung by sIn -----")
-    print(":~/.. -> Programmende mit (CTRL+C)\n")
+    title = "Audio_Transkription by sIn v0.2"
+    print(f"\n{title}")
+    print("=" * len(title))
+    print("(CTRL+C) beendet das Programm\n")
 
     try:
 
@@ -75,7 +77,7 @@ def main() -> int:
 
         # --- Transkription ---
         log.info("Mode selected: %s", mode)
-        print("\nTranskription startet...\n")
+        print("\n-> Transkription startet...\n")
         txt = transcribe_file(
             audio_path,
             cfg.model_name,
@@ -87,8 +89,8 @@ def main() -> int:
         write_txt(out_txt, txt)
         log.info("Ergebnis gespeichert: %s", out_txt)
 
-        print("\nGespeichert:", out_txt)
-
+        print(f"Transkription gespeichert: {out_txt}\n")
+        
         # --- Mailversand ---
         if mode == "mail":
             log.info("Mail requested to: %s", to_addr)
@@ -115,12 +117,16 @@ def main() -> int:
                 text_content=txt,
             )
 
-            print("Mail wurde gesendet.")
+            print("Mail wurde gesendet.\n")
+
+        print("-> Programm beendet!\n")
 
         return 0
 
+
+
     except KeyboardInterrupt:
-        print("\nAbbruch durch Benutzer. (CTRL+C)")
+        print("\nAbbruch durch Benutzer (CTRL+C)\n")
         log = logging.getLogger(__name__)
         log.info("Programm mit KeyboardInterrupt beendet.")
         return 130
