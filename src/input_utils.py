@@ -114,7 +114,7 @@ def ask_audio_path(project_root: Path) -> Path | None:
     while True:
         raw = input("Bitte Dateiname oder Pfad zur Audio-Datei angeben: ").strip()
 
-        # If only a filename is given, resolve it ralative to input/audio
+        # If only a filename is given, resolve it relative to input/audio
         if raw and ("/" not in raw) and ("\\" not in raw) and (not raw.startswith("~")):
             audio_path = (default_audio_dir / raw).resolve()
         else:
