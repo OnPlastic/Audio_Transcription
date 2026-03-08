@@ -22,6 +22,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 from config import load_config
+from version import APP_NAME, __version__
 from input_utils import ask_choice, ask_email, ask_audio_path
 from logging_setup import setup_logging
 from mailer import SmtpSettings, send_mail_text
@@ -47,7 +48,7 @@ def main() -> int:
     """
     
     # --- Print CLI header ---
-    title = "Audio_Transkription by sIn v0.2"
+    title = f"{APP_NAME} v{__version__}"
     print(f"\n{title}")
     print("=" * len(title))
     print("(CTRL+C) beendet das Programm\n")
@@ -60,7 +61,7 @@ def main() -> int:
         # --- Initialize logging ---
         setup_logging(cfg.log_dir, cfg.log_level)
         log = logging.getLogger(__name__)
-        log.info("Audio_Transkription by sIn")
+        log.info("%s v%s gestartet", APP_NAME, __version__)
 
         output_dir = cfg.output_dir.resolve()
 
