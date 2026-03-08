@@ -3,9 +3,12 @@
 __pycache__/
 *.pyc
 
-# Runtime
-output/
-logs/
+# Runtime (Ordnerstruktur bleibt via .gitkeep)
+output/*
+!output/.gitkeep
+
+logs/*
+!logs/.gitkeep
 
 # Audio (Ordnerstruktur bleibt via .gitkeep)
 input/audio/*
