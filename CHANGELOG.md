@@ -6,6 +6,8 @@ The format is loosely based on Keep a Changelog.
 
 ---
 
+---
+
 ## [0.1.0] - 2026-02-28
 
 ### Added
