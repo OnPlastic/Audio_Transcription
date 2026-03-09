@@ -16,6 +16,7 @@ logs/*
 input/audio/*
 !input/audio/.gitkeep
 !input/audio/Sprachaufnahme-1.opus
+!input/audio/README.md
 
 input/recordings/*
 !input/recordings/.gitkeep
