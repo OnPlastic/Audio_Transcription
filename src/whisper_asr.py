@@ -24,7 +24,7 @@ _MODEL_NAME = None
 
 def get_model(model_name: str):
     """
-    Load and cache a Whisper model by name.
+    **Load and cache a Whisper model by name.**
 
     If the requested model has already been loaded previously, the cached
     instance is returned. If a different model name is requested, the cache
@@ -32,13 +32,13 @@ def get_model(model_name: str):
 
     Parameters
     ----------
-    model_name : str
-        The name of the Whisper model to load (e.g., "large-v3").
+        model_name : str
+            The name of the Whisper model to load (large-v3).
 
     Returns
     -------
-    object
-        The loaded Whisper model instance.
+        object
+            The loaded Whisper model instance.
     """
 
     global _MODEL, _MODEL_NAME
@@ -54,7 +54,7 @@ def get_model(model_name: str):
 
 def transcribe_file(audio_path: Path, model_name: str, language: str) -> str:
     """
-    Transcribe an audio file using Whisper.
+    **Transcribe an audio file using Whisper.**
 
     The function ensures that the configured model is available, runs a
     transcription in the specified language, and returns the resulting
@@ -62,22 +62,22 @@ def transcribe_file(audio_path: Path, model_name: str, language: str) -> str:
 
     Parameters
     ----------
-    audio_path : Path
-        The path to the audio file to transcribe.
-    model_name : str
-        The name of the Whisper model to use for transcription.
-    language : str
-        The language code passed to Whisper (de).
+        audio_path : Path
+            The path to the audio file to transcribe.
+        model_name : str
+            The name of the Whisper model to use for transcription.
+        language : str
+            The language code passed to Whisper (de).
 
     Returns
     -------
-    str
-        The transcribed plain text.
+        str
+            The transcribed plain text.
     
     Raises    
     ------
-    FileNotFoundError
-        If the specified audio file does not exist.
+        FileNotFoundError
+            If the specified audio file does not exist.
     """
 
     if not audio_path.exists():

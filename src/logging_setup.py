@@ -15,7 +15,7 @@ from pathlib import Path
 
 def setup_logging(log_dir: Path, level: str = "INFO") -> Path:
     """
-    Initialize application logging.
+    **Initialize application logging.**
 
     The function creates the log directory if necessary, configures the
     root logger with the requested level, removes previously attached
@@ -24,15 +24,15 @@ def setup_logging(log_dir: Path, level: str = "INFO") -> Path:
 
     Parameters
     ----------
-    log_dir : Path
-        Directory where log files should be written.
-    level : str, default="INFO"
-        Logging level as a string ("DEBUG", "INFO").
+        log_dir : Path
+            Directory where log files should be written.
+        level : str, default="INFO"
+            Logging level as a string ("DEBUG", "INFO").
 
     Returns
     -------
-    Path
-        Full path to the log file.
+        Path
+            Full path to the log file.
     """
 
     # --- Ensure log directory exists ---

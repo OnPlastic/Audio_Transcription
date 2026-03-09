@@ -11,20 +11,20 @@ from pathlib import Path
 
 def write_txt(path: Path, content: str) -> None:
     """
-    Write transcript text to a UTF-8 encoded text file.
+    **Write transcript text to a UTF-8 encoded text file.**
 
     The parent directory is created if it does not yet exist.
 
     Parameters
     ----------
-    path : Path
-        Full path to the output text file.
-    content : str
-        Transcript text to write to the file.
+        path : Path
+            Full path to the output text file.
+        content : str
+            Transcript text to write to the file.
 
     Returns
     -------
-    None
+        None
     """
 
     # --- Ensure output directory exists ---

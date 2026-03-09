@@ -26,21 +26,15 @@ log = logging.getLogger(__name__)
 @dataclass(frozen=True)
 class RecordingSettings:
     """
-    Audio recording configuration.
-
-    Attributes
-    ----------
-    samplerate : int
-        The sample rate for recording (16000 Hz).
-    channels : int
-        The number of audio channels (1 for mono).
-    dtype : str
-        NumPy-compatible audio data type used by sounddevice (float 32).
+    **Audio recording configuration.**
     """
 
     samplerate: int = 16000
+    """The sample rate for recording (16000 Hz)."""
     channels: int = 1
+    """The number of audio channels (1 for mono)."""
     dtype: str = "float32"
+    """NumPy-compatible audio data type used by sounddevice (float 32)."""
 
 
 def record_until_enter(
@@ -49,7 +43,7 @@ def record_until_enter(
     settings: RecordingSettings = RecordingSettings(),
 ) -> Path:
     """
-    Record audio from the microphone until the user presses ENTER.
+    **Record audio from the microphone until the user presses ENTER.**
 
     The recorded audio is stored as a WAV file in the given output
     directory. Internally, the function records float32 audio frames,
@@ -58,21 +52,21 @@ def record_until_enter(
 
     Parameters
     ----------
-    output_dir : Path
-        The directory where the recorded WAV file will be saved.
-    settings : RecordingSettings
-        Audio input configuration such as samplerate, channel count,
-        and dtype.
+        output_dir : Path
+            The directory where the recorded WAV file will be saved.
+        settings : RecordingSettings
+            Audio input configuration such as samplerate, channel count,
+            and dtype.
     
     Returns
     -------
-    Path
-        The path to the saved WAV file.
+        Path
+            The path to the saved WAV file.
     
     Raises
     ------
-    RuntimeError
-        If no audio data is recorded.
+        RuntimeError
+            If no audio data is recorded.
     """
 
     output_dir.mkdir(parents=True, exist_ok=True)

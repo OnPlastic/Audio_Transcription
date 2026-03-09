@@ -3,16 +3,6 @@ from __future__ import annotations
 main.py
 
 Main CLI entry point for the audio Transcription tool.
-
-Workflow:
----------
-1. Load environment variables and runtime configuration.
-2. Ask whether an audiofile already exists.
-3. Either resolve the input audio path or switch to live recording.
-4. Ask whether the result should only be saved or also sent by email.
-5. Run Whisper transcription.
-6. Save transcript to disk.
-7. Optionally send the transcript by email.
 """
 
 import logging
@@ -36,15 +26,24 @@ load_dotenv()
 
 def main() -> int:
     """
-    Run the CLI transcription workflow.
+    **Run the CLI transcription workflow.**
+
+    Workflow:
+    ---------
+    1. Load environment variables and runtime configuration.
+    2. Ask whether an audiofile already exists.
+    3. Either resolve the input audio path or switch to live recording.
+    4. Ask whether the result should only be saved or also sent by email.
+    5. Run Whisper transcription.
+    6. Save transcript to disk.
+    7. Optionally send the transcript by email.
 
     Returns
     -------
-    int
-        Process exit code.
-         
-        0 Successful execution
-        130 User aborted via (CTRL+C)
+        int
+            Process exit code:
+            - (0) Successful execution
+            - (130) User aborted via (CTRL+C)
     """
     
     # --- Print CLI header ---

@@ -19,27 +19,27 @@ from paths import normalize_input_path
 def ask_choice(question: str, choices: dict[str, object]) -> object:
     
     """
-    Ask the user to choose from predefined options.
+    **Ask the user to choose from predefined options.**
 
     The function keeps prompting until the user enters one of the allowed
     keys. The selected key is mapped to its configured return value.
 
     Examples
     --------
-    {"j": True, "n": False}
-    {"s": "save", "m": "mail"}
+        {"j": True, "n": False}
+        {"s": "save", "m": "mail"}
     
     Parameters
     ----------
-    question : str
-        The question shown to the user.
-    choices : dict[str, object]
-        Mapping of valid input options to return values.
+        question : str
+            The question shown to the user.
+        choices : dict[str, object]
+            Mapping of valid input options to return values.
     
     Returns
     -------
-    object
-        The mapped value from the choices dictionary.
+        object
+            The mapped value from the choices dictionary.
     """
 
     options = "/".join(choices.keys())
@@ -55,7 +55,7 @@ def ask_choice(question: str, choices: dict[str, object]) -> object:
 
 def ask_email() -> str:
     """
-    Ask the user for an email address and validate it.
+    **Ask the user for an email address and validate it.**
 
     The validation is intentionally lightweight and only checks whether
     the input contains both '@' and '.'. This is sufficient for the CLI
@@ -63,8 +63,8 @@ def ask_email() -> str:
 
     Returns
     -------
-    str
-        A valid email address entered by the user.
+        str
+            A valid email address entered by the user.
     """
 
     while True:
@@ -79,7 +79,7 @@ def ask_email() -> str:
 
 def ask_audio_path(project_root: Path) -> Path | None:
     """
-    Ask the user for an audio file, with or without a path, and resolve it.
+    **Ask the user for an audio file, with or without a path, and resolve it.**
 
     If the user enters only a filename, the file is searched for in the 
     default audio directory.
@@ -93,19 +93,19 @@ def ask_audio_path(project_root: Path) -> Path | None:
 
     Parameters
     ----------
-    project_root : Path
-        The root directory of the project.
+        project_root : Path
+            The root directory of the project.
 
     Returns
     -------
-    Path | None
-        The path to the audio file if found, or None if the user opts to start
-        the recorder instead.
+        Path | None
+            The path to the audio file if found, or None if the user opts to start
+            the recorder instead.
 
     Raises
     ------
-    SystemExit
-        If the user chooses to abort the program.
+        SystemExit
+            If the user chooses to abort the program.
     """
 
     # --- Default: input/audio (Handy-Upload via scp) ---

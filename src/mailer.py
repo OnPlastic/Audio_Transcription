@@ -20,30 +20,21 @@ log = logging.getLogger(__name__)
 @dataclass(frozen=True)
 class SmtpSettings:
     """
-    SMTP configuration used for outgoing emails.
-
-    Attributes
-    ----------
-    host : str
-        The SMTP server hostname or IP address.
-    port : int
-        The port number to connect to on the SMTP server.
-    use_ssl : bool
-        Whether to use SSL/TLS for the connection.
-    user : str
-        SMTP login username / sender address.
-    app_password : str
-        SMTP login password or app-specific password.
-    from_name : str
-        Display name to use in the "From" field of outgoing emails.
+    **SMTP configuration used for outgoing emails.**
     """
 
     host: str
+    """ The SMTP server hostname or IP address."""
     port: int
+    """ The port number to connect to on the SMTP server."""
     use_ssl: bool
+    """ Whether to use SSL/TLS for the connection."""
     user: str
+    """ SMTP login username / sender address."""
     app_password: str
+    """ SMTP login password or app-specific password."""
     from_name: str
+    """ Display name to use in the "From" field of outgoing emails."""
 
 
 def send_mail_text(
@@ -62,18 +53,18 @@ def send_mail_text(
 
     Parameters
     ----------
-    smtp : SmtpSettings
-        SMTP connection and sender configuration.
-    to_addr : str
-        Recipient email address.
-    subject : str
-        Subject line for the email.
-    text_content : str
-        The transcript text to include in the email body.
+        smtp : SmtpSettings
+            SMTP connection and sender configuration.
+        to_addr : str
+            Recipient email address.
+        subject : str
+            Subject line for the email.
+        text_content : str
+            The transcript text to include in the email body.
     
     Returns
     -------
-    None
+        None
     """
 
     # --- Build the email message ---

@@ -17,7 +17,7 @@ from datetime import datetime
 
 def normalize_input_path(raw: str) -> Path:
     """
-    Normalize a user-provided path string.
+    **Normalize a user-provided path string.**
 
     This expands user home shortcuts (~) and resolves the absolute path.
 
@@ -37,7 +37,7 @@ def normalize_input_path(raw: str) -> Path:
 
 def build_output_txt_path(output_dir: Path, audio_path: Path | None) -> Path:
     """
-    Build the output path for the transcript text file.
+    **Build the output path for the transcript text file.**
 
     The generated filename always begins with a timestamp:
         
@@ -56,16 +56,16 @@ def build_output_txt_path(output_dir: Path, audio_path: Path | None) -> Path:
 
     Parameters
     ----------
-    output_dir: Path
-        Directory where the transcript should be saved.
-    audio_path: Path | None
-        Path to the audio file used for transcription.
-        If None, the default stem "recording" will be used.
+        output_dir: Path
+            Directory where the transcript should be saved.
+        audio_path: Path | None
+            Path to the audio file used for transcription.
+            If None, the default stem "recording" will be used.
     
     Returns
     -------
-    Path
-        Full path for the output transcript text file.
+        Path
+            Full path for the output transcript text file.
     """
 
     ts = datetime.now().strftime("%Y%m%d_%H%M%S")

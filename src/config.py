@@ -15,48 +15,35 @@ import tomllib
 @dataclass(frozen=True)
 class AppConfig:
     """
-    Application runtime configuration loaded from config.toml.
-
-    Attributes
-    ----------
-    output_dir: Path
-        Directory where transcriptions will be saved.
-    log_dir: Path
-        Directory where log files will be stored.
-    log_level: str
-        Logging level (e.g. "INFO", "DEBUG").
-    model_name: str
-        Name of the Whisper model to use ("small", "medium", "large-v3").
-    language: str
-        Language code passed to Whisper for transcription ("de" for German).
-    smtp_host: str
-        SMTP server host for sending emails.
-    smtp_port: int
-        SMTP server port.
-    smtp_use_ssl: bool
-        Whether to use SSL for SMTP connection.
-    from_name: str
-        Display name for the sender in the email.
-    subject_prefix: str
-        Prefix to add to the email subject line (e.g. "[Transkript]").
+    **Application runtime configuration loaded from config.toml.**
     """
 
-    output_dir: Path
-    log_dir: Path
-    log_level: str
-    model_name: str
-    language: str
-    smtp_host: str
-    smtp_port: int
-    smtp_use_ssl: bool
-    from_name: str
-    subject_prefix: str
+    output_dir: Path 
+    """ Directory where transcriptions will be saved."""
+    log_dir: Path       
+    """ Directory where log files will be stored."""
+    log_level: str      
+    """ Logging level (e.g. "INFO", "DEBUG")."""
+    model_name: str     
+    """ Name of the Whisper model to use (large-v3)."""
+    language: str       
+    """ Language code given to Whisper for transcription (de)."""
+    smtp_host: str      
+    """ SMTP server host for sending emails."""
+    smtp_port: int      
+    """ SMTP server port (465 for SSL, 587 for TLS)."""
+    smtp_use_ssl: bool  
+    """ Whether to use SSL for SMTP connection."""
+    from_name: str      
+    """ Display name for the sender in the email."""
+    subject_prefix: str 
+    """ Prefix for the email subject line ([Transkript])."""
 
 
 def load_config(project_root: Path) -> AppConfig:
     """
-    Load application settings from config.toml 
-    located in the project root directory.
+    **Load application settings from config.toml 
+    located in the project root directory.**
 
     Values are grouped into the sections:
     - transcription: output_dir, model_name, language
@@ -68,13 +55,13 @@ def load_config(project_root: Path) -> AppConfig:
 
     Parameters
     ----------
-    project_root: Path
-        Root directory of the project where config.toml is located.
+        project_root: Path
+            Root directory of the project where config.toml is located.
 
     Returns    
     -------
-    AppConfig
-        Parsed and normalized runtime configuration.
+        AppConfig
+            Parsed and normalized runtime configuration.
     """
 
     cfg_path = project_root / "config.toml"
