@@ -6,6 +6,28 @@ The format is loosely based on Keep a Changelog.
 
 ---
 
+## [1.0.0] - 2026-03-09
+
+### Added
+- Automatic API documentation generation using **pdoc**
+- Static documentation site under `docs/`
+- Project landing page rendered from package docstring
+- Sidebar logo linking to the GitHub repository
+
+### Changed
+- Refactored project into proper Python package layout (`src/trsc`)
+- Centralized application metadata and version handling
+- Improved module documentation with structured Markdown docstrings
+
+### Technical
+- Added documentation build workflow using `pdoc`
+- Introduced documentation directory structure (`docs/`, `docs/api/`)
+- Cleaned repository structure and removed temporary test artifacts
+
+### Notes
+- First official **1.0 stable release**
+- Project structure, CLI workflow and documentation considered stable
+
 ---
 
 ## [0.1.0] - 2026-02-28
