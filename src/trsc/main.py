@@ -11,15 +11,15 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-from config import load_config
-from version import APP_NAME, __version__
-from input_utils import ask_choice, ask_email, ask_audio_path
-from logging_setup import setup_logging
-from mailer import SmtpSettings, send_mail_text
-from output import write_txt
-from paths import build_output_txt_path
-from recorder import record_until_enter
-from whisper_asr import transcribe_file
+from .config import load_config
+from .version import APP_NAME, __version__
+from .input_utils import ask_choice, ask_email, ask_audio_path
+from .logging_setup import setup_logging
+from .mailer import SmtpSettings, send_mail_text
+from .output import write_txt
+from .paths import build_output_txt_path
+from .recorder import record_until_enter
+from .whisper_asr import transcribe_file
 
 load_dotenv()
 
