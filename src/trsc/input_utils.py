@@ -13,7 +13,7 @@ Responsibilities
 """
 
 from pathlib import Path
-from paths import normalize_input_path
+from .paths import normalize_input_path
 
 
 def ask_choice(question: str, choices: dict[str, object]) -> object:
