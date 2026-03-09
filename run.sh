@@ -12,4 +12,4 @@ if [[ ! -x "$VENV_PY" ]]; then
   exit 1
 fi
 
-PYTHONPATH=src "$VENV_PY" -m main
+PYTHONPATH=src "$VENV_PY" -m trsc

@@ -3,16 +3,24 @@
 __pycache__/
 *.pyc
 
-# Runtime
-output/
-logs/
+# Runtime (Ordnerstruktur bleibt via .gitkeep)
+output/*
+!output/.gitkeep
+!output/20260101_010101_Sprachaufnahme-1.txt
+
+logs/*
+!logs/.gitkeep
+!logs/run_20260101_010101.log
 
 # Audio (Ordnerstruktur bleibt via .gitkeep)
 input/audio/*
 !input/audio/.gitkeep
+!input/audio/Sprachaufnahme-1.opus
+!input/audio/README.md
 
 input/recordings/*
 !input/recordings/.gitkeep
+!input/recordings/20260101_010101_recording.wav
 
 # Secrets
 .env
