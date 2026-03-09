@@ -1,0 +1,11 @@
+2026-01-01 01:01:20,146 | INFO | logging_setup | Logging initialized: /home/.../transcribe/logs/run_20260101_010101.log
+2026-01-01 01:01:20,146 | INFO | __main__ | Audio_Transkription by sIn v0.0.0
+2026-01-01 01:01:38,302 | INFO | __main__ | Mode selected: mail
+2026-01-01 01:01:38,306 | INFO | whisper_asr | Loading Whisper model: large-v3
+2026-01-01 01:01:51,177 | INFO | whisper_asr | Whisper model loaded: large-v3
+2026-01-01 01:01:51,177 | INFO | whisper_asr | Transcription started: /home/.../transcribe/input/audio/Sprachaufnahme-1.opus
+2026-01-01 01:01:06,290 | INFO | whisper_asr | Transcription finished in 15.11 s | chars=179
+2026-01-01 01:01:06,290 | INFO | __main__ | Ergebnis gespeichert: /home/.../transcribe/output/20260101_010101_Sprachaufnahme-1.txt
+2026-01-01 01:01:06,290 | INFO | __main__ | Mail requested to: max.mustermann@example.com
+2026-01-01 01:01:06,295 | INFO | mailer | Sending mail to=max.mustermann@example.com subject=[Transkript] 20260101_010101_Sprachaufnahme-1
+2026-01-01 01:01:07,852 | INFO | mailer | Mail sent to max.mustermann@example.com
