@@ -54,7 +54,7 @@ def main() -> int:
 
     try:
         # --- Resolve project root and load configuration ---
-        project_root = Path(__file__).resolve().parents[1]
+        project_root = Path(__file__).resolve().parents[2]
         cfg = load_config(project_root)
 
         # --- Initialize logging ---
