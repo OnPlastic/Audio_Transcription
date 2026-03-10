@@ -6,7 +6,7 @@ speech using OpenAI Whisper.
 
 ------------------------------------------------------------------------
 
-##🏷 Project Status
+## 1. Project Status
 
 - Python ≥ 3.11
 - CLI application
@@ -15,7 +15,7 @@ speech using OpenAI Whisper.
 
 ------------------------------------------------------------------------
 
-##✨ Features
+## 2. Features
 
 - Record audio directly from your microphone
 - Use existing audio files
@@ -26,7 +26,7 @@ speech using OpenAI Whisper.
 
 ------------------------------------------------------------------------
 
-##⚡ Quick Example
+## 3. Quick Example
 
 ``` pws
     ./run.sh
@@ -35,7 +35,7 @@ speech using OpenAI Whisper.
 Example output:
 
 ``` pws
-    Audio_Transkription by sIn v0.2.0
+    Audio_Transkription by sIn vX.X.X
     =================================
 
     Audio-Datei vorhanden? (j/n): n
@@ -51,7 +51,7 @@ Example output:
 
 ------------------------------------------------------------------------
 
-## ⚙️ Installation
+## 4. Installation
 
 Clone repository:
 
@@ -81,7 +81,7 @@ Run application:
 
 ------------------------------------------------------------------------
 
-## 🧠 Architecture
+## 5. Architecture
 
 ```pws
     CLI (main)
@@ -98,7 +98,7 @@ Run application:
 
 ------------------------------------------------------------------------
 
-## 📦 Package Structure
+## 6. Package Structure
 
   | Module | Purpose |
   | ------ | ------- |
@@ -115,7 +115,7 @@ Run application:
 
 ------------------------------------------------------------------------
 
-## 📚 Documentation
+## 7. Documentation
 
 API documentation is generated automatically using **pdoc**.
 
@@ -132,3 +132,5 @@ Project : *Audio_Transkription CLI*
 
 # Import package metadata for external access (e.g., version info)
 from .version import APP_NAME, __version__
+
+__all__ = ["APP_NAME", "__version__"]
