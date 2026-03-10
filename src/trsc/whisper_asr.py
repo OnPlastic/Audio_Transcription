@@ -73,8 +73,8 @@ def transcribe_file(audio_path: Path, model_name: str, language: str) -> str:
     -------
         str
             The transcribed plain text.
-    
-    Raises    
+
+    Raises
     ------
         FileNotFoundError
             If the specified audio file does not exist.

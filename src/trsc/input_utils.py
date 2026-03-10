@@ -17,7 +17,6 @@ from .paths import normalize_input_path
 
 
 def ask_choice(question: str, choices: dict[str, object]) -> object:
-    
     """
     **Ask the user to choose from predefined options.**
 
@@ -28,14 +27,14 @@ def ask_choice(question: str, choices: dict[str, object]) -> object:
     --------
         {"j": True, "n": False}
         {"s": "save", "m": "mail"}
-    
+
     Parameters
     ----------
         question : str
             The question shown to the user.
         choices : dict[str, object]
             Mapping of valid input options to return values.
-    
+
     Returns
     -------
         object
@@ -49,7 +48,7 @@ def ask_choice(question: str, choices: dict[str, object]) -> object:
 
         if answer in choices:
             return choices[answer]
-        
+
         print(f"Ungültige Eingabe! Erlaubte Optionen: ({options})")
 
 
@@ -73,7 +72,7 @@ def ask_email() -> str:
         if "@" in addr and "." in addr:
             print("Mailadresse: ", addr)
             return addr
-        
+
         print("Ungültige E-Mail-Adresse! Bitte versuchen Sie es erneut.")
 
 
@@ -81,7 +80,7 @@ def ask_audio_path(project_root: Path) -> Path | None:
     """
     **Ask the user for an audio file, with or without a path, and resolve it.**
 
-    If the user enters only a filename, the file is searched for in the 
+    If the user enters only a filename, the file is searched for in the
     default audio directory.
 
         input/audio/filename.ext
@@ -99,8 +98,8 @@ def ask_audio_path(project_root: Path) -> Path | None:
     Returns
     -------
         Path | None
-            The path to the audio file if found, or None if the user opts to start
-            the recorder instead.
+            The path to the audio file if found, or None if the user opts
+            to start the recorder instead.
 
     Raises
     ------
@@ -112,10 +111,13 @@ def ask_audio_path(project_root: Path) -> Path | None:
     default_audio_dir = project_root / "input" / "audio"
 
     while True:
-        raw = input("Bitte Dateiname oder Pfad zur Audio-Datei angeben: ").strip()
+        raw = input(
+            "Bitte Dateiname oder Pfad zur Audio-Datei angeben: "
+        ).strip()
 
         # If only a filename is given, resolve it relative to input/audio
-        if raw and ("/" not in raw) and ("\\" not in raw) and (not raw.startswith("~")):
+        if (raw and ("/" not in raw) and ("\\" not in raw) and
+                (not raw.startswith("~"))):
             audio_path = (default_audio_dir / raw).resolve()
         else:
             audio_path = normalize_input_path(raw)
@@ -123,7 +125,7 @@ def ask_audio_path(project_root: Path) -> Path | None:
         if audio_path.exists():
             print("Datei gewählt: ", audio_path)
             return audio_path
-        
+
         print("Datei nicht gefunden: ", audio_path)
 
         retry = ask_choice(

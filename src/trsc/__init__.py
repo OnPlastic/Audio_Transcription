@@ -130,4 +130,5 @@ Project : *Audio_Transkription CLI*
 
 """
 
+# Import package metadata for external access (e.g., version info)
 from .version import APP_NAME, __version__
