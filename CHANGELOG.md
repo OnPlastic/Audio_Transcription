@@ -15,8 +15,23 @@ PYTHONPATH=src pdoc trsc \
   -o docs/api
 ```
 ---
+## [1.0.1] 
 
-## [1.0.0] - 2026-03-09
+### Added
+- Architecture diagram added to the API documentation
+- Development dependencies file `requirements-dev.txt`
+
+### Changed
+- Improved API documentation landing page rendered from package docstring
+- Updated static API documentation generated with pdoc
+- Cleaned up runtime dependencies in `requirements.txt`
+
+### Technical
+- Documented API documentation build command in CHANGELOG
+  
+---
+
+## [1.0.0] 
 
 ### Added
 - Automatic API documentation generation using **pdoc**
@@ -40,7 +55,7 @@ PYTHONPATH=src pdoc trsc \
 
 ---
 
-## [0.1.0] - 2026-02-28
+## [0.1.0] 
 
 ### Added
 - Stable CLI workflow for audio transcription
