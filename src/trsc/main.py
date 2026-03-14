@@ -45,7 +45,7 @@ def main() -> int:
             - (0) Successful execution
             - (130) User aborted via (CTRL+C)
     """
-    
+
     # --- Print CLI header ---
     title = f"{APP_NAME} v{__version__}"
     print(f"\n{title}")
@@ -84,7 +84,7 @@ def main() -> int:
 
         # --- Ask whether to save or send by email ---
         mode = ask_choice(
-            "Ergebnis in .txt (s)peichern, oder zusätzlich E(m)ail versenden? ",
+            "Ergebnis in .txt (s)peichern, oder E(m)ail versenden? ",
             {"s": "save", "m": "mail"},
         )
 
@@ -98,7 +98,7 @@ def main() -> int:
             recordings_dir = project_root / "input" / "recordings"
             audio_path = record_until_enter(output_dir=recordings_dir)
             log.info("Recorded audio saved: %s", audio_path)
-        
+
         # --- Type-Safety: audio_path must exist at this point ---
         if audio_path is None:
             raise RuntimeError("Audio path should not be None at this point.")
@@ -118,7 +118,7 @@ def main() -> int:
         log.info("Ergebnis gespeichert: %s", out_txt)
 
         print(f"Transkription gespeichert: {out_txt}\n")
-        
+
         # --- Send transcript by email if requested ---
         if mode == "mail":
             log.info("Mail requested to: %s", to_addr)
@@ -135,7 +135,8 @@ def main() -> int:
             subject = f"{cfg.subject_prefix} {out_txt.stem}"
 
             if to_addr is None or not to_addr.strip():
-                raise RuntimeError("to_addr should not be None when mode is M.")
+                msg = "to_addr should not be None when mode is M."
+                raise RuntimeError(msg)
 
             to_addr = to_addr.strip()
 

@@ -40,7 +40,7 @@ def build_output_txt_path(output_dir: Path, audio_path: Path | None) -> Path:
     **Build the output path for the transcript text file.**
 
     The generated filename always begins with a timestamp:
-        
+
         YYYYMMDD_HHMMSS_<stem>.txt
 
         If the audio filename already contains a timestamp prefix,
@@ -50,7 +50,7 @@ def build_output_txt_path(output_dir: Path, audio_path: Path | None) -> Path:
     -------
     Input:
         20260601_153000_recording.wav
-    
+
     Output:
         20260601_153000_recording.txt
 
@@ -61,7 +61,7 @@ def build_output_txt_path(output_dir: Path, audio_path: Path | None) -> Path:
         audio_path: Path | None
             Path to the audio file used for transcription.
             If None, the default stem "recording" will be used.
-    
+
     Returns
     -------
         Path
@@ -80,6 +80,5 @@ def build_output_txt_path(output_dir: Path, audio_path: Path | None) -> Path:
 
         if len(parts) >= 3 and parts[0].isdigit() and parts[1].isdigit():
             stem = parts[2]
-            
-    return output_dir / f"{ts}_{stem}.txt"
 
+    return output_dir / f"{ts}_{stem}.txt"

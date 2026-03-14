@@ -46,13 +46,15 @@ def setup_logging(log_dir: Path, level: str = "INFO") -> Path:
     root = logging.getLogger()
     root.setLevel(numeric_level)
 
-    # --- Remove existing handlers to avoid duplicate logs --- 
+    # --- Remove existing handlers to avoid duplicate logs ---
     if root.handlers:
         root.handlers.clear()
 
-    fmt = logging.Formatter("%(asctime)s | %(levelname)s | %(name)s | %(message)s")
+    fmt = logging.Formatter(
+        "%(asctime)s | %(levelname)s | %(name)s | %(message)s"
+    )
 
-    # --- Write logs to file only ---    
+    # --- Write logs to file only ---
     fh = logging.FileHandler(logfile, encoding="utf-8")
     fh.setLevel(numeric_level)
     fh.setFormatter(fmt)

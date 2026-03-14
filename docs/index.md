@@ -5,7 +5,7 @@ speech using OpenAI Whisper.
 
 ------------------------------------------------------------------------
 
-##🏷 Project Status
+## 1. Project Status
 
 - Python ≥ 3.11
 - CLI application
@@ -14,7 +14,7 @@ speech using OpenAI Whisper.
 
 ------------------------------------------------------------------------
 
-##✨ Features
+## 2. Features
 
 - Record audio directly from your microphone
 - Use existing audio files
@@ -25,7 +25,7 @@ speech using OpenAI Whisper.
 
 ------------------------------------------------------------------------
 
-##⚡ Quick Example
+## 3. Quick Example
 
 ``` pws
     ./run.sh
@@ -34,7 +34,7 @@ speech using OpenAI Whisper.
 Example output:
 
 ``` pws
-    Audio_Transkription by sIn v0.2.0
+    Audio_Transkription by sIn vX.X.X
     =================================
 
     Audio-Datei vorhanden? (j/n): n
@@ -50,7 +50,7 @@ Example output:
 
 ------------------------------------------------------------------------
 
-## ⚙️ Installation
+## 4. Installation
 
 Clone repository:
 
@@ -66,10 +66,29 @@ Create virtual environment:
     source .venv/bin/activate
 ```
 
-Install dependencies:
+Install runtime dependencies:
 
 ``` pws
     pip install -r requirements.txt
+```
+
+**Note! (Ubuntu / WSL users)**
+
+>  
+> Some Ubuntu installations do not provide the ` python ` command by default.
+> If ` python -m venv .venv ` fails with ` command not found `, use:
+>
+>   `python3 -m venv .venv`
+>
+> or install the compatibility package once:
+>
+>    `sudo apt install python-is-python3`  
+>
+
+*Optional: install development tools (documentation & linting)*
+
+```pws
+    pip install -r requirements-dev.txt
 ```
 
 Run application:
@@ -80,7 +99,24 @@ Run application:
 
 ------------------------------------------------------------------------
 
-## 🧠 Architecture
+## 5. System Requirements
+
+This project requires **ffmpeg** for audio decoding used by Whisper.
+
+Install on Linux/WSL:
+
+```pws
+    sudo apt update
+    sudo apt install ffmpeg
+```
+
+Verify installation:
+
+```pws
+    ffmpeg -version
+```
+
+## 6. Architecture
 
 ```pws
     CLI (main)
@@ -94,10 +130,12 @@ Run application:
       │
       └── logging_setup
 ```
+A more detailed Version of all Packages and Modules are here available:
+[open trsc-Architecture-diagramm](assets/TRSC.svg)
 
 ------------------------------------------------------------------------
 
-## 📦 Package Structure
+## 7. Package Structure
 
   | Module | Purpose |
   | ------ | ------- |
@@ -114,9 +152,12 @@ Run application:
 
 ------------------------------------------------------------------------
 
-## 📚 Documentation
+## 8. Documentation
 
 API documentation is generated automatically using **pdoc**.
+
+The landing page of the documentation is generated from the `trsc`
+module docstring and contains the project overview.
 
 The sidebar lists all available modules and their functions.
 
@@ -126,3 +167,4 @@ The sidebar lists all available modules and their functions.
 
 >>```sIn```\n
 Project : *Audio_Transkription CLI*
+

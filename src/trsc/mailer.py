@@ -61,7 +61,7 @@ def send_mail_text(
             Subject line for the email.
         text_content : str
             The transcript text to include in the email body.
-    
+
     Returns
     -------
         None
@@ -83,7 +83,7 @@ def send_mail_text(
 
     log.info("Sending mail to=%s subject=%s", to_addr, subject)
 
-    # --- Send email using configured SMTP transport ---             
+    # --- Send email using configured SMTP transport ---
     if smtp.use_ssl:
         with smtplib.SMTP_SSL(smtp.host, smtp.port) as server:
             server.login(smtp.user, smtp.app_password)

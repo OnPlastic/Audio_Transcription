@@ -22,8 +22,8 @@
   <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
 </svg>                &nbsp;trsc</a>
 
-<a href="https://github.com/OnPlastic/Audio_Transcription">            <img src="/docs/assets/logo3.png" class="logo" alt="project logo"/>
-</a>
+            <img src="assets/logo2.png" class="logo" alt="project logo"/>
+
             <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
                    pattern=".+" required>
 
@@ -103,20 +103,22 @@
 </span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a>    <span class="n">root</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">()</span>
 </span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a>    <span class="n">root</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">numeric_level</span><span class="p">)</span>
 </span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a>
-</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>    <span class="c1"># --- Remove existing handlers to avoid duplicate logs --- </span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>    <span class="c1"># --- Remove existing handlers to avoid duplicate logs ---</span>
 </span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>    <span class="k">if</span> <span class="n">root</span><span class="o">.</span><span class="n">handlers</span><span class="p">:</span>
 </span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>        <span class="n">root</span><span class="o">.</span><span class="n">handlers</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
 </span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>
-</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>    <span class="n">fmt</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%(asctime)s</span><span class="s2"> | </span><span class="si">%(levelname)s</span><span class="s2"> | </span><span class="si">%(name)s</span><span class="s2"> | </span><span class="si">%(message)s</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>
-</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>    <span class="c1"># --- Write logs to file only ---    </span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>    <span class="n">fh</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">FileHandler</span><span class="p">(</span><span class="n">logfile</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="n">fh</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">numeric_level</span><span class="p">)</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>    <span class="n">fh</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">fmt</span><span class="p">)</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>    <span class="n">root</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">fh</span><span class="p">)</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>
-</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Logging initialized: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">logfile</span><span class="p">)</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>    <span class="k">return</span> <span class="n">logfile</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>    <span class="n">fmt</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>        <span class="s2">&quot;</span><span class="si">%(asctime)s</span><span class="s2"> | </span><span class="si">%(levelname)s</span><span class="s2"> | </span><span class="si">%(name)s</span><span class="s2"> | </span><span class="si">%(message)s</span><span class="s2">&quot;</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>    <span class="p">)</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="c1"># --- Write logs to file only ---</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>    <span class="n">fh</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">FileHandler</span><span class="p">(</span><span class="n">logfile</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>    <span class="n">fh</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">numeric_level</span><span class="p">)</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="n">fh</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">fmt</span><span class="p">)</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="n">root</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">fh</span><span class="p">)</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>
+</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>    <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Logging initialized: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">logfile</span><span class="p">)</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>    <span class="k">return</span> <span class="n">logfile</span>
 </span></pre></div>
 
 
@@ -165,20 +167,22 @@
 </span><span id="setup_logging-47"><a href="#setup_logging-47"><span class="linenos">47</span></a>    <span class="n">root</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">()</span>
 </span><span id="setup_logging-48"><a href="#setup_logging-48"><span class="linenos">48</span></a>    <span class="n">root</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">numeric_level</span><span class="p">)</span>
 </span><span id="setup_logging-49"><a href="#setup_logging-49"><span class="linenos">49</span></a>
-</span><span id="setup_logging-50"><a href="#setup_logging-50"><span class="linenos">50</span></a>    <span class="c1"># --- Remove existing handlers to avoid duplicate logs --- </span>
+</span><span id="setup_logging-50"><a href="#setup_logging-50"><span class="linenos">50</span></a>    <span class="c1"># --- Remove existing handlers to avoid duplicate logs ---</span>
 </span><span id="setup_logging-51"><a href="#setup_logging-51"><span class="linenos">51</span></a>    <span class="k">if</span> <span class="n">root</span><span class="o">.</span><span class="n">handlers</span><span class="p">:</span>
 </span><span id="setup_logging-52"><a href="#setup_logging-52"><span class="linenos">52</span></a>        <span class="n">root</span><span class="o">.</span><span class="n">handlers</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
 </span><span id="setup_logging-53"><a href="#setup_logging-53"><span class="linenos">53</span></a>
-</span><span id="setup_logging-54"><a href="#setup_logging-54"><span class="linenos">54</span></a>    <span class="n">fmt</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%(asctime)s</span><span class="s2"> | </span><span class="si">%(levelname)s</span><span class="s2"> | </span><span class="si">%(name)s</span><span class="s2"> | </span><span class="si">%(message)s</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="setup_logging-55"><a href="#setup_logging-55"><span class="linenos">55</span></a>
-</span><span id="setup_logging-56"><a href="#setup_logging-56"><span class="linenos">56</span></a>    <span class="c1"># --- Write logs to file only ---    </span>
-</span><span id="setup_logging-57"><a href="#setup_logging-57"><span class="linenos">57</span></a>    <span class="n">fh</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">FileHandler</span><span class="p">(</span><span class="n">logfile</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
-</span><span id="setup_logging-58"><a href="#setup_logging-58"><span class="linenos">58</span></a>    <span class="n">fh</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">numeric_level</span><span class="p">)</span>
-</span><span id="setup_logging-59"><a href="#setup_logging-59"><span class="linenos">59</span></a>    <span class="n">fh</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">fmt</span><span class="p">)</span>
-</span><span id="setup_logging-60"><a href="#setup_logging-60"><span class="linenos">60</span></a>    <span class="n">root</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">fh</span><span class="p">)</span>
-</span><span id="setup_logging-61"><a href="#setup_logging-61"><span class="linenos">61</span></a>
-</span><span id="setup_logging-62"><a href="#setup_logging-62"><span class="linenos">62</span></a>    <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Logging initialized: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">logfile</span><span class="p">)</span>
-</span><span id="setup_logging-63"><a href="#setup_logging-63"><span class="linenos">63</span></a>    <span class="k">return</span> <span class="n">logfile</span>
+</span><span id="setup_logging-54"><a href="#setup_logging-54"><span class="linenos">54</span></a>    <span class="n">fmt</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span>
+</span><span id="setup_logging-55"><a href="#setup_logging-55"><span class="linenos">55</span></a>        <span class="s2">&quot;</span><span class="si">%(asctime)s</span><span class="s2"> | </span><span class="si">%(levelname)s</span><span class="s2"> | </span><span class="si">%(name)s</span><span class="s2"> | </span><span class="si">%(message)s</span><span class="s2">&quot;</span>
+</span><span id="setup_logging-56"><a href="#setup_logging-56"><span class="linenos">56</span></a>    <span class="p">)</span>
+</span><span id="setup_logging-57"><a href="#setup_logging-57"><span class="linenos">57</span></a>
+</span><span id="setup_logging-58"><a href="#setup_logging-58"><span class="linenos">58</span></a>    <span class="c1"># --- Write logs to file only ---</span>
+</span><span id="setup_logging-59"><a href="#setup_logging-59"><span class="linenos">59</span></a>    <span class="n">fh</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">FileHandler</span><span class="p">(</span><span class="n">logfile</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+</span><span id="setup_logging-60"><a href="#setup_logging-60"><span class="linenos">60</span></a>    <span class="n">fh</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">numeric_level</span><span class="p">)</span>
+</span><span id="setup_logging-61"><a href="#setup_logging-61"><span class="linenos">61</span></a>    <span class="n">fh</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">fmt</span><span class="p">)</span>
+</span><span id="setup_logging-62"><a href="#setup_logging-62"><span class="linenos">62</span></a>    <span class="n">root</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">fh</span><span class="p">)</span>
+</span><span id="setup_logging-63"><a href="#setup_logging-63"><span class="linenos">63</span></a>
+</span><span id="setup_logging-64"><a href="#setup_logging-64"><span class="linenos">64</span></a>    <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Logging initialized: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">logfile</span><span class="p">)</span>
+</span><span id="setup_logging-65"><a href="#setup_logging-65"><span class="linenos">65</span></a>    <span class="k">return</span> <span class="n">logfile</span>
 </span></pre></div>
 
 

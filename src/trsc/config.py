@@ -18,31 +18,31 @@ class AppConfig:
     **Application runtime configuration loaded from config.toml.**
     """
 
-    output_dir: Path 
+    output_dir: Path
     """ Directory where transcriptions will be saved."""
-    log_dir: Path       
+    log_dir: Path
     """ Directory where log files will be stored."""
-    log_level: str      
+    log_level: str
     """ Logging level (e.g. "INFO", "DEBUG")."""
-    model_name: str     
+    model_name: str
     """ Name of the Whisper model to use (large-v3)."""
-    language: str       
+    language: str
     """ Language code given to Whisper for transcription (de)."""
-    smtp_host: str      
+    smtp_host: str
     """ SMTP server host for sending emails."""
-    smtp_port: int      
+    smtp_port: int
     """ SMTP server port (465 for SSL, 587 for TLS)."""
-    smtp_use_ssl: bool  
+    smtp_use_ssl: bool
     """ Whether to use SSL for SMTP connection."""
-    from_name: str      
+    from_name: str
     """ Display name for the sender in the email."""
-    subject_prefix: str 
+    subject_prefix: str
     """ Prefix for the email subject line ([Transkript])."""
 
 
 def load_config(project_root: Path) -> AppConfig:
     """
-    **Load application settings from config.toml 
+    **Load application settings from config.toml
     located in the project root directory.**
 
     Values are grouped into the sections:
@@ -50,7 +50,7 @@ def load_config(project_root: Path) -> AppConfig:
     - mail: smtp_host, smtp_port, smtp_use_ssl, from_name, subject_prefix
     - logging: log_dir, level
 
-    Missing values are replaced with defaults. 
+    Missing values are replaced with defaults.
     The resulting AppConfig object is returned.
 
     Parameters
@@ -58,7 +58,7 @@ def load_config(project_root: Path) -> AppConfig:
         project_root: Path
             Root directory of the project where config.toml is located.
 
-    Returns    
+    Returns
     -------
         AppConfig
             Parsed and normalized runtime configuration.
@@ -79,7 +79,9 @@ def load_config(project_root: Path) -> AppConfig:
     logging_config = raw.get("logging", {})
 
     # --- Transcription settings ---
-    output_dir = project_root / str(transcription_config.get("output_dir", "output"))
+    output_dir = project_root / str(
+        transcription_config.get("output_dir", "output")
+    )
     model_name = str(transcription_config.get("model_name", "large-v3"))
     language = str(transcription_config.get("language", "de"))
 

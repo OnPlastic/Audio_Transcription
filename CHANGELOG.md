@@ -4,9 +4,34 @@ All notable changes to this project will be documented in this file.
 
 The format is loosely based on Keep a Changelog.
 
+## Development Notes
+
+Build API documentation:
+
+```bash
+PYTHONPATH=src pdoc trsc \
+  --docformat markdown \
+  --logo assets/logo2.png \
+  -o docs/api
+```
+---
+## [1.0.1] 
+
+### Added
+- Architecture diagram added to the API documentation
+- Development dependencies file `requirements-dev.txt`
+
+### Changed
+- Improved API documentation landing page rendered from package docstring
+- Updated static API documentation generated with pdoc
+- Cleaned up runtime dependencies in `requirements.txt`
+
+### Technical
+- Documented API documentation build command in CHANGELOG
+  
 ---
 
-## [1.0.0] - 2026-03-09
+## [1.0.0] 
 
 ### Added
 - Automatic API documentation generation using **pdoc**
@@ -30,7 +55,7 @@ The format is loosely based on Keep a Changelog.
 
 ---
 
-## [0.1.0] - 2026-02-28
+## [0.1.0] 
 
 ### Added
 - Stable CLI workflow for audio transcription

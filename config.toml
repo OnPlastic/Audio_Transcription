@@ -2,8 +2,6 @@
 # beste Qualität
 model_name = "large-v3"
 language = "de"
-
-# du nutzt bereits output/transcripts
 output_dir = "output"
 
 [mail]

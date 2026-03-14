@@ -57,12 +57,12 @@ def record_until_enter(
         settings : RecordingSettings
             Audio input configuration such as samplerate, channel count,
             and dtype.
-    
+
     Returns
     -------
         Path
             The path to the saved WAV file.
-    
+
     Raises
     ------
         RuntimeError
