@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is loosely based on Keep a Changelog.
 
+## Development Notes
+
+Build API documentation:
+
+```bash
+PYTHONPATH=src pdoc trsc \
+  --docformat markdown \
+  --logo assets/logo2.png \
+  -o docs/api
+```
 ---
 
 ## [1.0.0] - 2026-03-09

@@ -22,8 +22,8 @@
   <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
 </svg>                &nbsp;trsc</a>
 
-<a href="https://github.com/OnPlastic/Audio_Transcription">            <img src="/docs/assets/logo3.png" class="logo" alt="project logo"/>
-</a>
+            <img src="assets/logo2.png" class="logo" alt="project logo"/>
+
             <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
                    pattern=".+" required>
 
@@ -100,7 +100,7 @@
 </span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">    **Build the output path for the transcript text file.**</span>
 </span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a>
 </span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">    The generated filename always begins with a timestamp:</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">        </span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a>
 </span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">        YYYYMMDD_HHMMSS_&lt;stem&gt;.txt</span>
 </span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a>
 </span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">        If the audio filename already contains a timestamp prefix,</span>
@@ -110,7 +110,7 @@
 </span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a><span class="sd">    -------</span>
 </span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a><span class="sd">    Input:</span>
 </span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a><span class="sd">        20260601_153000_recording.wav</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a><span class="sd">    </span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>
 </span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a><span class="sd">    Output:</span>
 </span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a><span class="sd">        20260601_153000_recording.txt</span>
 </span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>
@@ -121,7 +121,7 @@
 </span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a><span class="sd">        audio_path: Path | None</span>
 </span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a><span class="sd">            Path to the audio file used for transcription.</span>
 </span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a><span class="sd">            If None, the default stem &quot;recording&quot; will be used.</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a><span class="sd">    </span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>
 </span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a><span class="sd">    Returns</span>
 </span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a><span class="sd">    -------</span>
 </span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a><span class="sd">        Path</span>
@@ -140,7 +140,7 @@
 </span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>
 </span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a>        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span> <span class="ow">and</span> <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
 </span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a>            <span class="n">stem</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos">83</span></a>            
+</span><span id="L-83"><a href="#L-83"><span class="linenos">83</span></a>
 </span><span id="L-84"><a href="#L-84"><span class="linenos">84</span></a>    <span class="k">return</span> <span class="n">output_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ts</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">stem</span><span class="si">}</span><span class="s2">.txt&quot;</span>
 </span></pre></div>
 
@@ -211,7 +211,7 @@
 </span><span id="build_output_txt_path-41"><a href="#build_output_txt_path-41"><span class="linenos">41</span></a><span class="sd">    **Build the output path for the transcript text file.**</span>
 </span><span id="build_output_txt_path-42"><a href="#build_output_txt_path-42"><span class="linenos">42</span></a>
 </span><span id="build_output_txt_path-43"><a href="#build_output_txt_path-43"><span class="linenos">43</span></a><span class="sd">    The generated filename always begins with a timestamp:</span>
-</span><span id="build_output_txt_path-44"><a href="#build_output_txt_path-44"><span class="linenos">44</span></a><span class="sd">        </span>
+</span><span id="build_output_txt_path-44"><a href="#build_output_txt_path-44"><span class="linenos">44</span></a>
 </span><span id="build_output_txt_path-45"><a href="#build_output_txt_path-45"><span class="linenos">45</span></a><span class="sd">        YYYYMMDD_HHMMSS_&lt;stem&gt;.txt</span>
 </span><span id="build_output_txt_path-46"><a href="#build_output_txt_path-46"><span class="linenos">46</span></a>
 </span><span id="build_output_txt_path-47"><a href="#build_output_txt_path-47"><span class="linenos">47</span></a><span class="sd">        If the audio filename already contains a timestamp prefix,</span>
@@ -221,7 +221,7 @@
 </span><span id="build_output_txt_path-51"><a href="#build_output_txt_path-51"><span class="linenos">51</span></a><span class="sd">    -------</span>
 </span><span id="build_output_txt_path-52"><a href="#build_output_txt_path-52"><span class="linenos">52</span></a><span class="sd">    Input:</span>
 </span><span id="build_output_txt_path-53"><a href="#build_output_txt_path-53"><span class="linenos">53</span></a><span class="sd">        20260601_153000_recording.wav</span>
-</span><span id="build_output_txt_path-54"><a href="#build_output_txt_path-54"><span class="linenos">54</span></a><span class="sd">    </span>
+</span><span id="build_output_txt_path-54"><a href="#build_output_txt_path-54"><span class="linenos">54</span></a>
 </span><span id="build_output_txt_path-55"><a href="#build_output_txt_path-55"><span class="linenos">55</span></a><span class="sd">    Output:</span>
 </span><span id="build_output_txt_path-56"><a href="#build_output_txt_path-56"><span class="linenos">56</span></a><span class="sd">        20260601_153000_recording.txt</span>
 </span><span id="build_output_txt_path-57"><a href="#build_output_txt_path-57"><span class="linenos">57</span></a>
@@ -232,7 +232,7 @@
 </span><span id="build_output_txt_path-62"><a href="#build_output_txt_path-62"><span class="linenos">62</span></a><span class="sd">        audio_path: Path | None</span>
 </span><span id="build_output_txt_path-63"><a href="#build_output_txt_path-63"><span class="linenos">63</span></a><span class="sd">            Path to the audio file used for transcription.</span>
 </span><span id="build_output_txt_path-64"><a href="#build_output_txt_path-64"><span class="linenos">64</span></a><span class="sd">            If None, the default stem &quot;recording&quot; will be used.</span>
-</span><span id="build_output_txt_path-65"><a href="#build_output_txt_path-65"><span class="linenos">65</span></a><span class="sd">    </span>
+</span><span id="build_output_txt_path-65"><a href="#build_output_txt_path-65"><span class="linenos">65</span></a>
 </span><span id="build_output_txt_path-66"><a href="#build_output_txt_path-66"><span class="linenos">66</span></a><span class="sd">    Returns</span>
 </span><span id="build_output_txt_path-67"><a href="#build_output_txt_path-67"><span class="linenos">67</span></a><span class="sd">    -------</span>
 </span><span id="build_output_txt_path-68"><a href="#build_output_txt_path-68"><span class="linenos">68</span></a><span class="sd">        Path</span>
@@ -251,7 +251,7 @@
 </span><span id="build_output_txt_path-81"><a href="#build_output_txt_path-81"><span class="linenos">81</span></a>
 </span><span id="build_output_txt_path-82"><a href="#build_output_txt_path-82"><span class="linenos">82</span></a>        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span> <span class="ow">and</span> <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
 </span><span id="build_output_txt_path-83"><a href="#build_output_txt_path-83"><span class="linenos">83</span></a>            <span class="n">stem</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-</span><span id="build_output_txt_path-84"><a href="#build_output_txt_path-84"><span class="linenos">84</span></a>            
+</span><span id="build_output_txt_path-84"><a href="#build_output_txt_path-84"><span class="linenos">84</span></a>
 </span><span id="build_output_txt_path-85"><a href="#build_output_txt_path-85"><span class="linenos">85</span></a>    <span class="k">return</span> <span class="n">output_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ts</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">stem</span><span class="si">}</span><span class="s2">.txt&quot;</span>
 </span></pre></div>
 
