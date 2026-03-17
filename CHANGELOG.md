@@ -1,4 +1,4 @@
-# Changelog - Audio_Transcription Tool - 
+# Changelog - Audio_Transcription - 
 
 All notable changes to this project will be documented in this file.
 
@@ -14,7 +14,22 @@ PYTHONPATH=src pdoc trsc \
   --logo assets/logo2.png \
   -o docs/api
 ```
+
 ---
+
+## [Unreleased]
+
+### Changed
+
+- Improved CLI prompt formatting for SSH / piped sessions (Termux - transcribe)
+
+### Technical
+
+- Introduced 'prompt_input()' helper to stabilize CLI input/output behavior across TTY and non-TTY environments
+- Replaced direct 'input(prompt)' calls in CLI utilities with controlled stdout handling
+
+---
+
 ## [1.0.1] 
 
 ### Added
