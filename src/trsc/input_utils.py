@@ -13,7 +13,25 @@ Responsibilities
 """
 
 from pathlib import Path
+import sys
 from .paths import normalize_input_path
+
+
+def prompt_input(prompt: str) -> str:
+    """
+    Prompt the user for input with stable formatting across
+    interactive terminals and piped / SSH-based sessions.
+    """
+
+    sys.stdout.write(prompt)
+    sys.stdout.flush()
+
+    value = input().strip()
+
+    if not sys.stdin.isatty():
+        print()
+
+    return value
 
 
 def ask_choice(question: str, choices: dict[str, object]) -> object:
@@ -44,7 +62,7 @@ def ask_choice(question: str, choices: dict[str, object]) -> object:
     options = "/".join(choices.keys())
 
     while True:
-        answer = input(f"{question} ({options}): ").strip()
+        answer = prompt_input(f"{question} ({options}): ")
 
         if answer in choices:
             return choices[answer]
@@ -67,7 +85,7 @@ def ask_email() -> str:
     """
 
     while True:
-        addr = input("Bitte eine gültige E-Mail-Adresse eingeben: ").strip()
+        addr = prompt_input("Bitte eine gültige E-Mail-Adresse eingeben: ")
 
         if "@" in addr and "." in addr:
             print("Mailadresse: ", addr)
@@ -111,9 +129,9 @@ def ask_audio_path(project_root: Path) -> Path | None:
     default_audio_dir = project_root / "input" / "audio"
 
     while True:
-        raw = input(
+        raw = prompt_input(
             "Bitte Dateiname oder Pfad zur Audio-Datei angeben: "
-        ).strip()
+        )
 
         # If only a filename is given, resolve it relative to input/audio
         if (raw and ("/" not in raw) and ("\\" not in raw) and
