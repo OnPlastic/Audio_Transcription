@@ -50,3 +50,19 @@ Examples:
 * configuration changes
 * migration hints
 * dependency updates
+
+---
+
+## Release Checklist
+
+Before creating a release, ensure:
+
+    -[ ] All changes are merged into `dev`
+    -[ ] `dev` is stable and tested
+    -[ ] `CHANGELOG.md` is updated under `[Unreleased]`
+    -[ ] Move `[Unreleased]` entries to new version section
+    -[ ] Version number updated in code (if applicable)
+    -[ ] Create merge from `dev` → `main`
+    -[ ] Create Git tag (e.g. `v1.0.2`)
+    -[ ] Push `main` and tags to GitHub
+    -[ ] Create GitHub Release using this template
