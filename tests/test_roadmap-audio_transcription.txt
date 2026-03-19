@@ -1,0 +1,174 @@
+Test-Roadmap – Audio_Transcription
+======================================
+
+1. Einordnung Testing (Konzept)
+------------------------------
+Ziel dieses Testkonzepts ist es, einen stabilen Basisschutz für die Kernlogik
+des CLI-Tools zu schaffen. Der Fokus liegt nicht auf vollständiger
+Systemabdeckung, sondern auf:
+
+- Absicherung kritischer Kernfunktionen
+- Verständnis von Testing-Grundlagen
+- Aufbau reproduzierbarer Tests
+- Erkennen von Fehlern bei Änderungen (Regressionen)
+
+Der Ansatz ist bewusst iterativ und in Pakete unterteilt.
+
+
+2. Setup (pytest Umgebung)
+--------------------------
+- pytest installiert
+- tests/ Ordner angelegt
+- erste Struktur definiert
+- Tests werden aktuell ausgeführt mit:
+
+    PYTHONPATH=src pytest
+
+
+3. Erster Test – Smoke Test
+---------------------------
+Ziel:
+Sicherstellen, dass pytest korrekt funktioniert.
+
+Beispielausgabe:
+
+=================== test session starts ========================================
+platform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0
+rootdir: ../transcribe
+
+collected 1 item
+
+tests/test_smoke.py .                                                     [100%]
+
+==================== 1 passed in 0.02s =========================================
+
+Ergebnis:
+Grundlegende Testumgebung funktioniert.
+
+
+4. Echter Test – Paket 1 (Kernlogik)
+------------------------------------
+Ziel:
+Absicherung der wichtigsten Hilfsfunktionen.
+
+4.1 output.py
+-------------
+test_write_txt_creates_file
+- prüft, ob eine Datei erstellt wird
+
+test_write_txt_writes_content
+- prüft, ob Inhalt korrekt geschrieben wird
+
+test_write_txt_creates_parent_dirs
+- prüft, ob Zielordner automatisch erstellt wird
+
+
+4.2 input_utils.py
+------------------
+
+test_ask_choice_valid_input
+- gültige Eingabe wird direkt akzeptiert
+
+test_ask_choice_retry_until_valid
+- ungültige Eingabe -> Retry bis gültig
+
+test_ask_email_valid
+- gültige E-Mail wird akzeptiert
+
+test_ask_email_retry
+- ungültige E-Mail -> Retry -> gültige E-Mail
+
+
+test_ask_audio_path_returns_file_from_default_audio_dir
+- Dateiname wird im input/audio Ordner korrekt gefunden
+
+test_ask_audio_path_retry_until_valid
+- falscher Dateiname -> Retry (j) -> gültige Datei
+
+test_ask_audio_path_returns_none_for_recorder_flow
+- falscher Dateiname -> kein Retry (n) -> Aufnahme (a) -> None
+
+test_ask_audio_path_exits_on_user_abort
+- falscher Dateiname -> kein Retry (n) -> beenden (b) -> SystemExit
+
+
+4.3 logging_setup.py
+--------------------
+
+test_setup_logging_creates_logfile
+- prüft, ob Logdatei erstellt wird
+
+test_setup_logging_writes_initial_entry
+- prüft, ob Initialeintrag geschrieben wird
+
+test_setup_logging_replaces_handlers
+- prüft, ob alte Handler entfernt werden
+
+
+5. Ergebnis Paket 1
+-------------------
+
+Beispielausgabe:
+
+=================== test session starts ========================================
+platform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0
+rootdir: /home/dev_admin/dev/projects/spracherkennung/transcribe
+collected 16 items                                                                                                                                               
+
+tests/test_input_utils.py .........                                                                                                                        [ 56%]
+tests/test_logging_setup.py ...                                                                                                                            [ 75%]
+tests/test_output.py ...                                                                                                                                   [ 93%]
+tests/test_smoke.py .                                                                                                                                      [100%]
+
+=================== 16 passed in 0.05s =========================================
+
+
+Status:
+- Paket 1 abgeschlossen
+- Kernlogik abgesichert
+- Tests stabil und reproduzierbar
+
+
+6. Bewertung des aktuellen Stands
+--------------------------------
+Abgedeckt:
+- Dateioperationen
+- Nutzereingaben inkl. Retry-Logik
+- Entscheidungslogik (Path / None / Exit)
+- Logging-Grundkonfiguration
+
+Nicht abgedeckt:
+- main.py Gesamtfluss
+- recorder.py
+- whisper_asr.py
+- mailer.py
+- End-to-End Szenarien
+
+Einordnung:
+Guter Basisschutz für die Kernlogik, aber keine vollständige Systemabdeckung.
+
+
+7. Weitere Pakete (geplant, aber zurückgestellt)
+-----------------------------------------------
+
+Paket 2 – Regressionen
+- Tests bei Änderungen stabil halten
+
+Paket 3 – Ablauf-Tests
+- main.py als Steuerzentrale testen
+
+Paket 4 – Externe Abhängigkeiten
+- Recorder
+- Mailer
+- Whisper (Mocks notwendig)
+
+
+8. Aktueller Abschlussstand
+---------------------------
+Das Testing wurde bewusst nach Paket 1 pausiert.
+
+Begründung:
+- ausreichender Schutz für zentrale Logik
+- hoher Lerngewinn erreicht
+- weiterer Ausbau möglich, aber aktuell nicht notwendig
+
