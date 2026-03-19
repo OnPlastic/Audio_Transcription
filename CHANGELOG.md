@@ -15,9 +15,18 @@ PYTHONPATH=src pdoc trsc \
   -o docs/api
 ```
 
+## [Unreleased
+]
 ---
 
-## [Unreleased]
+## [1.0.2]
+
+### Added
+
+- Initial testing setup with 'pytest'
+- Smoke test and first structured 'tests/' directory
+- Core baseline tests for 'output.py', 'input_utils.py' and 'logging_setup.py'
+- Internal testing notes and roadmap under 'docs/testing/'
 
 ### Changed
 
@@ -25,8 +34,14 @@ PYTHONPATH=src pdoc trsc \
 
 ### Technical
 
-- Introduced 'prompt_input()' helper to stabilize CLI input/output behavior across TTY and non-TTY environments
+- Introduced 'prompt_input()' helper to stabilize CLI input/output behavior 
+  across TTY and non-TTY environments
 - Replaced direct 'input(prompt)' calls in CLI utilities with controlled stdout handling
+- Added repeatable baseline coverage for core CLI helper flows:
+  - file writing
+  - input validation and retry behavior
+  - audio path decision flow
+  - logging initialization
 
 ---
 
