@@ -1,0 +1,237 @@
+# Testkonzept – Herleitung (Audio_Transcription CLI)
+====================================================
+
+## Ziel:
+--------
+Strukturierte Herleitung eines Testkonzepts für ein CLI-Tool.
+Fokus liegt auf einem pragmatischen Einstieg, nicht auf vollständiger Abdeckung.
+
+## Übersicht Vorgehen:
+----------------------
+1. Testzonen aufteilen
+2. Risiken und Relevanz beurteilen
+3. Testbarkeit bewerten
+4. Prioritäten festlegen
+5. Konkrete Testpakete ableiten
+6. Test-Setup vorbereiten
+7. Echte Tests
+
+-------------------------------------------------------------------------------
+
+1. Testzonen
+============
+
+Liste der Module / Verantwortungsbereiche.
+
+* input_utils.py       → leicht testbar
+* logging_setup.py     → leicht testbar
+* output.py            → leicht testbar
+* main.py              → eher manuell / später
+* mailer.py            → testbar mit Mocks
+* recorder.py          → testbar mit Mocks
+* whisper_asr.py       → testbar mit Mocks
+
+
+2. Risiken je Zone (Was kann schiefgehen?)
+==========================================
+
+Tests werden aus Risiken abgeleitet, nicht aus Dateinamen.
+
+input_utils:
+
+* ungültige Eingaben
+* Endlosschleifen bei Retry-Logik
+* unsaubere Behandlung von Pipe / SSH / TTY
+* falsche Pfadauflösung
+
+logging_setup:
+
+* Log-Datei wird nicht erstellt
+* Handler doppeln sich
+* falscher Log-Pfad
+* Logging wird nicht korrekt initialisiert
+
+output:
+
+* Datei wird nicht geschrieben
+* falscher Dateiname / falscher Ordner
+* Encoding-Probleme
+* Verzeichnisse werden nicht korrekt erstellt
+
+main:
+
+* falscher Ablauf bei Datei-/Aufnahme-Auswahl
+* Moduswahl (Save/Mail) falsch verdrahtet
+* Fehlerpfade werden nicht sauber abgefangen
+* falsche Reihenfolge der Komponenten
+
+mailer / recorder / whisper_asr:
+
+* externe Abhängigkeiten schlagen fehl
+* Hardware / Netzwerk / SMTP nicht verfügbar
+* Exceptions werden nicht sinnvoll behandelt
+
+
+3. Testbarkeit bewerten
+=======================
+
+A) Leicht automatisch testbar
+
+* kleine Funktionen ohne externe Abhängigkeiten
+
+  * input_utils (Teile)
+  * logging_setup
+  * output
+
+B) Automatisch testbar mit Mocks / Fakes
+
+* Module mit externen Abhängigkeiten
+
+  * mailer
+  * whisper_asr
+  * recorder
+
+C) Manuell zu prüfen
+
+* reale Umgebung / Integration
+
+  * Shell / SSH / Termux Verhalten
+  * echte Mikrofonaufnahme
+  * echte Mailzustellung
+  * vollständiger CLI-Durchlauf
+
+
+4. Prioritäten festlegen
+========================
+
+Priorität A – zuerst
+
+* hoher Nutzen bei geringem Aufwand
+
+  * input_utils.py
+  * output.py
+  * logging_setup.py
+
+Priorität B – danach
+
+* komplexer, aber wertvoll
+
+  * ausgewählte Flows aus main.py
+  * bekannte Regressionen (z. B. Prompt / TTY Verhalten)
+
+Priorität C – später
+
+* nur bei Bedarf
+
+  * mailer.py
+  * recorder.py
+  * whisper_asr.py
+  * End-to-End Tests
+
+
+5. Testpakete bilden
+====================
+
+Pakete bündeln logisch zusammengehörige Tests.
+
+Paket 1 – Basistests
+--------------------
+* input_utils
+* output
+* logging_setup
+
+Paket 2 – Regressionen
+----------------------
+* Prompt / TTY / Pipe Verhalten
+* typische Eingabefehler
+* Retry-Logik
+
+Paket 3 – Ablauf-Tests
+----------------------
+* ausgewählte Wege aus main.py
+
+Paket 4 – Externe Ränder
+------------------------
+* mailer
+* recorder
+* whisper_asr
+
+
+6. Test-Setup vorbereiten
+=========================
+
+Ziel:
+-----
+* Test-Framework vorhanden
+* tests/ Ordner vorhanden
+* erste Testdatei vorhanden
+* Testlauf funktioniert
+
+Warum:
+------
+Übergang von: "Ich weiß, was ich testen will"
+zu: "Das Projekt kann Tests technisch ausführen"
+
+
+6.1 Entwicklungsenvironment erweitern
+-------------------------------------
+requirements-dev.txt um pytest ergänzen
+
+Inhalt:
+-------
+  -r requirements.txt
+  pdoc
+  pylint
+  pytest
+
+6.2 Umgebung aktualisieren
+-----------------------------
+bash
+  pip install -r requirements-dev.txt
+  pytest --version
+→ z. B. pytest 9.0.2
+
+
+## 6.3 Testordner anlegen
+-------------------------
+bash
+  mkdir tests
+
+
+## 6.4 Testdatei anlegen
+------------------------
+bash
+  touch tests/test_smoke.py
+
+Inhalt:
+-------
+  def test_smoke() -> None:
+  assert True
+
+→ Smoke-Test zur Validierung der Testumgebung
+
+
+6.5 pytest Probelauf
+--------------------
+
+Beispielausgabe:
+
+=================== test session starts ===================
+platform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0
+rootdir: ../transcribe
+
+collected 1 item
+
+tests/test_smoke.py .                                [100%]
+
+==================== 1 passed in 0.02s ====================
+
+
+7. Echter Test – Paket 1 (Basistests)
+=====================================
+
+→ wird in separater Datei konkret umgesetzt (Test-Roadmap)
+
+---
+
+## Ende
