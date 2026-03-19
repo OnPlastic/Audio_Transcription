@@ -1,4 +1,4 @@
-# Changelog - Audio_Transcription Tool - 
+# Changelog - Audio_Transcription - 
 
 All notable changes to this project will be documented in this file.
 
@@ -14,7 +14,37 @@ PYTHONPATH=src pdoc trsc \
   --logo assets/logo2.png \
   -o docs/api
 ```
+
+## [Unreleased
+]
 ---
+
+## [1.0.2]
+
+### Added
+
+- Initial testing setup with 'pytest'
+- Smoke test and first structured 'tests/' directory
+- Core baseline tests for 'output.py', 'input_utils.py' and 'logging_setup.py'
+- Internal testing notes and roadmap under 'docs/testing/'
+
+### Changed
+
+- Improved CLI prompt formatting for SSH / piped sessions (Termux - transcribe)
+
+### Technical
+
+- Introduced 'prompt_input()' helper to stabilize CLI input/output behavior 
+  across TTY and non-TTY environments
+- Replaced direct 'input(prompt)' calls in CLI utilities with controlled stdout handling
+- Added repeatable baseline coverage for core CLI helper flows:
+  - file writing
+  - input validation and retry behavior
+  - audio path decision flow
+  - logging initialization
+
+---
+
 ## [1.0.1] 
 
 ### Added
