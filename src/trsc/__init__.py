@@ -45,7 +45,8 @@ Example output:
 
     Transkription beendet in: 9.75 s | Zeichen: 120
     Ergebnis gespeichert in: /output/...txt
-
+    Mail versandt an: ...
+    
     -> Programm beendet
 ```
 

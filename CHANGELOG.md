@@ -13,8 +13,7 @@ PYTHONPATH=src pdoc trsc \
   --docformat markdown \
   --logo assets/logo2.png \
   --logo-link https://github.com/OnPlastic/Audio_Transcription \
-  --edit-url-map trsc=https://github.com/OnPlastic/Audio_Transcription/blob/main/src/trsc/ \
-  --footer-text "Project on GitHub: https://github.com/OnPlastic/Audio_Transcription" \
+  --e trsc=https://github.com/OnPlastic/Audio_Transcription/blob/main/src/trsc/ \
   -o docs/api
 ```
 
