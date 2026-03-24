@@ -1,4 +1,4 @@
-# Audio_Transcription
+# Audio_Transcription by sIn
 
 ![Version](https://img.shields.io/badge/version-1.0.2-blue)
 ![Tests](https://img.shields.io/badge/tests-16%20passed-brightgreen)
@@ -6,8 +6,8 @@
 
 ## CLI tool for fast, local audio transcription with optional email delivery
 
-This project was developed with a focus on clear architekure, reproducible workflows and clean development processes (GitFlow, testing, documentation)  
-German README version availble: [Deutsche Version](README_de.md)
+This project was developed with a focus on clear architecture, reproducible workflows and clean development processes (GitFlow, testing, documentation)  
+German README version available: [Deutsche Version](README_de.md)
 
 ---
 
@@ -23,7 +23,7 @@ German README version availble: [Deutsche Version](README_de.md)
 
 ---
 
-### ⚡ Example Workfolw
+### ⚡ Example Workflow
 
 ```bash
 ./run.sh
@@ -53,7 +53,7 @@ German README version availble: [Deutsche Version](README_de.md)
     -> Programm beendet
 ```
 
-> **Note:** The CLI currently uses German propmts.
+> **Note:** The CLI currently uses German prompts.
 
 ---
 

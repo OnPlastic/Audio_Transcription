@@ -1,5 +1,5 @@
 """
-#🎙️ Audio Transkription CLI
+#🎙️ Audio Transkription CLI by sIn
 
 Lightweight command-line application for recording and transcribing
 speech using OpenAI Whisper.

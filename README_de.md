@@ -1,10 +1,10 @@
-# Audio_Transcription
+# Audio_Transcription by sIn
 
 ![Version](https://img.shields.io/badge/version-1.0.2-blue)
 ![Tests](https://img.shields.io/badge/tests-16%20passed-brightgreen)
 ![Python](https://img.shields.io/badge/python-3.12-blue)
 
-**CLI-Tool** zur lokalen Transkription von Audio-Dateien mit optionalem Versand per E-Mail.
+## CLI-Tool zur lokalen Transkription von Audio-Dateien mit optionalem Versand per E-Mail.
 
 Dieses Projekt wurde mit Fokus auf klare Architektur, reproduzierbare Workflows und saubere Entwicklungsprozesse (GitFlow, Testing, Dokumentation) entwickelt.
 
@@ -17,12 +17,12 @@ Dieses Projekt wurde mit Fokus auf klare Architektur, reproduzierbare Workflows 
 - Ausgabe als `.txt` Datei
 - Optionaler Versand per E-Mail
 - Robuste CLI-Eingabelogik (auch für SSH / Termux geeignet)
-- Logging in Datei
+- Logging in Datei `.log`
 - Erste Testabdeckung mit `pytest`
 
 ---
 
-## ⚡ Beispiel Workfolw
+## ⚡ Beispiel Workflow
 
 ```bash
 ./run.sh
@@ -60,7 +60,7 @@ Die vollständige Projektdokumentation, einschließlich **Installation**, Archit
 
 - Link: https://onplastic.github.io/Audio_Transcription/
 
-Die README dient als Einstiegspunkt – Details und Architektur sind in der Doku beschrieben.
+Die **README** dient als Einstiegspunkt – Details und Architektur sind in der Doku beschrieben.
 
 ---
 
