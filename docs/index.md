@@ -131,8 +131,9 @@ Verify installation:
       │
       └── logging_setup
 ```
+
 A more detailed Version of all Packages and Modules are here available:
-[open trsc-Architecture-diagramm](assets/TRSC.svg)
+[open trsc-architecture-diagram](assets/TRSC.svg)
 
 ------------------------------------------------------------------------
 
@@ -155,7 +156,7 @@ A more detailed Version of all Packages and Modules are here available:
 
 ## 8. Documentation
 
-API documentation is generated automatically using **pdoc**.
+API documentation is generated using **pdoc**.
 
 The landing page of the documentation is generated from the `trsc`
 module docstring and contains the project overview.

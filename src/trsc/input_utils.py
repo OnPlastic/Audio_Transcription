@@ -133,6 +133,10 @@ def ask_audio_path(project_root: Path) -> Path | None:
             "Bitte Dateiname oder Pfad zur Audio-Datei angeben: "
         )
 
+        if not raw:
+            print("Keine Eingabe erkannt! Bitte erneut versuchen.")
+            continue
+
         # If only a filename is given, resolve it relative to input/audio
         if (raw and ("/" not in raw) and ("\\" not in raw) and
                 (not raw.startswith("~"))):

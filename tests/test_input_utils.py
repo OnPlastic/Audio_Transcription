@@ -170,3 +170,30 @@ def test_ask_audio_path_exits_on_user_abort(
     # Act + Assert
     with pytest.raises(SystemExit):
         ask_audio_path(project_root)
+
+
+def test_ask_audio_path_retries_on_empty_input(
+        monkeypatch, tmp_path: Path, capsys
+) -> None:
+    #Arrange
+    project_root = tmp_path
+    audio_dir = project_root / "input" / "audio"
+    audio_dir.mkdir(parents=True)
+
+    expected_path = (audio_dir / "valid.wav").resolve()
+    expected_path.write_text("dummy", encoding="utf-8")
+
+    inputs = iter(["", "valid.wav"])
+
+    def fake_prompt_input(prompt: str) -> str:
+        return next(inputs)
+    
+    monkeypatch.setattr("trsc.input_utils.prompt_input", fake_prompt_input)
+
+    # Act
+    result = ask_audio_path(project_root)
+    captured = capsys.readouterr()
+
+    # Assert
+    assert "Keine Eingabe erkannt" in captured.out
+    assert result == expected_path
