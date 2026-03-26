@@ -197,7 +197,7 @@ speech using OpenAI Whisper.</p>
 </code></pre>
 
 <p>A more detailed Version of all Packages and Modules are here available:
-<a href="assets/TRSC.svg">open trsc-Architecture-diagramm</a></p>
+<a href="assets/TRSC.svg">open trsc-architecture-diagram</a></p>
 
 <hr />
 
@@ -258,7 +258,7 @@ speech using OpenAI Whisper.</p>
 
 <h2 id="8-documentation">8. Documentation</h2>
 
-<p>API documentation is generated automatically using <strong>pdoc</strong>.</p>
+<p>API documentation is generated using <strong>pdoc</strong>.</p>
 
 <p>The landing page of the documentation is generated from the <code><a href="">trsc</a></code>
 module docstring and contains the project overview.</p>
@@ -417,49 +417,50 @@ module docstring and contains the project overview.</p>
 </span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a><span class="sd">      │</span>
 </span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a><span class="sd">      └── logging_setup</span>
 </span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a><span class="sd">```</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="sd">A more detailed Version of all Packages and Modules are here available:</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="sd">[open trsc-Architecture-diagramm](assets/TRSC.svg)</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a><span class="sd">------------------------------------------------------------------------</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="sd">## 7. Package Structure</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="sd">  | Module | Purpose |</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="sd">  | ------ | ------- |</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="sd">  | `main` | CLI entry point and workflow orchestration |</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="sd">  | `config` | Load runtime configuration from `config.toml` |</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="sd">  | `input_utils` | CLI input helpers and validation |</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a><span class="sd">  | `recorder` | Microphone recording utilities |</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="sd">  | `whisper_asr` | Whisper transcription wrapper |</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">  | `output` | Writing transcript files |</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="sd">  | `mailer` | SMTP email sending |</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="sd">  | `logging_setup` | Logging configuration |</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="sd">  | `paths` | Path handling and file naming |</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="sd">  | `version` | Application metadata |</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="sd">------------------------------------------------------------------------</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="sd">## 8. Documentation</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="sd">API documentation is generated automatically using **pdoc**.</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="sd">The landing page of the documentation is generated from the `trsc`</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="sd">module docstring and contains the project overview.</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="sd">The sidebar lists all available modules and their functions.</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="sd">------------------------------------------------------------------------</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">## 👨‍💻 Author</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">&gt;&gt;```sIn```\n</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">Project : *Audio_Transkription CLI*</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="c1"># Import package metadata for external access (e.g., version info)</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.version</span><span class="w"> </span><span class="kn">import</span> <span class="n">APP_NAME</span><span class="p">,</span> <span class="n">__version__</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="c1"># __all__ = [&quot;APP_NAME&quot;, &quot;__version__&quot;] //temporary disabled because of pydoc</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="sd">A more detailed Version of all Packages and Modules are here available:</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a><span class="sd">[open trsc-architecture-diagram](assets/TRSC.svg)</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a><span class="sd">------------------------------------------------------------------------</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a><span class="sd">## 7. Package Structure</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="sd">  | Module | Purpose |</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="sd">  | ------ | ------- |</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="sd">  | `main` | CLI entry point and workflow orchestration |</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="sd">  | `config` | Load runtime configuration from `config.toml` |</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a><span class="sd">  | `input_utils` | CLI input helpers and validation |</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="sd">  | `recorder` | Microphone recording utilities |</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">  | `whisper_asr` | Whisper transcription wrapper |</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="sd">  | `output` | Writing transcript files |</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="sd">  | `mailer` | SMTP email sending |</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="sd">  | `logging_setup` | Logging configuration |</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="sd">  | `paths` | Path handling and file naming |</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="sd">  | `version` | Application metadata |</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="sd">------------------------------------------------------------------------</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">## 8. Documentation</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="sd">API documentation is generated using **pdoc**.</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="sd">The landing page of the documentation is generated from the `trsc`</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="sd">module docstring and contains the project overview.</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="sd">The sidebar lists all available modules and their functions.</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="sd">------------------------------------------------------------------------</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">## 👨‍💻 Author</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">&gt;&gt;```sIn```\n</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">Project : *Audio_Transkription CLI*</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="c1"># Import package metadata for external access (e.g., version info)</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.version</span><span class="w"> </span><span class="kn">import</span> <span class="n">APP_NAME</span><span class="p">,</span> <span class="n">__version__</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="c1"># __all__ = [&quot;APP_NAME&quot;, &quot;__version__&quot;] //temporary disabled because of pydoc</span>
 </span></pre></div>
 
 
