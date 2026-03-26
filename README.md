@@ -1,7 +1,7 @@
 # Audio_Transcription by sIn
 
-![Version](https://img.shields.io/badge/version-1.0.2-blue)
-![Tests](https://img.shields.io/badge/tests-16%20passed-brightgreen)
+![Version](https://img.shields.io/badge/version-1.0.3-blue)
+![Tests](https://img.shields.io/badge/tests-17%20passed-brightgreen)
 ![Python](https://img.shields.io/badge/python-3.12-blue)
 
 ## CLI tool for fast, local audio transcription with optional email delivery

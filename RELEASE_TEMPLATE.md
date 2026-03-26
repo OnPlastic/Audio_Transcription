@@ -57,12 +57,33 @@ Examples:
 
 Before creating a release, ensure:
 
-    -[ ] All changes are merged into `dev`
-    -[ ] `dev` is stable and tested
-    -[ ] `CHANGELOG.md` is updated under `[Unreleased]`
-    -[ ] Move `[Unreleased]` entries to new version section
-    -[ ] Version number updated in code (if applicable)
-    -[ ] Create merge from `dev` → `main`
-    -[ ] Create Git tag (e.g. `v1.0.2`)
-    -[ ] Push `main` and tags to GitHub
-    -[ ] Create GitHub Release using this template
+### Code & Stability
+
+* [ ] All changes are merged into `dev`
+* [ ] `dev` is stable and fully tested (`pytest` passes)
+
+### Versioning & Changelog
+
+* [ ] `CHANGELOG.md` is updated under `[Unreleased]`
+* [ ] Move `[Unreleased]` entries to new version section
+* [ ] Version number updated in code (e.g. `__version__`)
+
+### Documentation & Presentation
+
+* [ ] README(_de) badges updated (version, test status)
+* [ ] Project documentation updated (if applicable)
+* [ ] API docs rebuilt (pdoc) if code or docstrings changed
+
+### Release Process
+
+* [ ] Create release branch from `dev` (e.g. `release/vX.X.X`)
+* [ ] Final checks on release branch (tests, docs)
+* [ ] Merge release branch into `main`
+* [ ] Create Git tag (e.g. `v1.0.3`)
+* [ ] Push `main` and tags to GitHub
+* [ ] Create GitHub Release using this template
+
+### Post-Release
+
+* [ ] Merge release changes back into `dev` (if needed)
+* [ ] Clean up release/hotfix branches
