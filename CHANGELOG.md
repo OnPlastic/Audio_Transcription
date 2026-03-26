@@ -17,8 +17,21 @@ PYTHONPATH=src pdoc trsc \
   -o docs/api
 ```
 
-## [Unreleased
-]
+## [Unreleased]
+
+---
+
+## [1.0.3]
+
+### Fixed
+
+- Empty input in audio path prompt in now handled correctly
+- Prevents unintended processing of the project directory when the user submits an empty input
+
+### Added
+
+- Test coverage fo empty input handling in `ask_audio_path()`
+
 ---
 
 ## [1.0.2]
