@@ -96,7 +96,7 @@ Release includes:
 
 ---
 
-### 👤 Autor
+### ✏️ Autor
 
 sIn OnPlastic
 
