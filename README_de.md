@@ -3,6 +3,7 @@
 ![Version](https://img.shields.io/badge/version-1.0.3-blue)
 ![Tests](https://img.shields.io/badge/tests-17%20passed-brightgreen)
 ![Python](https://img.shields.io/badge/python-3.12-blue)
+[![Ko-fi](https://img.shields.io/badge/-Ko--fi-ff5e5b?logo=ko-fi&logoColor=white)](https://ko-fi.com/onplastic)
 
 ## CLI-Tool zur lokalen Transkription von Audio-Dateien mit optionalem Versand per E-Mail.
 
@@ -10,7 +11,7 @@ Dieses Projekt wurde mit Fokus auf klare Architektur, reproduzierbare Workflows 
 
 ---
 
-## ✨ Features
+### ✨ Features
 
 - Transkription von Audio-Dateien
 - Optionale Aufnahme über Mikrofon
@@ -22,7 +23,7 @@ Dieses Projekt wurde mit Fokus auf klare Architektur, reproduzierbare Workflows 
 
 ---
 
-## ⚡ Beispiel Workflow
+### ⚡ Beispiel Workflow
 
 ```bash
 ./run.sh
@@ -54,17 +55,17 @@ Dieses Projekt wurde mit Fokus auf klare Architektur, reproduzierbare Workflows 
 
 ---
 
-## 📘 Projektdokumentation
+### 📘 Projektdokumentation
 
 Die vollständige Projektdokumentation, einschließlich **Installation**, Architektur und API-Referenz, ist auf GitHub Pages verfügbar:
 
-- Link: https://onplastic.github.io/Audio_Transcription/
+👉 Link: https://onplastic.github.io/Audio_Transcription/
 
 Die **README** dient als Einstiegspunkt – Details und Architektur sind in der Doku beschrieben.
 
 ---
 
-## 🧪 Tests
+### 🧪 Tests
 
 Tests werden mit `pytest` ausgeführt:
 
@@ -79,7 +80,7 @@ Aktueller Stand:
 
 ---
 
-## 📦 Releases
+### 📦 Releases
 
 Aktuelle Version: **v1.0.2**
 
@@ -91,6 +92,14 @@ Release enthält:
 
 ---
 
-## 👤 Autor
+### ✏️ Autor
 
 sIn OnPlastic
+
+### ☕ Support
+
+Wenn dir das Projekt gefällt und du es hilfreich findest, gib einen Kaffee aus:
+
+> [![Ko-fi](https://img.shields.io/badge/-Ko--fi-ff5e5b?logo=ko-fi&logoColor=white)](https://ko-fi.com/onplastic)
+
+Dankeschön 🙂
