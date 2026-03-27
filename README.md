@@ -3,6 +3,7 @@
 ![Version](https://img.shields.io/badge/version-1.0.3-blue)
 ![Tests](https://img.shields.io/badge/tests-17%20passed-brightgreen)
 ![Python](https://img.shields.io/badge/python-3.12-blue)
+[![Ko-fi](https://img.shields.io/badge/-Ko--fi-ff5e5b?logo=ko-fi&logoColor=white)](https://ko-fi.com/onplastic)
 
 ## CLI tool for fast, local audio transcription with optional email delivery
 
@@ -95,6 +96,14 @@ Release includes:
 
 ---
 
-### 👤 Autor
+### ✏️ Autor
 
 sIn OnPlastic
+
+### ☕ Support
+
+If you like this project or find it helpful, you can buy me a coffee here:
+
+> [![Ko-fi](https://img.shields.io/badge/-Ko--fi-ff5e5b?logo=ko-fi&logoColor=white)](https://ko-fi.com/onplastic)
+
+Thanks a lot, I really appreciate it!
