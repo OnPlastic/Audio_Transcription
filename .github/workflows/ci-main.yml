@@ -1,22 +1,36 @@
 name: CI Main Check
 
 on:
-    pull_request:
-        branches:
-            - main
+ pull_request:
+  branches:
+   - main
 
 jobs:
-    ci-check:
-        runs-on: ubuntu-latest
+ ci-check:
+  runs-on: ubuntu-latest
 
-        steps:
-            - name: Check source branch is release/*
-              run: |
-                echo "Source branch: ${{github.head_ref}}"
-                if [[ "${{github.head_ref }}" != release/* ]]; then
-                    echo "❌ Only release/* branches are allowed to merge into main"
-                    exit 1
-                fi
+  steps:
+   - name: Checkout repository
+     uses: actions/checkout@v4
 
-            - name: OK
-              run: echo "✅ Release branch check passed"
+   - name: Set up Python
+     uses: actions/setup-python@v5
+     with:
+       python-version: "3.12"
+            
+   - name: Install Ruff
+     run: pip install ruff
+
+   - name: Run Ruff
+     run: ruff check .
+
+   - name: Check source branch is release/*
+     run: |
+        echo "Source branch: ${{github.head_ref}}"
+        if [[ ! "${{github.head_ref }}" =~ ^release/* ]]; then
+          echo "❌ Only release/* branches are allowed to merge into main"
+          exit 1
+        fi
+
+   - name: OK
+     run: echo "✅ Release branch check passed"
