@@ -175,4 +175,5 @@ Project : *Audio_Transkription CLI*
 # Import package metadata for external access (e.g., version info)
 from .version import APP_NAME, __version__
 
-# __all__ = ["APP_NAME", "__version__"] //temporary disabled because of pydoc
+__all__ = ["APP_NAME", "__version__"]
+
