@@ -1,0 +1,18 @@
+name: CI Main Check
+
+on:
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    ci-check:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+
+            - name: Info
+              run: echo "CI check triggered for PR to main"
