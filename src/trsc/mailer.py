@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 """
 mailer.py
 
@@ -8,6 +6,8 @@ Email delivery utilities for the CLI application.
 this module builds and sends plain text emails containing the generated
 transcript. SMTP settings are provided through the SmtpSettings dataclass.
 """
+
+from __future__ import annotations
 
 import logging
 import smtplib

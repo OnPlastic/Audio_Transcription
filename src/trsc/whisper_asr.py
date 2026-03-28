@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 """
 whisper_asr.py
 
@@ -8,6 +6,8 @@ Speech-to-Text utilities based on OpenAI's Whisper model.
 This module loads and caches the configured Whisper model and provides
 a helper function to transcribe audio files into plain text.
 """
+
+from __future__ import annotations
 
 import logging
 from pathlib import Path

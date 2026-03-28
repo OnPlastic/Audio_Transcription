@@ -1,4 +1,3 @@
-from __future__ import annotations
 """
 logging_setup.py
 
@@ -7,6 +6,8 @@ Central logging configuration for the CLI application.
 This module initializes the root logger and writes all log messages
 to timestamped log file inside the configured log directory.
 """
+
+from __future__ import annotations
 
 import logging
 from datetime import datetime

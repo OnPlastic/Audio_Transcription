@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 """
 input_utils.py
 
@@ -11,6 +9,8 @@ Responsibilities
 - ask_email: Prompt the user for a valid email address.
 - ask_audio_path: Resolve audio file input and handle retry / fallback flow
 """
+
+from __future__ import annotations
 
 from pathlib import Path
 import sys

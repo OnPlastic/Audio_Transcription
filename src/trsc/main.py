@@ -1,9 +1,10 @@
-from __future__ import annotations
 """
 main.py
 
 Main CLI entry point for the audio Transcription tool.
 """
+
+from __future__ import annotations
 
 import logging
 import os

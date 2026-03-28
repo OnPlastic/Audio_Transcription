@@ -9,6 +9,7 @@ The goal is to ensure a controlled and reproducible workflow for development, te
 !!! caution
     Currently implemented:
     - CI Main Check (Release Gate)
+    - Ruff linting integrated into CI workflow
 
 ## B - CI Main Check (Release Gate)
 
@@ -59,7 +60,7 @@ Its purpose is to ensure that:
 The `main` branch is protected using a GitHub ruleset to enforce the release policy. The ruleset enforces the defined workflow and prevents bypassing the CI validation.
 
 **Branch protection / ruleset configuration:**
-![Ruleset](images/image007.png)
+![Ruleset](images/image008.png)
 
 !!! caution Effect
     - ❌ failing check -> merge blocked
@@ -78,13 +79,15 @@ GitHub Actions is used to automate the validation process for pull requests targ
     - Trigger: **PR** -> `main`
     - Execution environment: GitHub-hosted runner (`ubuntu-latest`)
     - Validation logic:
+      - runs Ruff linting (`ruff check .`)
       - checks the source branch (`release/*`)
       - executes defined CI steps
     - Result: 
       - ✅ success -> merge allowed
       - ❌ failure -> merge blocked
-  
 
+!!! note
+    The workflow runs with the pull request branch itself. This means any changes to the CI setup are automatically tested as part of that pull request.
 
 ### 6. Repo Structure
 
@@ -118,6 +121,8 @@ This file contains the configuration for "CI Main Check".
 
 !!! caution "Validation logic (simplified)"
     ```bash
+    run ruff check .
+
     if source branch does not match release/*:
         fail the check
     else:
@@ -158,6 +163,8 @@ The CI Main Check enforces a strict release policy for the `main` branch.
 
 All changes must go through a pull request and pass the required checks before being merged.  
 Only `release/*` branches are allowed to target `main`, ensuring a controlled and predictable release process.
+
+The CI workflow includes automated linting using Ruff, providing an additional layer of code quality validation.
 
 By enforcing the validation on GitHub, the release workflow is consistent and cannot be bypassed through local operations.
 

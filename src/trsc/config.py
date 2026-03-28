@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 """
 config.py
 
@@ -7,6 +5,7 @@ Loads runtime configuration from config.toml and exposes it as a typed
 AppConfig object for the CLI application.
 """
 
+from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 import tomllib
