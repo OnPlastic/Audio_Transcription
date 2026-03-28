@@ -10,9 +10,13 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - name: Checkout repository
-              uses: actions/checkout@v4
+            - name: Check source branch is release/*
+              run: |
+                echo "Source branch: ${{github.head_ref}}"
+                if [[ "${{github.head_ref }}" != release/* ]]; then
+                    echo "❌ Only release/* branches are allowed to merge into main"
+                    exit 1
+                fi
 
-
-            - name: Info
-              run: echo "CI check triggered for PR to main"
+            - name: OK
+              run: echo "✅ Release branch check passed"
