@@ -42,3 +42,5 @@ jobs:
           git add docs/api
 
           git diff --cached --quiet || git commit -m "docs: update API documentation"
+
+          git push
