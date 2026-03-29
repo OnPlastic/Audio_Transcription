@@ -7,10 +7,11 @@ This section documents the automation and CI/CD process of the project.
 The goal is to ensure a controlled and reproducible workflow for development, testing, and releases. Automation is primarily enforced on the remote (GitHub) side to guarantee consistent rules and prevent invalid releases.  
 
 !!! caution
-    Currently implemented:
+    **Currently implemented:**
     - CI Main Check (Release Gate)
     - Ruff linting integrated into CI workflow
-    - pytest with 
+    - pytest integration into CI workflow
+    - Docs Build Check 
 
 ## B - CI Main Check (Release Gate)
 
@@ -38,14 +39,20 @@ Its purpose is to ensure that:
     4. A pull request (**PR**) is opened:
        - base: `main`
        - compare: `release/*`
-    5. The CI Main Check is triggered automatically.
+    5. The CI `main` Check is triggered automatically.
     6. The Workflow validates:
        - the source branch name (`release/*`)
+       - code quality (Ruff)
+       - test execution (pytest)
+       - documentation build (pdoc)
        - the defined status checks
     7. If the check fails:
        - the pull request cannot be merged
     8. If the check passes:
        - the pull request can be merged into `main`
+
+!!! note
+    The automation system consists of multiple workflows (CI Check, Docs Build, and others), which are all executed as part of the same release validation process.
 
 ### 3. Branch Rules
 
@@ -58,7 +65,7 @@ Its purpose is to ensure that:
 
 ### 4. GitHub Ruleset
 
-The `main` branch is protected using a GitHub ruleset to enforce the release policy. The ruleset enforces the defined workflow and prevents bypassing the CI validation.
+The `main` branch uses a GitHub ruleset to enforce the release policy. The ruleset enforces the defined workflow and prevents bypassing the CI validation.
 
 **Branch protection / ruleset configuration:**
 ![Ruleset](images/image008.png)
@@ -73,7 +80,7 @@ The `main` branch is protected using a GitHub ruleset to enforce the release pol
 
 ### 5. GitHub Actions
 
-GitHub Actions is used to automate the validation process for pull requests targeting the `main` branch. The CI workflow is defined in the repository and executed on GitHub (remote).
+GitHub Actions is used to automate the validation process for pull requests targeting the `main` branch. The workflows are defined in the repository and executed on GitHub (remote).
 
 !!! caution
     **Key characteristics:**
@@ -82,6 +89,7 @@ GitHub Actions is used to automate the validation process for pull requests targ
     - Validation logic:
       - runs Ruff linting (`ruff check .`)
       - runs tests using pytest (`PYTHONPATH=src pytest`)
+      - builds the documentation using `pdoc`
       - checks the source branch (`release/*`)
       - executes defined CI steps
     - Result: 
@@ -89,9 +97,9 @@ GitHub Actions is used to automate the validation process for pull requests targ
       - ❌ failure -> merge blocked
 
 !!! note
-    The workflow runs with the pull request branch itself. This means any changes to the CI setup are automatically tested as part of that pull request.
+    The workflows run with the state of the pull request branch itself. This means any changes are automatically tested as part of that pull request.
 
-### 6. Repo Structure
+### 6. Repo File Structure
 
 The CI configuration is part of the repository and follows the standard GitHub layout for workflows.
 
@@ -100,39 +108,38 @@ The CI configuration is part of the repository and follows the standard GitHub l
     |__.github/
         |__workflows/
             |__ci-main.yml
+            |__docs-main.yml
 ```
 
 !!! caution
     All GitHub Actions workflows must be located inside the `.github/workflows/` directory to be detected and executed by GitHub.
 
-### 7. Workflow file
+### 7. Workflow files
 
-The CI logic is defined in the workflow file:
-
-```bash
-.github/workflows/ci-main.yml
-```
-
-This file contains the configuration for "CI Main Check".
+These files define the automation logic for the different validation steps.
 
 !!! caution "Core Elements"
-    - **Name:** CI Main Check
+    - **Name:** CI Main Check, Docs Build Check
     - **Trigger:** pull request targeting `main`
-    - **Job:** `ci-check`
+    - **Job:** `ci-check`, `docs-build`
     - **Runner:** `ubuntu-latest`
 
 !!! caution "Validation logic (simplified)"
     ```bash
+    # CI Main Check
     run ruff check .
     run PYTHONPATH=src pytest
+
+    # Docs Build Check
+    run pdoc -o docs/api
 
     if source branch does not match release/*:
         fail the check
     else:
-        pass
+        continue with the workflow
     ```
 !!! note 
-    The file is minimal at this stage. Add. checks added later!
+    The files are minimal at this stage. Additional checks can be added later!
 
 
 ### 8. Test Cases
@@ -163,30 +170,19 @@ The CI Main Check was validated with two test scenarios:
 ![CI Red](images/image005.png)
 
 
-### 10. Summary
+## C - Summary
 
-The CI Main Check enforces a strict release policy for the `main` branch.
+The **CI-automation-process** enforces a strict release policy for the `main` branch.
 
 All changes must go through a pull request and pass the defined checks before being merged.  
 Only `release/*` branches are allowed to target `main`, ensuring a controlled and predictable release process.
 
-The CI workflow includes automated linting using Ruff and automated test execution using pytest.For test execution, the project requires `PYTHONPATH=src` because it follows a `src/` layout. This provides an additional layer of code quality validation.
-
-By enforcing the validation on GitHub, the release workflow is consistent and cannot be bypassed through local operations.
-
----
-
-## C - Doku Build
-
----
-
-## D - Pages Deploy
+!!! caution
+    **The CI workflows includes:**  
+    - automated linting using Ruff  
+    - automated testing using pytest  
+    - automated API documentation using pdoc
+        
+    By enforcing the validation on GitHub, the release workflow is consistent and cannot be bypassed through local operations.
 
 ---
-
-## E - Release Workflow
-
----
-
-## F - Package / Docker Build
-
