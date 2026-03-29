@@ -21,8 +21,14 @@ jobs:
    - name: Install Ruff
      run: pip install ruff
 
+   - name: Install pytest
+     run: pip install pytest
+
    - name: Run Ruff
      run: ruff check .
+    
+   - name: Run pytest
+     run: PYTHONPATH=src pytest
 
    - name: Check source branch is release/*
      run: |

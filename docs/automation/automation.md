@@ -10,6 +10,7 @@ The goal is to ensure a controlled and reproducible workflow for development, te
     Currently implemented:
     - CI Main Check (Release Gate)
     - Ruff linting integrated into CI workflow
+    - pytest with 
 
 ## B - CI Main Check (Release Gate)
 
@@ -80,6 +81,7 @@ GitHub Actions is used to automate the validation process for pull requests targ
     - Execution environment: GitHub-hosted runner (`ubuntu-latest`)
     - Validation logic:
       - runs Ruff linting (`ruff check .`)
+      - runs tests using pytest (`PYTHONPATH=src pytest`)
       - checks the source branch (`release/*`)
       - executes defined CI steps
     - Result: 
@@ -122,6 +124,7 @@ This file contains the configuration for "CI Main Check".
 !!! caution "Validation logic (simplified)"
     ```bash
     run ruff check .
+    run PYTHONPATH=src pytest
 
     if source branch does not match release/*:
         fail the check
@@ -161,10 +164,10 @@ The CI Main Check was validated with two test scenarios:
 
 The CI Main Check enforces a strict release policy for the `main` branch.
 
-All changes must go through a pull request and pass the required checks before being merged.  
+All changes must go through a pull request and pass the defined checks before being merged.  
 Only `release/*` branches are allowed to target `main`, ensuring a controlled and predictable release process.
 
-The CI workflow includes automated linting using Ruff, providing an additional layer of code quality validation.
+The CI workflow includes automated linting using Ruff and automated test execution using pytest.For test execution, the project requires `PYTHONPATH=src` because it follows a `src/` layout. This provides an additional layer of code quality validation.
 
 By enforcing the validation on GitHub, the release workflow is consistent and cannot be bypassed through local operations.
 
