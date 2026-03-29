@@ -156,7 +156,10 @@ The CI Main Check was validated with two test scenarios:
 **Successful check (release branch):**
 ![CI Blue](images/image001.png)
 
-**Failed check (wrong brach):**
+**`ci-check` Validation/Checks passed:**
+![CI Blue](images/image009.png)
+
+**Failed check (wrong branch):**
 ![CI Red](images/image005.png)
 
 
