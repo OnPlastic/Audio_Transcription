@@ -18,8 +18,9 @@ jobs:
         with:
           python-version: "3.12"
     
-      - name: Install pdoc
-        run: pip install pdoc
+      - name: Install Dependencies
+        run: |
+          pip install pdoc
     
       - name: Build documentation with pdoc
         run: |
