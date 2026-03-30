@@ -31,4 +31,4 @@ jobs:
             -o docs/api
 
       - name: Check documentation is up to date
-        run: git diff --exitcode -- docs/api
+        run: git diff --exit-code -- docs/api
