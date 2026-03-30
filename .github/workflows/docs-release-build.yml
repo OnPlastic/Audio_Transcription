@@ -1,27 +1,32 @@
-name: Docs Build Check
+name: Docs Release Build
 
 on:
-  pull_request:
+  push:
     branches:
-      - main
+      - "release/**"
 
 jobs:
-  docs-build:
+  pages-deploy:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-    
+      
       - name: Install dependencies
         run: |
           pip install pdoc
-    
+
       - name: Build documentation with pdoc
         run: |
           PYTHONPATH=src pdoc trsc \
@@ -30,3 +35,17 @@ jobs:
             --logo-link https://github.com/OnPlastic/Audio_Transcription \
             --e trsc=https://github.com/OnPlastic/Audio_Transcription/blob/main/src/trsc/ \
             -o docs/api
+      
+      - name: Commit and push documentation
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+          git add docs/api
+
+          if git diff --cached --quiet; then
+            echo "No documentation changes to commit."
+          else
+            git commit -m "docs: rebuild API documentation"
+            git push origin HEAD:${{ github.ref_name }}
+          fi

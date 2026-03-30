@@ -1,0 +1,35 @@
+name: Docs Main verify
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  docs-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+    
+      - name: Install Dependencies
+        run: |
+          pip install pdoc
+    
+      - name: Build documentation with pdoc
+        run: |
+          PYTHONPATH=src pdoc trsc \
+            --docformat markdown \
+            --logo assets/logo2.png \
+            --logo-link https://github.com/OnPlastic/Audio_Transcription \
+            --e trsc=https://github.com/OnPlastic/Audio_Transcription/blob/main/src/trsc/ \
+            -o docs/api
+
+      - name: Check documentation is up to date
+        run: git diff --exit-code -- docs/api
