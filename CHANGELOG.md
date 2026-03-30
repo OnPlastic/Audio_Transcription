@@ -19,6 +19,28 @@ PYTHONPATH=src pdoc trsc \
 
 ## [Unreleased]
 
+### Add
+
+- Docker Build Image
+
+---
+
+## [1.1.2]
+
+### Fixed
+
+- Fixed documentation deployment conflicting with protected `main` branch
+
+### Changed
+
+- Documentation is now built on release branches instead of `main`
+
+### Technical
+
+- Introduced separate workflows for documentation build and verification
+- Added consistency check for generated API docs
+- Updated automation documentation
+  
 ---
 
 ## [1.1.0]
