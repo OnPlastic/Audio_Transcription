@@ -1,4 +1,4 @@
-name: Docs Build Check
+name: Docs Main verify
 
 on:
   pull_request:
@@ -18,9 +18,8 @@ jobs:
         with:
           python-version: "3.12"
     
-      - name: Install dependencies
-        run: |
-          pip install pdoc
+      - name: Install pdoc
+        run: pip install pdoc
     
       - name: Build documentation with pdoc
         run: |
@@ -30,3 +29,6 @@ jobs:
             --logo-link https://github.com/OnPlastic/Audio_Transcription \
             --e trsc=https://github.com/OnPlastic/Audio_Transcription/blob/main/src/trsc/ \
             -o docs/api
+
+      - name: Check documentation is up to date
+        run: git diff --exitcode -- docs/api

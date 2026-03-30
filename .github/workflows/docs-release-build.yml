@@ -1,4 +1,4 @@
-name: Pages Deploy
+name: Docs Release Build
 
 on:
   push:
