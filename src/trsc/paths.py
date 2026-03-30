@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 """
 paths.py
 
@@ -10,6 +8,8 @@ Responsibilities
 - Normalize user provided input paths
 - Generate output file paths for transcripts
 """
+
+from __future__ import annotations
 
 from pathlib import Path
 from datetime import datetime

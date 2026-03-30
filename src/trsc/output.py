@@ -1,10 +1,10 @@
-from __future__ import annotations
-
 """
 output.py
 
 Output utilities for writing generated transcript files to disk.
 """
+
+from __future__ import annotations
 
 from pathlib import Path
 

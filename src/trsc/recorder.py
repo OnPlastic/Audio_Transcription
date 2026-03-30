@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 """
 recorder.py
 
@@ -9,6 +7,8 @@ This module handles microphone recording via sounddevice, converts the
 captured float32 audio stream to 16-bit PCM, and stores the result as
 a WAV file for later transcription.
 """
+
+from __future__ import annotations
 
 import logging
 from dataclasses import dataclass

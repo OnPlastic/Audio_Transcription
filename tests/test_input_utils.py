@@ -2,6 +2,8 @@ from pathlib import Path
 
 from trsc.input_utils import ask_choice, ask_email, ask_audio_path
 
+import pytest
+
 
 def test_ask_choice_returns_mapped_value_for_valid_input(monkeypatch) -> None:
     # Arrange
@@ -152,7 +154,6 @@ def test_ask_audio_path_returns_none_for_recorder_flow(
     assert result is None
 
 
-import pytest
 
 
 def test_ask_audio_path_exits_on_user_abort(

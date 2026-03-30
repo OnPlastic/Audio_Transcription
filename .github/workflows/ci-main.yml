@@ -1,0 +1,42 @@
+name: CI Main Check
+
+on:
+ pull_request:
+  branches:
+   - main
+
+jobs:
+ ci-check:
+  runs-on: ubuntu-latest
+
+  steps:
+   - name: Checkout repository
+     uses: actions/checkout@v4
+
+   - name: Set up Python
+     uses: actions/setup-python@v5
+     with:
+       python-version: "3.12"
+            
+   - name: Install Ruff
+     run: pip install ruff
+
+   - name: Install pytest
+     run: pip install pytest
+
+   - name: Run Ruff
+     run: ruff check .
+    
+   - name: Run pytest
+     run: PYTHONPATH=src pytest
+
+   - name: Check source branch is release/*
+     run: |
+        echo "Source branch: ${{github.head_ref}}"
+        if [[ ! "${{github.head_ref }}" =~ ^release/* ]]; then
+          echo "❌ Only release/* branches are allowed to merge into main"
+          exit 1
+        fi
+
+   - name: OK
+     run: echo "✅ Release branch check passed"

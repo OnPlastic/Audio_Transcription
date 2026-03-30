@@ -1,6 +1,6 @@
 # Audio_Transcription by sIn
 
-![Version](https://img.shields.io/badge/version-1.0.3-blue)
+![Version](https://img.shields.io/badge/version-1.1.0-blue)
 ![Tests](https://img.shields.io/badge/tests-17%20passed-brightgreen)
 ![Python](https://img.shields.io/badge/python-3.12-blue)
 [![Ko-fi](https://img.shields.io/badge/-Ko--fi-ff5e5b?logo=ko-fi&logoColor=white)](https://ko-fi.com/onplastic)
@@ -12,7 +12,7 @@ German README version available: [Deutsche Version](README_de.md)
 
 ---
 
-### ✨ Features
+### 1. Features
 
 - transcription of audio files (e.g. .wav, .mp3, .m4p)
 - optional microphone recording
@@ -24,7 +24,7 @@ German README version available: [Deutsche Version](README_de.md)
 
 ---
 
-### ⚡ Example Workflow
+### 2. Example Workflow
 
 ```bash
 ./run.sh
@@ -58,7 +58,7 @@ German README version available: [Deutsche Version](README_de.md)
 
 ---
 
-### 📘 Project Documentation
+### 3. Project Documentation
 
  Recommended starting point for new users.  
  Full project documentation, including  **installation**, architecture and API-reference, is available via GitHub Pages:
@@ -69,7 +69,7 @@ The **README** serves as entry point - details and architecture are described in
 
 ---
 
-### 🧪 Tests
+### 4. Tests
 
 Tests are executed using `pytest`:
 
@@ -84,15 +84,16 @@ Current Status:
 
 ---
 
-### 📦 Releases
+### 5. Releases
 
-Current Version: **v1.0.2**
+Current Version: **v1.1.0**
 
 Release includes:
 
-- initial testing setup
-- baseline tests for core logic
-- CLI-input improvements
+- CI Main Check (Release Gate)
+- Docs Build Check (pdoc integration)
+- Pages Deploy workflow for API documentation
+- Automation system documentation (`automation.md`)
 
 ---
 
