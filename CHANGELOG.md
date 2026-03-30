@@ -25,19 +25,21 @@ PYTHONPATH=src pdoc trsc \
 
 ---
 
-## [1.1.1]
+## [1.1.2]
+
+### Fixed
+
+- Fixed documentation deployment conflicting with protected `main` branch
 
 ### Changed
 
-- Fix: Pages Deploy workflow for API documentation conflicting with branch rules
-- Fix: Documentation is now generated on release branch
+- Documentation is now built on release branches instead of `main`
 
 ### Technical
-- Split documentation workflow into:
-  - Docs Release Build
-  - Docs Main Verify
-- Added documentation consistency check using `git diff --exit-code`
-- Updated automation documentation to reflect new workflow
+
+- Introduced separate workflows for documentation build and verification
+- Added consistency check for generated API docs
+- Updated automation documentation
   
 ---
 
