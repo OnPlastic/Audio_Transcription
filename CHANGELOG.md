@@ -19,6 +19,26 @@ PYTHONPATH=src pdoc trsc \
 
 ## [Unreleased]
 
+### Add
+
+- Docker Build Image
+
+---
+
+## [1.1.1]
+
+### Changed
+
+- Fix: Pages Deploy workflow for API documentation conflicting with branch rules
+- Fix: Documentation is now generated on release branch
+
+### Technical
+- Split documentation workflow into:
+  - Docs Release Build
+  - Docs Main Verify
+- Added documentation consistency check using `git diff --exit-code`
+- Updated automation documentation to reflect new workflow
+  
 ---
 
 ## [1.1.0]
