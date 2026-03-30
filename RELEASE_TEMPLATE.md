@@ -70,7 +70,8 @@ Before creating a release, ensure:
 
 ### Documentation & Presentation
 
-* [ ] README(_de) badges updated (version, test status)
+* [ ] README(_de) update badges (version, test status)
+* [ ] README(_de) update Release-Section! (version, context)
 * [ ] Project documentation updated (if applicable)
 * [ ] API docs rebuilt (pdoc) if code or docstrings changed
 
