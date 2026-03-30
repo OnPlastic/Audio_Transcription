@@ -33,7 +33,7 @@ jobs:
             --docformat markdown \
             --logo assets/logo2.png \
             --logo-link https://github.com/OnPlastic/Audio_Transcription \
-            --e trsc=https://github.com/OnPlastic/Audio_Transcription/blob/man/src/trsc/ \
+            --e trsc=https://github.com/OnPlastic/Audio_Transcription/blob/main/src/trsc/ \
             -o docs/api
       
       - name: Commit and push documentation
