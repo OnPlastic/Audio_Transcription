@@ -1,17 +1,14 @@
-name: Pages Deploy
+name: Docs Main verify
 
 on:
-  push:
+  pull_request:
     branches:
       - main
 
 jobs:
-  pages-deploy:
+  docs-build:
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: write
-    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -20,27 +17,19 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      
-      - name: Install dependencies
+    
+      - name: Install Dependencies
         run: |
           pip install pdoc
-
+    
       - name: Build documentation with pdoc
         run: |
           PYTHONPATH=src pdoc trsc \
             --docformat markdown \
             --logo assets/logo2.png \
             --logo-link https://github.com/OnPlastic/Audio_Transcription \
-            --e trsc=https://github.com/OnPlastic/Audio_Transcription/blob/man/src/trsc/ \
+            --e trsc=https://github.com/OnPlastic/Audio_Transcription/blob/main/src/trsc/ \
             -o docs/api
-      
-      - name: Commit and push documentation
-        run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
 
-          git add docs/api
-
-          git diff --cached --quiet || git commit -m "docs: update API documentation"
-
-          git push
+      - name: Check documentation is up to date
+        run: git diff --exit-code -- docs/api

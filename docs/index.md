@@ -132,8 +132,8 @@ Verify installation:
       └── logging_setup
 ```
 
-A more detailed Version of all Packages and Modules are here available:
-[open trsc-architecture-diagram](assets/TRSC.svg)
+>A more detailed Version of all Packages and Modules are here available, open:
+>[**trsc-architecture-diagram**](assets/TRSC.svg)
 
 ------------------------------------------------------------------------
 

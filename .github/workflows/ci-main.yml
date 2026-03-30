@@ -33,7 +33,7 @@ jobs:
    - name: Check source branch is release/*
      run: |
         echo "Source branch: ${{github.head_ref}}"
-        if [[ ! "${{github.head_ref }}" =~ ^release/* ]]; then
+        if [[ ! "${{github.head_ref }}" =~ ^release/.*$ ]]; then
           echo "❌ Only release/* branches are allowed to merge into main"
           exit 1
         fi
