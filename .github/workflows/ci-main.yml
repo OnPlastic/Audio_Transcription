@@ -33,10 +33,23 @@ jobs:
    - name: Check source branch is release/*
      run: |
         echo "Source branch: ${{github.head_ref}}"
-        if [[ ! "${{github.head_ref }}" =~ ^release/* ]]; then
+        if [[ ! "${{github.head_ref }}" =~ ^release/.*$ ]]; then
           echo "❌ Only release/* branches are allowed to merge into main"
           exit 1
         fi
 
    - name: OK
      run: echo "✅ Release branch check passed"
+
+   - name: Build documentation with pdoc
+     run: |
+        PYTHONPATH=src pdoc trsc \
+          --docformat markdown \
+          --logo assets/logo2.png \
+          --logo-link https://github.com/OnPlastic/Audio_Transcription \
+          --e trsc=https://github.com/OnPlastic/Audio_Transcription/blob/man/src/trsc/ \
+          -o docs/api
+
+   - name: Check documentation is up to date
+     run: |
+        git diff --exit-code -- docs/api

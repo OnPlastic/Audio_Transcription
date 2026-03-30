@@ -3,7 +3,7 @@ name: Pages Deploy
 on:
   push:
     branches:
-      - main
+      - "release/**"
 
 jobs:
   pages-deploy:
@@ -15,6 +15,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -41,6 +43,9 @@ jobs:
 
           git add docs/api
 
-          git diff --cached --quiet || git commit -m "docs: update API documentation"
-
-          git push
+          if git diff --cached --quiet; then
+            echo "No documentation changes to commit."
+          else
+            git commit -m "docs: rebuild API documentation"
+            git push origin HEAD:${{ github.ref_name }}
+          fi
