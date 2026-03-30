@@ -21,6 +21,26 @@ PYTHONPATH=src pdoc trsc \
 
 ---
 
+## [1.1.0]
+
+### Added
+
+- CI Main Check (Release Gate)
+- Docs Build Check (pdoc integration)
+- Pages Deploy workflow for API documentation
+
+### Changed
+
+- Automation workflow restructured and documented in `automation.md`
+
+### Technical
+
+- Ruff linting integrated into CI
+- pytest integrated into CI
+- pdoc documentation build integrated into CI
+
+---
+
 ## [1.0.3]
 
 ### Fixed

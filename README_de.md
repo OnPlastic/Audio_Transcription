@@ -1,6 +1,6 @@
 # Audio_Transcription by sIn
 
-![Version](https://img.shields.io/badge/version-1.0.3-blue)
+![Version](https://img.shields.io/badge/version-1.1.0-blue)
 ![Tests](https://img.shields.io/badge/tests-17%20passed-brightgreen)
 ![Python](https://img.shields.io/badge/python-3.12-blue)
 [![Ko-fi](https://img.shields.io/badge/-Ko--fi-ff5e5b?logo=ko-fi&logoColor=white)](https://ko-fi.com/onplastic)
@@ -11,7 +11,7 @@ Dieses Projekt wurde mit Fokus auf klare Architektur, reproduzierbare Workflows 
 
 ---
 
-### ✨ Features
+### 1. Features
 
 - Transkription von Audio-Dateien
 - Optionale Aufnahme über Mikrofon
@@ -23,7 +23,7 @@ Dieses Projekt wurde mit Fokus auf klare Architektur, reproduzierbare Workflows 
 
 ---
 
-### ⚡ Beispiel Workflow
+### 2. Beispiel Workflow
 
 ```bash
 ./run.sh
@@ -55,7 +55,7 @@ Dieses Projekt wurde mit Fokus auf klare Architektur, reproduzierbare Workflows 
 
 ---
 
-### 📘 Projektdokumentation
+### 3. Projektdokumentation
 
 Die vollständige Projektdokumentation, einschließlich **Installation**, Architektur und API-Referenz, ist auf GitHub Pages verfügbar:
 
@@ -65,7 +65,7 @@ Die **README** dient als Einstiegspunkt – Details und Architektur sind in der 
 
 ---
 
-### 🧪 Tests
+### 4. Tests
 
 Tests werden mit `pytest` ausgeführt:
 
@@ -80,15 +80,16 @@ Aktueller Stand:
 
 ---
 
-### 📦 Releases
+### 5. Releases
 
-Aktuelle Version: **v1.0.2**
+Aktuelle Version: **v1.1.0**
 
 Release enthält:
 
-- initiales Testing-Setup
-- Basistests für Kernlogik
-- Verbesserungen an CLI-Eingaben
+- CI Main Check (Release Gate)
+- Docs Build Check (pdoc integration)
+- Pages Deploy Prozess für die API Dokumentation
+- Dokumentation des Automatisierungssystems (`automation.md`)
 
 ---
 
