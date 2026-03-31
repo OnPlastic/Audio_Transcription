@@ -25,7 +25,7 @@ jobs:
       
       - name: Install dependencies
         run: |
-          pip install pdoc
+          pip install pdoc python-dotenv
 
       - name: Build documentation with pdoc
         run: |

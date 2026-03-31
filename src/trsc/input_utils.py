@@ -168,3 +168,25 @@ def ask_audio_path(project_root: Path) -> Path | None:
 
         # Signal to start the recorder instead of providing a file
         return None
+
+def ask_port() -> int:
+    """
+    **Ask the user for a valid integer port.**
+
+    The function keeps prompting until the entered value
+    can be converted to an integer.
+
+    Returns
+    -------
+        int
+            Port number. 
+    """
+    while True:
+        raw = prompt_input(
+            "Bitte SMTP-Port eingeben (z.B. 465): "
+        )
+
+        try:
+            return int(raw)
+        except ValueError:
+            print("Ungültiger Port. Bitte Zahl eingeben.\n")

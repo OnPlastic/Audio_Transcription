@@ -22,8 +22,46 @@ Dieses Projekt wurde mit Fokus auf klare Architektur, reproduzierbare Workflows 
 - Erste Testabdeckung mit `pytest`
 
 ---
+### 2. Option: Email Einrichtung 
 
-### 2. Beispiel Workflow
+Die Mail-Funktion ist optional.  
+Standardmäßig arbeitet das Tool ohne jegliche Mail-Konfiguration und speichert die Transkription nur als `.txt`-Datei. Wenn keine Mail-Konfiguration gefunden wird, fällt das Programm automatisch auf die Datei-Ausgabe zurück.
+
+**Setup**
+
+Um den E-Mail Funktion zu aktiviren, bitte das mail-setup-tool ausführen:
+
+```bash
+./run-mail-setup.sh
+```
+
+Dies wird:
+- nach SMTP-Konfigurationswerten fragen
+- die E-Mail-Einstellungen in der `config.toml` aktualisieren
+- eine `.env`-Datei mit Ihren SMTP-Zugangsdaten erstellen  
+
+---
+
+Im Setup werden folgende Parameter eingestellt:
+- SMTP host (`smtp.gmail.com`)
+- SMTP port (`465`)
+- SSL usage (j/n)
+- sender name (Audio_Transkription by sIn)
+- subject prefix ([Transkript])
+- SMTP username (musterman@example.com)
+- SMTP app password (abc 123)
+
+Anmerkungen:
+- Für Gmail wird ein App-Passwort benötigt (2FA muss aktiviert sein)
+- Wenn Sie weitere Informationen zum Einrichten eines App-Passworts benötigen, besuchen Sie
+👉 Link: [Gmail-Hilfeseiten](https://support.google.com/mail/answer/185833?hl=de&ref_topic=3394217&sjid=4026180072124364108-EU)
+- Andere Anbieter können unterschiedliche SMTP-Einstellungen erfordern
+- Falsche Konfiguration führt dazu, dass die Zustellung der E-Mail fehlschlägt  
+-> die Transkription wird trotzdem als `.txt`-Datei gespeichert.
+
+---
+
+### 3. Beispiel Workflow
 
 ```bash
 ./run.sh
@@ -33,7 +71,7 @@ Dieses Projekt wurde mit Fokus auf klare Architektur, reproduzierbare Workflows 
 
 - Datei angeben oder Aufnahme starten
 - Transkription durchführen
-- Ergebnis speichern oder per Mail versenden
+- Ergebnis speichern oder per Mail versenden (falls konfiguriert)
 
 **Beispielausgabe:**
 
@@ -65,7 +103,7 @@ Die **README** dient als Einstiegspunkt – Details und Architektur sind in der 
 
 ---
 
-### 4. Tests
+### 5. Tests
 
 Tests werden mit `pytest` ausgeführt:
 
@@ -73,14 +111,14 @@ Tests werden mit `pytest` ausgeführt:
 PYTHONPATH=src pytest
 ```
 
-Aktueller Stand:
+**Aktueller Stand:**
 
 - Basistests für Kernmodule vorhanden
 - Fokus auf Eingabelogik, Output und Logging
 
 ---
 
-### 5. Releases
+### 6. Releases
 
 Aktuelle Version: **v1.1.2**
 

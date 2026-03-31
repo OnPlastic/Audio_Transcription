@@ -31,7 +31,7 @@ speech using OpenAI Whisper.
     ./run.sh
 ```
 
-Example output:
+**Example output:**
 
 ``` pws
     Audio_Transkription by sIn vX.X.X
@@ -48,26 +48,44 @@ Example output:
 
     -> Programm beendet
 ```
+-------------------------------------------------------------------------
+
+## 4. System Requirements
+
+This project requires **ffmpeg** for audio decoding used by Whisper.
+
+**Install on Linux/WSL:**
+
+```pws
+    sudo apt update
+    sudo apt install ffmpeg
+```
+
+**Verify installation:**
+
+```pws
+    ffmpeg -version
+```
 
 ------------------------------------------------------------------------
 
-## 4. Installation
+## 5. Installation
 
-Clone repository:
+**Clone repository:**
 
 ``` pws
     git clone https://github.com/OnPlastic/Audio_Transcription.git
     cd Audio_Transcription
 ```
 
-Create virtual environment:
+**Create virtual environment:**
 
 ``` pws
     python -m venv .venv
     source .venv/bin/activate
 ```
 
-Install runtime dependencies:
+**Install runtime dependencies:**
 
 ``` pws
     pip install -r requirements.txt
@@ -92,32 +110,59 @@ Install runtime dependencies:
     pip install -r requirements-dev.txt
 ```
 
-Run application:
+**Run application:**
 
 ``` pws
     ./run.sh
 ```
 
 ------------------------------------------------------------------------
+## 6. Mail Configuration
 
-## 5. System Requirements
+The mail feature is optional.
 
-This project requires **ffmpeg** for audio decoding used by Whisper.
+By default, the application works without any mail configuration and
+will only save the transcription as a `.txt` file.
 
-Install on Linux/WSL:
+If no mail configuration is present, the program will automatically
+fall back to file-only output.
 
-```pws
-    sudo apt update
-    sudo apt install ffmpeg
+**Setup**
+
+Run the mail setup tool:
+
+```bash
+./run-mail-setup.sh
 ```
 
-Verify installation:
+The setup will:
 
-```pws
-    ffmpeg -version
-```
+- ask for SMTP configuration values
+- update mail settings in `config.toml`
+- create a `.env` file containing SMTP credentials
 
-## 6. Architecture
+Configuration Values asked in the Setup:
+
+- SMTP host (`smtp.gmail.com`)
+- SMTP port (`465`)
+- SSL usage (j/n)
+- sender name (Audio_Transkription by sIn)
+- subject prefix ([Transkript])
+- SMTP username (musterman@example.com)
+- SMTP app password (abc 123)
+
+Notes:
+
+- For Gmail, an App Password is required (2FA must be enabled)
+- If you need further information setting up an App Password visit  
+  👉 Link: [Gmail-help-pages](https://support.google.com/mail/answer/185833?hl=de&ref_topic=3394217&sjid=4026180072124364108-EU)
+- Other providers may require different SMTP settings
+- Incorrect configuration will cause the mail delivery to fail  
+  -> the transcription will still be saved as a `.txt` file.
+ 
+------------------------------------------------------------------------
+
+## 7. Architecture
 
 ```pws
     CLI (main)
@@ -137,24 +182,24 @@ Verify installation:
 
 ------------------------------------------------------------------------
 
-## 7. Package Structure
+## 8. Package Structure
 
-  | Module | Purpose |
-  | ------ | ------- |
-  | `main` | CLI entry point and workflow orchestration |
-  | `config` | Load runtime configuration from `config.toml` |
-  | `input_utils` | CLI input helpers and validation |
-  | `recorder` | Microphone recording utilities |
-  | `whisper_asr` | Whisper transcription wrapper |
-  | `output` | Writing transcript files |
-  | `mailer` | SMTP email sending |
-  | `logging_setup` | Logging configuration |
-  | `paths` | Path handling and file naming |
-  | `version` | Application metadata |
+| Module | Purpose |  
+| :----- | :------ |  
+| `main` | CLI entry point and workflow orchestration |  
+| `config` | Load runtime configuration from `config.toml` |  
+| `input_utils` | CLI input helpers and validation |  
+| `recorder` | Microphone recording utilities |  
+| `whisper_asr` | Whisper transcription wrapper |  
+| `output` | Writing transcript files |  
+| `mailer` | SMTP email sending |  
+| `logging_setup` | Logging configuration |  
+| `paths` | Path handling and file naming |  
+| `version` | Application metadata |  
 
 ------------------------------------------------------------------------
 
-## 8. Documentation
+## 9. Documentation
 
 API documentation is generated using **pdoc**.
 
@@ -170,3 +215,10 @@ The sidebar lists all available modules and their functions.
 >>```sIn```\n
 Project : *Audio_Transkription CLI*
 
+### ☕ Support
+
+If you like this project or find it helpful, you can buy me a coffee here:
+
+> [![Ko-fi](https://img.shields.io/badge/-Ko--fi-ff5e5b?logo=ko-fi&logoColor=white)](https://ko-fi.com/onplastic)
+
+Thanks a lot, I really appreciate it!
