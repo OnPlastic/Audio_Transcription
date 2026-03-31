@@ -8,7 +8,7 @@ output_dir = "output"
 smtp_host = "smtp.gmail.com"
 smtp_port = 465
 smtp_use_ssl = true
-from_name = "Spracherkennung by sIn"
+from_name = "Audio_Transkription by sIn"
 subject_prefix = "[Transkript]"
 
 [logging]
