@@ -1,7 +1,7 @@
 # Audio_Transcription by sIn
 
-![Version](https://img.shields.io/badge/version-1.1.2-blue)
-![Tests](https://img.shields.io/badge/tests-17%20passed-brightgreen)
+![Version](https://img.shields.io/badge/version-1.1.3-blue)
+![Tests](https://img.shields.io/badge/tests-21%20passed-brightgreen)
 ![Python](https://img.shields.io/badge/python-3.12-blue)
 [![Ko-fi](https://img.shields.io/badge/-Ko--fi-ff5e5b?logo=ko-fi&logoColor=white)](https://ko-fi.com/onplastic)
 
@@ -23,7 +23,46 @@ Dieses Projekt wurde mit Fokus auf klare Architektur, reproduzierbare Workflows 
 
 ---
 
-### 2. Beispiel Workflow
+### 2. Option: Email Einrichtung 
+
+Die Mail-Funktion ist optional.  
+Standardmäßig arbeitet das Tool ohne jegliche Mail-Konfiguration und speichert die Transkription nur als `.txt`-Datei. Wenn keine Mail-Konfiguration gefunden wird, fällt das Programm automatisch auf die Datei-Ausgabe zurück.
+
+**Setup**
+
+Um den E-Mail Funktion zu aktiviren, bitte das mail-setup-tool ausführen:
+
+```bash
+./run-mail-setup.sh
+```
+
+Dies wird:
+- nach SMTP-Konfigurationswerten fragen
+- die E-Mail-Einstellungen in der `config.toml` aktualisieren
+- eine `.env`-Datei mit Ihren SMTP-Zugangsdaten erstellen  
+
+---
+
+Im Setup werden folgende Parameter eingestellt:
+- SMTP host (`smtp.gmail.com`)
+- SMTP port (`465`)
+- SSL usage (j/n)
+- sender name (Audio_Transkription by sIn)
+- subject prefix ([Transkript])
+- SMTP username (musterman@example.com)
+- SMTP app password (abc 123)
+
+Anmerkungen:
+- Für Gmail wird ein App-Passwort benötigt (2FA muss aktiviert sein)
+- Wenn Sie weitere Informationen zum Einrichten eines App-Passworts benötigen, besuchen Sie
+👉 Link: [Gmail-Hilfeseiten](https://support.google.com/mail/answer/185833?hl=de&ref_topic=3394217&sjid=4026180072124364108-EU)
+- Andere Anbieter können unterschiedliche SMTP-Einstellungen erfordern
+- Falsche Konfiguration führt dazu, dass die Zustellung der E-Mail fehlschlägt  
+-> die Transkription wird trotzdem als `.txt`-Datei gespeichert.
+
+---
+
+### 3. Beispiel Workflow
 
 ```bash
 ./run.sh
@@ -33,11 +72,11 @@ Dieses Projekt wurde mit Fokus auf klare Architektur, reproduzierbare Workflows 
 
 - Datei angeben oder Aufnahme starten
 - Transkription durchführen
-- Ergebnis speichern oder per Mail versenden
+- Ergebnis speichern oder per Mail versenden (falls konfiguriert)
 
 **Beispielausgabe:**
 
-``` pws
+```bash
     Audio_Transkription by sIn vX.X.X
     =================================
 
@@ -65,7 +104,7 @@ Die **README** dient als Einstiegspunkt – Details und Architektur sind in der 
 
 ---
 
-### 4. Tests
+### 5. Tests
 
 Tests werden mit `pytest` ausgeführt:
 
@@ -73,23 +112,26 @@ Tests werden mit `pytest` ausgeführt:
 PYTHONPATH=src pytest
 ```
 
-Aktueller Stand:
+**Aktueller Stand:**
 
 - Basistests für Kernmodule vorhanden
 - Fokus auf Eingabelogik, Output und Logging
 
 ---
 
-### 5. Releases
+### 6. Releases
 
-Aktuelle Version: **v1.1.2**
+Aktuelle Version: **v1.1.3**
 
-Release enthält:
+Dieses Release führt eine vollständig und robuste Mail-Konfiguration ein.
 
-- CI Main Check (Release Gate)
-- Docs Build Check (pdoc integration)
-- Pages Deploy Prozess für die API Dokumentation
-- Dokumentation des Automatisierungssystems (`automation.md`)
+Neuerungen:
+
+- Mail-Funktionalität ist jetzt optional und für die Nutzung nicht zwingend erforderlich
+- Interaktives Mail-Setup-Tool (`mail_setup.py`) hinzugefügt
+- Optionaler SMTP-Verbindungstest vor dem Speichern der Konfiguration
+- Stabiler Fallback auf reine Dateiausgabe bei Fehlern im Mailversand
+- Verbesserte Protokollierung und Benutzerführung während Setup und Laufzeit
 
 ---
 
@@ -103,4 +145,10 @@ Wenn dir das Projekt gefällt und du es hilfreich findest, gib einen Kaffee aus:
 
 > [![Ko-fi](https://img.shields.io/badge/-Ko--fi-ff5e5b?logo=ko-fi&logoColor=white)](https://ko-fi.com/onplastic)
 
-Dankeschön 🙂
+### 🛠️ Contribute
+
+Wenn du etwas zum Projekt beitragen willst, dann besuche bitte Repository Seite 👉 Link: [GitHub](https://github.com/OnPlastic/Audio_Transcription)  
+
+<br>
+
+Vielen Dank ❤️ 

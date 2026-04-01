@@ -14,6 +14,7 @@ from dotenv import load_dotenv
 
 from .config import load_config
 from .version import APP_NAME, __version__
+from .mail_config import is_mail_configured
 from .input_utils import ask_choice, ask_email, ask_audio_path
 from .logging_setup import setup_logging
 from .mailer import SmtpSettings, send_mail_text
@@ -92,7 +93,11 @@ def main() -> int:
         # --- Ask for recipient address if mail delivery is requested ---
         to_addr: str | None = None
         if mode == "mail":
-            to_addr = ask_email()
+            if not is_mail_configured():
+                print("Mail nicht konfiguriert! Ergebnis wird nur gespeichert.")
+                mode = "save"
+            else:
+                to_addr = ask_email()
 
         # --- Record audio if no existing file is used ---
         if not audio_vorhanden:
@@ -136,19 +141,28 @@ def main() -> int:
             subject = f"{cfg.subject_prefix} {out_txt.stem}"
 
             if to_addr is None or not to_addr.strip():
-                msg = "to_addr should not be None when mode is M."
+                msg = "to_addr should not be None when mode is 'mail'."
                 raise RuntimeError(msg)
 
             to_addr = to_addr.strip()
 
-            send_mail_text(
-                smtp=smtp,
-                to_addr=to_addr,
-                subject=subject,
-                text_content=txt,
-            )
-
-            print("Mail wurde gesendet.\n")
+            try:
+                send_mail_text(
+                    smtp=smtp,
+                    to_addr=to_addr,
+                    subject=subject,
+                    text_content=txt,
+                )
+                
+                log.info("Mail versandt an: %s", to_addr)
+                print("Mail wurde gesendet.\n")
+                
+            except Exception as exc:
+                log.exception("Mailversand fehlgeschlagen: %s", exc)
+                print(
+                    "Mailversand fehlgeschlagen. "
+                    "Die Transkription wurde nur als .txt gespeichert.\n"
+                )
 
         print("-> Programm beendet!\n")
         return 0
