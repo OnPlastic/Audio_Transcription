@@ -1,6 +1,6 @@
 # Audio_Transcription by sIn
 
-![Version](https://img.shields.io/badge/version-1.1.3-blue)
+![Version](https://img.shields.io/badge/version-1.1.5-blue)
 ![Tests](https://img.shields.io/badge/tests-21%20passed-brightgreen)
 ![Python](https://img.shields.io/badge/python-3.12-blue)
 [![Ko-fi](https://img.shields.io/badge/-Ko--fi-ff5e5b?logo=ko-fi&logoColor=white)](https://ko-fi.com/onplastic)
@@ -30,13 +30,14 @@ Standardmäßig arbeitet das Tool ohne jegliche Mail-Konfiguration und speichert
 
 **Setup**
 
-Um den E-Mail Funktion zu aktiviren, bitte das mail-setup-tool ausführen:
+Um die E-Mail Funktion zu aktivieren, bitte das mail-setup-tool ausführen:
 
 ```bash
 ./run-mail-setup.sh
 ```
 
 Dies wird:
+
 - nach SMTP-Konfigurationswerten fragen
 - die E-Mail-Einstellungen in der `config.toml` aktualisieren
 - eine `.env`-Datei mit Ihren SMTP-Zugangsdaten erstellen  
@@ -44,6 +45,7 @@ Dies wird:
 ---
 
 Im Setup werden folgende Parameter eingestellt:
+
 - SMTP host (`smtp.gmail.com`)
 - SMTP port (`465`)
 - SSL usage (j/n)
@@ -53,6 +55,7 @@ Im Setup werden folgende Parameter eingestellt:
 - SMTP app password (abc 123)
 
 Anmerkungen:
+
 - Für Gmail wird ein App-Passwort benötigt (2FA muss aktiviert sein)
 - Wenn Sie weitere Informationen zum Einrichten eines App-Passworts benötigen, besuchen Sie
 👉 Link: [Gmail-Hilfeseiten](https://support.google.com/mail/answer/185833?hl=de&ref_topic=3394217&sjid=4026180072124364108-EU)
@@ -121,12 +124,16 @@ PYTHONPATH=src pytest
 
 ### 6. Releases
 
-Aktuelle Version: **v1.1.3**
+Aktuelle Version: **v1.1.5**
 
 Dieses Release führt eine vollständig und robuste Mail-Konfiguration ein.
 
 Neuerungen:
 
+- Fehlerbehebung für GitHub Pages Root-Redirect
+- Wiederherstellung der vollständigen API-Dokumentation (pdoc Modul-Erkennung)
+- Vereinheitlichung und Bereinigung der pytest-Struktur
+- Stabilisierung des Dokumentations-Build-Prozesses
 - Mail-Funktionalität ist jetzt optional und für die Nutzung nicht zwingend erforderlich
 - Interaktives Mail-Setup-Tool (`mail_setup.py`) hinzugefügt
 - Optionaler SMTP-Verbindungstest vor dem Speichern der Konfiguration
@@ -147,7 +154,7 @@ Wenn dir das Projekt gefällt und du es hilfreich findest, gib einen Kaffee aus:
 
 ### 🛠️ Contribute
 
-Wenn du etwas zum Projekt beitragen willst, dann besuche bitte Repository Seite 👉 Link: [GitHub](https://github.com/OnPlastic/Audio_Transcription)  
+Wenn du etwas zum Projekt beitragen willst, dann besuche bitte die Repository Seite 👉 Link: [GitHub](https://github.com/OnPlastic/Audio_Transcription)  
 
 <br>
 

@@ -19,10 +19,12 @@
         <div>
 <a href="https://github.com/OnPlastic/Audio_Transcription">            <img src="assets/logo2.png" class="logo" alt="project logo"/>
 </a>
+            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
+                   pattern=".+" required>
 
             <h2>Contents</h2>
             <ul>
-  <li><a href="#audio-transkription-cli-by-sin">🎙️ Audio Transkription CLI by sIn</a>
+  <li><a href="#audio_transkription-by-sin">🎙️ Audio_Transkription by sIn</a>
   <ul>
     <li><a href="#1-project-status">1. Project Status</a></li>
     <li><a href="#2-features">2. Features</a></li>
@@ -38,16 +40,21 @@
 </ul>
 
 
-
-            <h2>API Documentation</h2>
-                <ul class="memberlist">
-            <li>
-                    <a class="variable" href="#APP_NAME">APP_NAME</a>
-            </li>
-            <li>
-                    <a class="variable" href="#__version__">__version__</a>
-            </li>
-    </ul>
+            <h2>Submodules</h2>
+            <ul>
+                    <li><a href="trsc/config.html">config</a></li>
+                    <li><a href="trsc/input_utils.html">input_utils</a></li>
+                    <li><a href="trsc/logging_setup.html">logging_setup</a></li>
+                    <li><a href="trsc/mail_config.html">mail_config</a></li>
+                    <li><a href="trsc/mail_setup.html">mail_setup</a></li>
+                    <li><a href="trsc/mailer.html">mailer</a></li>
+                    <li><a href="trsc/main.html">main</a></li>
+                    <li><a href="trsc/output.html">output</a></li>
+                    <li><a href="trsc/paths.html">paths</a></li>
+                    <li><a href="trsc/recorder.html">recorder</a></li>
+                    <li><a href="trsc/version.html">version</a></li>
+                    <li><a href="trsc/whisper_asr.html">whisper_asr</a></li>
+            </ul>
 
 
 
@@ -64,7 +71,7 @@
                     <h1 class="modulename">
 trsc    </h1>
 
-                        <div class="docstring"><h1 id="audio-transkription-cli-by-sin">🎙️ Audio Transkription CLI by sIn</h1>
+                        <div class="docstring"><h1 id="audio_transkription-by-sin">🎙️ Audio_Transkription by sIn</h1>
 
 <p>Lightweight command-line application for recording and transcribing
 speech using OpenAI Whisper.</p>
@@ -366,7 +373,7 @@ module docstring and contains the project overview.</p>
                         <label class="view-source-button" for="mod-trsc-view-source"><span>View Source</span></label>
 
                         <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos">  1</span></a><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-2"><a href="#L-2"><span class="linenos">  2</span></a><span class="sd"># 🎙️ Audio Transkription CLI by sIn</span>
+</span><span id="L-2"><a href="#L-2"><span class="linenos">  2</span></a><span class="sd"># 🎙️ Audio_Transkription by sIn</span>
 </span><span id="L-3"><a href="#L-3"><span class="linenos">  3</span></a>
 </span><span id="L-4"><a href="#L-4"><span class="linenos">  4</span></a><span class="sd">Lightweight command-line application for recording and transcribing</span>
 </span><span id="L-5"><a href="#L-5"><span class="linenos">  5</span></a><span class="sd">speech using OpenAI Whisper.</span>
@@ -600,37 +607,193 @@ module docstring and contains the project overview.</p>
 </span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>
 </span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="c1"># Import package metadata for external access (e.g., version info)</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.version</span><span class="w"> </span><span class="kn">import</span> <span class="n">APP_NAME</span><span class="p">,</span> <span class="n">__version__</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;APP_NAME&quot;</span><span class="p">,</span> <span class="s2">&quot;__version__&quot;</span><span class="p">]</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.version</span><span class="w"> </span><span class="kn">import</span> <span class="n">APP_NAME</span> <span class="k">as</span> <span class="n">APP_NAME</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.version</span><span class="w"> </span><span class="kn">import</span> <span class="n">__version__</span> <span class="k">as</span> <span class="n">__version__</span>
 </span></pre></div>
 
 
             </section>
-                <section id="APP_NAME">
-                    <div class="attr variable">
-            <span class="name">APP_NAME</span>        =
-<span class="default_value">&#39;Audio_Transkription by sIn&#39;</span>
-
-        
-    </div>
-    <a class="headerlink" href="#APP_NAME"></a>
-    
-    
-
-                </section>
-                <section id="__version__">
-                    <div class="attr variable">
-            <span class="name">__version__</span>        =
-<span class="default_value">&#39;1.1.3&#39;</span>
-
-        
-    </div>
-    <a class="headerlink" href="#__version__"></a>
-    
-    
-
-                </section>
     </main>
-</body>
+<script>
+    function escapeHTML(html) {
+        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
+    }
+
+    const originalContent = document.querySelector("main.pdoc");
+    let currentContent = originalContent;
+
+    function setContent(innerHTML) {
+        let elem;
+        if (innerHTML) {
+            elem = document.createElement("main");
+            elem.classList.add("pdoc");
+            elem.innerHTML = innerHTML;
+        } else {
+            elem = originalContent;
+        }
+        if (currentContent !== elem) {
+            currentContent.replaceWith(elem);
+            currentContent = elem;
+        }
+    }
+
+    function getSearchTerm() {
+        return (new URL(window.location)).searchParams.get("search");
+    }
+
+    const searchBox = document.querySelector(".pdoc input[type=search]");
+    searchBox.addEventListener("input", function () {
+        let url = new URL(window.location);
+        if (searchBox.value.trim()) {
+            url.hash = "";
+            url.searchParams.set("search", searchBox.value);
+        } else {
+            url.searchParams.delete("search");
+        }
+        history.replaceState("", "", url.toString());
+        onInput();
+    });
+    window.addEventListener("popstate", onInput);
+
+
+    let search, searchErr;
+
+    async function initialize() {
+        try {
+            search = await new Promise((resolve, reject) => {
+                const script = document.createElement("script");
+                script.type = "text/javascript";
+                script.async = true;
+                script.onload = () => resolve(window.pdocSearch);
+                script.onerror = (e) => reject(e);
+                script.src = "search.js";
+                document.getElementsByTagName("head")[0].appendChild(script);
+            });
+        } catch (e) {
+            console.error("Cannot fetch pdoc search index");
+            searchErr = "Cannot fetch search index.";
+        }
+        onInput();
+
+        document.querySelector("nav.pdoc").addEventListener("click", e => {
+            if (e.target.hash) {
+                searchBox.value = "";
+                searchBox.dispatchEvent(new Event("input"));
+            }
+        });
+    }
+
+    function onInput() {
+        setContent((() => {
+            const term = getSearchTerm();
+            if (!term) {
+                return null
+            }
+            if (searchErr) {
+                return `<h3>Error: ${searchErr}</h3>`
+            }
+            if (!search) {
+                return "<h3>Searching...</h3>"
+            }
+
+            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
+
+            const results = search(term);
+
+            let html;
+            if (results.length === 0) {
+                html = `No search results for '${escapeHTML(term)}'.`
+            } else {
+                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
+            }
+            for (let result of results.slice(0, 10)) {
+                let doc = result.doc;
+                let url = `${doc.modulename.replaceAll(".", "/")}.html`;
+                if (doc.qualname) {
+                    url += `#${doc.qualname}`;
+                }
+
+                let heading;
+                switch (result.doc.kind) {
+                    case "function":
+                        if (doc.fullname.endsWith(".__init__")) {
+                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
+                        } else {
+                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
+                        }
+                        break;
+                    case "class":
+                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
+                        if (doc.bases)
+                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
+                        heading += `:`;
+                        break;
+                    case "variable":
+                        heading = `<span class="name">${doc.fullname}</span>`;
+                        if (doc.annotation)
+                            heading += `<span class="annotation">${doc.annotation}</span>`;
+                        if (doc.default_value)
+                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
+                        break;
+                    default:
+                        heading = `<span class="name">${doc.fullname}</span>`;
+                        break;
+                }
+                html += `
+                        <section class="search-result">
+                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
+                        <div class="docstring">${doc.doc}</div>
+                        </section>
+                    `;
+
+            }
+            return html;
+        })());
+    }
+
+    if (getSearchTerm()) {
+        initialize();
+        searchBox.value = getSearchTerm();
+        onInput();
+    } else {
+        searchBox.addEventListener("focus", initialize, {once: true});
+    }
+
+    searchBox.addEventListener("keydown", e => {
+        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
+            let focused = currentContent.querySelector(".search-result.focused");
+            if (!focused) {
+                currentContent.querySelector(".search-result").classList.add("focused");
+            } else if (
+                e.key === "ArrowDown"
+                && focused.nextElementSibling
+                && focused.nextElementSibling.classList.contains("search-result")
+            ) {
+                focused.classList.remove("focused");
+                focused.nextElementSibling.classList.add("focused");
+                focused.nextElementSibling.scrollIntoView({
+                    behavior: "smooth",
+                    block: "nearest",
+                    inline: "nearest"
+                });
+            } else if (
+                e.key === "ArrowUp"
+                && focused.previousElementSibling
+                && focused.previousElementSibling.classList.contains("search-result")
+            ) {
+                focused.classList.remove("focused");
+                focused.previousElementSibling.classList.add("focused");
+                focused.previousElementSibling.scrollIntoView({
+                    behavior: "smooth",
+                    block: "nearest",
+                    inline: "nearest"
+                });
+            } else if (
+                e.key === "Enter"
+            ) {
+                focused.querySelector("a").click();
+            }
+        }
+    });
+</script></body>
 </html>

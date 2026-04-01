@@ -1,6 +1,6 @@
 # Audio_Transcription by sIn
 
-![Version](https://img.shields.io/badge/version-1.1.3-blue)
+![Version](https://img.shields.io/badge/version-1.1.5-blue)
 ![Tests](https://img.shields.io/badge/tests-21%20passed-brightgreen)
 ![Python](https://img.shields.io/badge/python-3.12-blue)
 [![Ko-fi](https://img.shields.io/badge/-Ko--fi-ff5e5b?logo=ko-fi&logoColor=white)](https://ko-fi.com/onplastic)
@@ -39,6 +39,7 @@ To enable email delivery, run the mail setup tool:
 ```
 
 This will:
+
 - ask for SMTP configuration values
 - update the mail settings in `config.toml`
 - create a `.env` file containing your SMTP credentials  
@@ -46,6 +47,7 @@ This will:
 ---
 
 The setup will ask for the following:
+
 - SMTP host (`smtp.gmail.com`)
 - SMTP port (`465`)
 - SSL usage (j/n)
@@ -55,6 +57,7 @@ The setup will ask for the following:
 - SMTP app password (abc 123)
 
 Notes:
+
 - For Gmail, an App Password is required (2FA must be enabled)
 - If you need further information setting up an App Password visit  
   👉 Link: [Gmail-help-pages](https://support.google.com/mail/answer/185833?hl=de&ref_topic=3394217&sjid=4026180072124364108-EU)
@@ -126,13 +129,16 @@ PYTHONPATH=src pytest
 
 ### 6. Releases
 
-Current Version: **v1.1.3**
+Current Version: **v1.1.5**
 
 This release introduces a fully optional and robust mail configuration system.
 
 Release includes:
 
-- Mail functionality is now optional and no longer required for basic usage
+- fixed GitHub Pages root redirect
+- restored full API documentation (pdoc module visibility)
+- improved pytest consistency and structure
+- stabilized documentation build pipeline- Mail functionality is now optional and no longer required for basic usage
 - Interactive mail setup tool (`mail_setup.py`) added
 - Optional SMTP connection test before saving configuration
 - Graceful fallback to file-only output if mail delivery fails
