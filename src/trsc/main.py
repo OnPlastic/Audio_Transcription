@@ -146,14 +146,23 @@ def main() -> int:
 
             to_addr = to_addr.strip()
 
-            send_mail_text(
-                smtp=smtp,
-                to_addr=to_addr,
-                subject=subject,
-                text_content=txt,
-            )
-
-            print("Mail wurde gesendet.\n")
+            try:
+                send_mail_text(
+                    smtp=smtp,
+                    to_addr=to_addr,
+                    subject=subject,
+                    text_content=txt,
+                )
+                
+                log.info("Mail versandt an: %s", to_addr)
+                print("Mail wurde gesendet.\n")
+                
+            except Exception as exc:
+                log.exception("Mailversand fehlgeschlagen: %s", exc)
+                print(
+                    "Mailversand fehlgeschlagen. "
+                    "Die Transkription wurde nur als .txt gespeichert.\n"
+                )
 
         print("-> Programm beendet!\n")
         return 0
