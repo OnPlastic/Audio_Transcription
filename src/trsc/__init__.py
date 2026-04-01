@@ -1,5 +1,5 @@
 """
-#🎙️ Audio Transkription CLI by sIn
+# 🎙️ Audio Transkription CLI by sIn
 
 Lightweight command-line application for recording and transcribing
 speech using OpenAI Whisper.
@@ -21,20 +21,20 @@ speech using OpenAI Whisper.
 - Use existing audio files
 - Automatic transcription using Whisper
 - Save transcripts as text files
-- Optional email delivery
+- Optional email delivery (additional Setup required)
 - Structured logging
 
 ------------------------------------------------------------------------
 
 ## 3. Quick Example
 
-``` pws
+```bash
     ./run.sh
 ```
 
 **Example output:**
 
-``` pws
+```bash
     Audio_Transkription by sIn vX.X.X
     =================================
 
@@ -57,14 +57,14 @@ This project requires **ffmpeg** for audio decoding used by Whisper.
 
 **Install on Linux/WSL:**
 
-```pws
+```bash
     sudo apt update
     sudo apt install ffmpeg
 ```
 
 **Verify installation:**
 
-```pws
+```bash
     ffmpeg -version
 ```
 
@@ -74,46 +74,45 @@ This project requires **ffmpeg** for audio decoding used by Whisper.
 
 **Clone repository:**
 
-``` pws
+```bash
     git clone https://github.com/OnPlastic/Audio_Transcription.git
     cd Audio_Transcription
 ```
 
 **Create virtual environment:**
 
-``` pws
+```bash
     python -m venv .venv
     source .venv/bin/activate
 ```
 
 **Install runtime dependencies:**
 
-``` pws
+```bash
     pip install -r requirements.txt
 ```
 
-**Note! (Ubuntu / WSL users)**
+**Note!** (Ubuntu / WSL users)
 
 >  
-> Some Ubuntu installations do not provide the ` python ` command by default.
-> If ` python -m venv .venv ` fails with ` command not found `, use:
+> Some Ubuntu installations do not provide the ` python ` command by default. If ` python -m venv .venv ` fails with ` command not found ` Error, use:  
 >
 >   `python3 -m venv .venv`
 >
-> or install the compatibility package once:
+> Or install the compatibility package once:
 >
->    `sudo apt install python-is-python3`  
->
+>   `sudo apt install python-is-python3`  
+><br>
 
-*Optional: install development tools (documentation & linting)*
+*Optional:* (install development tools / documentation & linting)
 
-```pws
+```bash
     pip install -r requirements-dev.txt
 ```
 
 **Run application:**
 
-``` pws
+```bash
     ./run.sh
 ```
 
@@ -128,21 +127,21 @@ will only save the transcription as a `.txt` file.
 If no mail configuration is present, the program will automatically
 fall back to file-only output.
 
-**Setup**
+### Setup
 
-Run the mail setup tool:
+**Run the mail setup tool:**
 
 ```bash
-./run-mail-setup.sh
+    ./run-mail-setup.sh
 ```
 
-The setup will:
+**The setup will:**
 
 - ask for SMTP configuration values
 - update mail settings in `config.toml`
 - create a `.env` file containing SMTP credentials
 
-Configuration Values asked in the Setup:
+**Configuration Values asked in the Setup:**
 
 - SMTP host (`smtp.gmail.com`)
 - SMTP port (`465`)
@@ -152,7 +151,7 @@ Configuration Values asked in the Setup:
 - SMTP username (musterman@example.com)
 - SMTP app password (abc 123)
 
-Notes:
+**Notes:**
 
 - For Gmail, an App Password is required (2FA must be enabled)
 - If you need further information setting up an App Password visit  
@@ -165,7 +164,7 @@ Notes:
 
 ## 7. Architecture
 
-```pws
+```bash
     CLI (main)
       │
       ├── input_utils
@@ -179,7 +178,7 @@ Notes:
 ```
 
 >A more detailed Version of all Packages and Modules are here available, open:
->[**trsc-architecture-diagram**](assets/TRSC.svg)
+>👉 Link: [**trsc-architecture-diagram**](assets/TRSC.svg)
 
 ------------------------------------------------------------------------
 
@@ -213,16 +212,23 @@ The sidebar lists all available modules and their functions.
 
 ## 👨‍💻 Author
 
->>```sIn```\n
+>   ```sIn```- OnPlastic  
 Project : *Audio_Transkription CLI*
+
 
 ### ☕ Support
 
 If you like this project or find it helpful, you can buy me a coffee here:
 
-> [![Ko-fi](https://img.shields.io/badge/-Ko--fi-ff5e5b?logo=ko-fi&logoColor=white)](https://ko-fi.com/onplastic)
+[![Ko-fi](https://img.shields.io/badge/-Ko--fi-ff5e5b?logo=ko-fi&logoColor=white)](https://ko-fi.com/onplastic)
 
-Thanks a lot, I really appreciate it!
+### 🛠️ Contribute
+
+Want to help improve it? Feel free to contribute 👉 Link: [GitHub](https://github.com/OnPlastic/Audio_Transcription)  
+
+<br>
+
+Thanks a lot ❤️ I really appreciate it! 
 
 """
 
