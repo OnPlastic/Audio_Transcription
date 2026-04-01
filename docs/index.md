@@ -1,4 +1,4 @@
-# 🎙️ Audio Transkription CLI by sIn
+# 🎙️ Audio Transkription by sIn
 
 Lightweight command-line application for recording and transcribing
 speech using OpenAI Whisper.

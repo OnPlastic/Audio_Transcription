@@ -1,7 +1,7 @@
 # Audio_Transcription by sIn
 
-![Version](https://img.shields.io/badge/version-1.1.2-blue)
-![Tests](https://img.shields.io/badge/tests-17%20passed-brightgreen)
+![Version](https://img.shields.io/badge/version-1.1.3-blue)
+![Tests](https://img.shields.io/badge/tests-21%20passed-brightgreen)
 ![Python](https://img.shields.io/badge/python-3.12-blue)
 [![Ko-fi](https://img.shields.io/badge/-Ko--fi-ff5e5b?logo=ko-fi&logoColor=white)](https://ko-fi.com/onplastic)
 
@@ -126,18 +126,21 @@ PYTHONPATH=src pytest
 
 ### 6. Releases
 
-Current Version: **v1.1.2**
+Current Version: **v1.1.3**
+
+This release introduces a fully optional and robust mail configuration system.
 
 Release includes:
 
-- CI Main Check (Release Gate)
-- Docs Build Check (pdoc integration)
-- Pages Deploy workflow for API documentation
-- Automation system documentation (`automation.md`)
+- Mail functionality is now optional and no longer required for basic usage
+- Interactive mail setup tool (`mail_setup.py`) added
+- Optional SMTP connection test before saving configuration
+- Graceful fallback to file-only output if mail delivery fails
+- Improved logging and user feedback during setup and runtime
 
 ---
 
-### ✏️ Autor
+### ✏️ Author
 
 sIn OnPlastic
 
@@ -147,4 +150,10 @@ If you like this project or find it helpful, you can buy me a coffee here:
 
 > [![Ko-fi](https://img.shields.io/badge/-Ko--fi-ff5e5b?logo=ko-fi&logoColor=white)](https://ko-fi.com/onplastic)
 
-Thanks a lot, I really appreciate it!
+### 🛠️ Contribute
+
+Want to help improve it? Feel free to contribute 👉 Link: [GitHub](https://github.com/OnPlastic/Audio_Transcription)  
+
+<br>
+
+Thanks a lot ❤️ I really appreciate it! 

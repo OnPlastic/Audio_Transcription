@@ -25,6 +25,33 @@ PYTHONPATH=src pdoc trsc \
 
 ---
 
+## [1.1.3]
+
+### Added
+
+- interactive mail setup tool (`mail_setup.py`)
+- optional SMTP configuration using `.env`
+- optional SMTP connection test during setup
+- retry workflow for invalid mail configuration
+
+### Changed
+
+- mail functionality is now optional
+- application no longer requires mail configuration to run
+
+### Fixed
+
+- prevent application crash on mail delivery errors
+- graceful fallback to file-only mode if mail fails
+
+### Improved
+
+- improved CLI feedback during mail setup
+- added logging for mail setup and connection tests
+- improved overall robustness of mail handling
+
+---
+
 ## [1.1.2]
 
 ### Fixed
