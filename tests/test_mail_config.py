@@ -2,8 +2,6 @@ from pathlib import Path
 
 from trsc.mail_config import is_mail_configured, write_mail_env, update_mail_config
 
-import pytest
-
 
 def test_mail_config_missing(monkeypatch):
     """
