@@ -16,9 +16,6 @@ from pathlib import Path
 from datetime import datetime
 from time import perf_counter
 
-import numpy as np
-import sounddevice as sd
-from scipy.io.wavfile import write as wav_write
 
 log = logging.getLogger(__name__)
 
@@ -68,6 +65,9 @@ def record_until_enter(
         RuntimeError
             If no audio data is recorded.
     """
+    import numpy as np
+    import sounddevice as sd
+    from scipy.io.wavfile import write as wav_write
 
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -83,7 +83,8 @@ def record_until_enter(
 
     print("\n-> Aufnahme läuft... Drücke <ENTER> zum Stoppen.")
 
-    frames: list[np.ndarray] = []
+    #frames: list[np.ndarray] = []
+    frames: list = []
     t0 = perf_counter()
 
     def callback(indata, frame_count, time_info, status):
