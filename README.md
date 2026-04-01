@@ -39,6 +39,7 @@ To enable email delivery, run the mail setup tool:
 ```
 
 This will:
+
 - ask for SMTP configuration values
 - update the mail settings in `config.toml`
 - create a `.env` file containing your SMTP credentials  
@@ -46,6 +47,7 @@ This will:
 ---
 
 The setup will ask for the following:
+
 - SMTP host (`smtp.gmail.com`)
 - SMTP port (`465`)
 - SSL usage (j/n)
@@ -55,6 +57,7 @@ The setup will ask for the following:
 - SMTP app password (abc 123)
 
 Notes:
+
 - For Gmail, an App Password is required (2FA must be enabled)
 - If you need further information setting up an App Password visit  
   👉 Link: [Gmail-help-pages](https://support.google.com/mail/answer/185833?hl=de&ref_topic=3394217&sjid=4026180072124364108-EU)
