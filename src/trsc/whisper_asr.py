@@ -13,7 +13,7 @@ import logging
 from pathlib import Path
 from time import perf_counter
 
-import whisper
+#import whisper
 
 log = logging.getLogger(__name__)
 
@@ -44,6 +44,8 @@ def get_model(model_name: str):
     global _MODEL, _MODEL_NAME
 
     if _MODEL is None or _MODEL_NAME != model_name:
+        import whisper
+
         log.info("Loading Whisper model: %s", model_name)
         _MODEL = whisper.load_model(model_name)
         _MODEL_NAME = model_name
