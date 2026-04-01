@@ -36,6 +36,11 @@ PYTHONPATH=src pdoc trsc \
 
 - cleaned up and aligned pytest structure
 - improved overall documentation stability and build consistency
+## [1.1.4]
+
+### Fixed
+
+- restored `docs/index.html` to re-enable the GitHub Pages root redirect to `docs/api/trsc.html`
 
 ---
 
