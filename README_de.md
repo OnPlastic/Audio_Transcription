@@ -1,6 +1,6 @@
 # Audio_Transcription by sIn
 
-![Version](https://img.shields.io/badge/version-1.1.3-blue)
+![Version](https://img.shields.io/badge/version-1.1.5-blue)
 ![Tests](https://img.shields.io/badge/tests-21%20passed-brightgreen)
 ![Python](https://img.shields.io/badge/python-3.12-blue)
 [![Ko-fi](https://img.shields.io/badge/-Ko--fi-ff5e5b?logo=ko-fi&logoColor=white)](https://ko-fi.com/onplastic)
@@ -30,7 +30,7 @@ Standardmäßig arbeitet das Tool ohne jegliche Mail-Konfiguration und speichert
 
 **Setup**
 
-Um den E-Mail Funktion zu aktiviren, bitte das mail-setup-tool ausführen:
+Um die E-Mail Funktion zu aktiviren, bitte das mail-setup-tool ausführen:
 
 ```bash
 ./run-mail-setup.sh

@@ -1,5 +1,5 @@
 """
-# 🎙️ Audio Transkription CLI by sIn
+# 🎙️ Audio_Transkription by sIn
 
 Lightweight command-line application for recording and transcribing
 speech using OpenAI Whisper.
@@ -233,7 +233,6 @@ Thanks a lot ❤️ I really appreciate it!
 """
 
 # Import package metadata for external access (e.g., version info)
-from .version import APP_NAME, __version__
-
-__all__ = ["APP_NAME", "__version__"]
+from .version import APP_NAME as APP_NAME
+from .version import __version__ as __version__
 

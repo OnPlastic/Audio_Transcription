@@ -25,6 +25,20 @@ PYTHONPATH=src pdoc trsc \
 
 ---
 
+## [1.1.5]
+
+### Fixed
+
+- restored GitHub Pages root redirect (`docs/index.html`)
+- fixed missing API modules in documentation (pdoc module discovery issue)
+
+### Improved
+
+- cleaned up and aligned pytest structure
+- improved overall documentation stability and build consistency
+
+---
+
 ## [1.1.3]
 
 ### Added

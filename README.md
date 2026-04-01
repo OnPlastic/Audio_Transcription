@@ -1,6 +1,6 @@
 # Audio_Transcription by sIn
 
-![Version](https://img.shields.io/badge/version-1.1.3-blue)
+![Version](https://img.shields.io/badge/version-1.1.5-blue)
 ![Tests](https://img.shields.io/badge/tests-21%20passed-brightgreen)
 ![Python](https://img.shields.io/badge/python-3.12-blue)
 [![Ko-fi](https://img.shields.io/badge/-Ko--fi-ff5e5b?logo=ko-fi&logoColor=white)](https://ko-fi.com/onplastic)
@@ -126,13 +126,16 @@ PYTHONPATH=src pytest
 
 ### 6. Releases
 
-Current Version: **v1.1.3**
+Current Version: **v1.1.5**
 
 This release introduces a fully optional and robust mail configuration system.
 
 Release includes:
 
-- Mail functionality is now optional and no longer required for basic usage
+- fixed GitHub Pages root redirect
+- restored full API documentation (pdoc module visibility)
+- improved pytest consistency and structure
+- stabilized documentation build pipeline- Mail functionality is now optional and no longer required for basic usage
 - Interactive mail setup tool (`mail_setup.py`) added
 - Optional SMTP connection test before saving configuration
 - Graceful fallback to file-only output if mail delivery fails
