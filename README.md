@@ -1,6 +1,6 @@
 # Audio_Transcription by sIn
 
-![Version](https://img.shields.io/badge/version-1.1.3-blue)
+![Version](https://img.shields.io/badge/version-1.1.4-blue)
 ![Tests](https://img.shields.io/badge/tests-21%20passed-brightgreen)
 ![Python](https://img.shields.io/badge/python-3.12-blue)
 [![Ko-fi](https://img.shields.io/badge/-Ko--fi-ff5e5b?logo=ko-fi&logoColor=white)](https://ko-fi.com/onplastic)
@@ -126,7 +126,7 @@ PYTHONPATH=src pytest
 
 ### 6. Releases
 
-Current Version: **v1.1.3**
+Current Version: **v1.1.4**
 
 This release introduces a fully optional and robust mail configuration system.
 

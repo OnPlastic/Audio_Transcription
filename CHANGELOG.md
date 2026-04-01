@@ -25,6 +25,14 @@ PYTHONPATH=src pdoc trsc \
 
 ---
 
+## [1.1.4]
+
+### Fixed
+
+- restored `docs/index.html` to re-enable the GitHub Pages root redirect to `docs/api/trsc.html`
+
+---
+
 ## [1.1.3]
 
 ### Added
