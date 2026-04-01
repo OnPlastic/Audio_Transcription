@@ -9,6 +9,7 @@ Responsibilities
 - Provide a safe way to determine if mail functionality can be used
 - Write mail secrets to the .env file
 - Update mail-related settings in config.toml
+- Test SMTP connection and login credentials
 
 Notes
 -----
@@ -20,7 +21,9 @@ Instead, the program should fall back to file-based output only.
 
 from __future__ import annotations
 
+import logging
 import os
+import smtplib
 from pathlib import Path
 
 
@@ -163,3 +166,66 @@ def update_mail_config(
 
     # --- Write new file ---
     config_path.write_text("\n".join(new_lines) + "\n", encoding="utf-8")
+
+
+def test_mail_connection(
+        smtp_host: str,
+        smtp_port: int,
+        smtp_use_ssl: bool,
+        smtp_user: str,
+        smtp_app_password: str,
+) -> bool:
+    """
+    **Test SMTP connection and login credentials.**
+
+    This function tries to connect to the configured SMTP server
+    and authenticate with the provided user credentials.
+
+    No email is sent during this test.
+
+    The test is intended for the interactive mail setup workflow
+    and helps detect invalid connection data before saving the
+    configuration.
+
+    Parameters
+    ----------
+        smtp_host: str
+            SMTP server host name.
+        smtp_port: int
+            SMTP server port.
+        smtp_use_ssl: bool
+            Whether SSL encryption should be used.
+        smtp_user: str
+            SMTP user name or mail account name.
+        smtp_app_password: str
+            SMTP app password or mail password used for authentication.
+    
+    Returns
+    -------
+        bool
+            True if connected and login succeed,
+            otherwise False.
+    """
+    try:
+        if smtp_use_ssl:
+            server = smtplib.SMTP_SSL(
+                smtp_host,
+                smtp_port,
+                timeout=10,
+            )
+        else:
+            server = smtplib.SMTP(
+                smtp_host,
+                smtp_port,
+                timeout=10,
+            )
+            server.starttls()
+        
+        server.login(smtp_user, smtp_app_password)
+        server.quit()
+        return True
+    
+    except Exception as exc:
+        log = logging.getLogger(__name__)
+        log.exception("SMTP Verbindung fehlgeschlagen: %s", exc)
+        return False

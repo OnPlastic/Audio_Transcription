@@ -6,8 +6,18 @@ CLI setup tool for mail configuration.
 Responsibilities
 ----------------
 - Ask the user for mail-related configuration values
+- Optionally test SMTP connection and login credentials
 - Write mail settings to config.toml
 - Write mail secrets to the .env file
+
+Notes
+-----
+The mail feature is optional.
+
+This setup tool allows users to configure SMTP settings interactively
+and optionally verify the configuration before saving.
+
+No email is sent during the configuration test.
 """
 
 from __future__ import annotations
@@ -18,7 +28,11 @@ from pathlib import Path
 from .config import load_config
 from .input_utils import ask_choice, ask_port, prompt_input
 from .logging_setup import setup_logging
-from .mail_config import update_mail_config, write_mail_env
+from .mail_config import (
+    test_mail_connection,
+    update_mail_config, 
+    write_mail_env,
+)
 from .version import __version__
 
 SETUP_NAME = "Mail_Konfiguration by sIn"
@@ -32,8 +46,12 @@ def main() -> int:
     1. Show the ClI setup header.
     2. Resolve the project root and config paths.
     3. Ask the user for mail-related configuration values.
-    4. Ask whether the values should be saved.
-    5. Write config.toml and .env if confirmed.
+    4. Optionally test the SMTP connection and login.
+    5. Ask whether the values should be saved.
+    6. Write config.toml and .env if confirmed.
+
+    The configuration test only checks connection and authentication.
+    No email is sent during process
 
     Returns
     -------
@@ -41,6 +59,7 @@ def main() -> int:
             Process exit code:
             - (0) Successful execution
             - (130) User aborted via (CTRL+C)
+    
     """
     title = f"{SETUP_NAME} v{__version__}"
     print(f"\n{title}")
@@ -57,7 +76,7 @@ def main() -> int:
         cfg = load_config(project_root)
         setup_logging(cfg.log_dir, cfg.log_level)
         log = logging.getLogger(__name__)
-        log.info("Mail setup v%s gestartet", __version__)
+        log.info("Mail setup v%s started", __version__)
 
         # --- Ask for mail configuration values ---
         smtp_host = prompt_input(
@@ -105,6 +124,42 @@ def main() -> int:
 
         print()
 
+        # --- Optionally test SMTP connection before saving ---
+        test_config = ask_choice(
+            "Konfiguration testen?",
+            {"j": True, "n": False},
+        )
+
+        print()
+
+        if test_config:
+            connection_ok = test_mail_connection(
+                smtp_host=smtp_host,
+                smtp_port=smtp_port,
+                smtp_use_ssl=smtp_use_ssl,
+                smtp_user=smtp_user,
+                smtp_app_password=smtp_app_password,
+            )
+
+            if connection_ok:
+                log.info("SMTP setup successful.")
+                print("Verbindung erfolgreich.\n")
+            
+            else:
+                log.info("SMTP setup failed.")
+                print("Verbindungsaufbau fehlgeschlagen.\n")
+
+                retry_setup = ask_choice(
+                    "Eingaben bearbeiten?",
+                    {"j": True, "n": False},
+                )
+
+                print()
+
+                if retry_setup:
+                    log.info("Mail setup tool restarted by user")
+                    return main()
+
         # --- Confirm whether the configuration should be saved ---
         save_values = ask_choice(
             "Sollen die Eingaben gespeichert werden?",
@@ -113,12 +168,12 @@ def main() -> int:
 
         # --- Abort setup without saving changes ---
         if not save_values:
-            log.info("Mail setup verworfen. Keine Werte gespeichert.")
+            log.info("Mail setup aborted. No values saved.")
             print("\nEingaben wurden nicht gespeichert.\n")
             return 0
 
         # --- Update config.toml with mail settings ---
-        log.info("Mail Setup bestätigt. Werte werden aktualisiert.")
+        log.info("Mail setup approved. Values are saved.")
         update_mail_config(
             config_path=config_path,
             smtp_host=smtp_host,
@@ -127,7 +182,7 @@ def main() -> int:
             from_name=from_name,
             subject_prefix=subject_prefix,
         )
-        log.info("Werte in config.toml aktualisiert: %s", config_path)
+        log.info("Values saved in file config.toml: %s", config_path)
 
         # --- Write mail secrets to .env ---
         write_mail_env(
@@ -135,10 +190,10 @@ def main() -> int:
             smtp_user=smtp_user,
             smtp_app_password=smtp_app_password,
         )
-        log.info("Mail-secrets in .env geschrieben: %s", env_path)
+        log.info("Mail-secrets saved in file .env: %s", env_path)
 
         # --- Setup completed successfully ---
-        log.info("Mail setup erfolgreich abgeschlossen.")
+        log.info("Mail setup successful.")
         print("\nMail-Konfiguration wurde gespeichert.\n")
         return 0
 
@@ -146,7 +201,7 @@ def main() -> int:
     except KeyboardInterrupt:
         print("\nAbbruch durch Benutzer (CTRL+C)\n")
         log = logging.getLogger(__name__)
-        log.info("Mail setup durch Benutzer abgebrochen.")
+        log.info("Mail setup canceled by user.")
         return 130
 
 if __name__ == "__main__":
