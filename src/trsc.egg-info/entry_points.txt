@@ -1,0 +1,3 @@
+[console_scripts]
+trsc = trsc.main:main
+trsc-mail-setup = trsc.mail_setup:main
