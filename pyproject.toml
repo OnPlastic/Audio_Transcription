@@ -1,3 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "trsc"
+version = "1.1.5"
+description = "Audio transcription CLI using Whisper"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "openai-whisper",
+    "python-dotenv",
+]
+
+[project.scripts]
+trsc = "trsc.main:main"
+trsc-mail-setup = "trsc.mail_setup:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
 [tool.ruff]
 line-length = 100
 
