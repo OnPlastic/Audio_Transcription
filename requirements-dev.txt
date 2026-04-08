@@ -2,3 +2,4 @@
 pdoc
 pylint
 pytest
+build

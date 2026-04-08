@@ -25,7 +25,6 @@ from __future__ import annotations
 import logging
 from pathlib import Path
 
-from .system_checks import ensure_valid_working_directory
 from .config import load_config
 from .input_utils import ask_choice, ask_port, prompt_input
 from .logging_setup import setup_logging
@@ -38,22 +37,21 @@ from .version import __version__
 
 SETUP_NAME = "Mail_Konfiguration by sIn"
 
-
 def main() -> int:
     """
-    **Run the mail configuration setup workflow.**
+    **Run the mail configuration setup workflow.
 
     Workflow
     --------
-    1. Show the CLI setup header.
-    2. Resolve and validate the TRSC working directory.
+    1. Show the ClI setup header.
+    2. Resolve the project root and config paths.
     3. Ask the user for mail-related configuration values.
     4. Optionally test the SMTP connection and login.
     5. Ask whether the values should be saved.
     6. Write config.toml and .env if confirmed.
 
     The configuration test only checks connection and authentication.
-    No email is sent during process.
+    No email is sent during process
 
     Returns
     -------
@@ -63,21 +61,14 @@ def main() -> int:
             - (130) User aborted via (CTRL+C)
     
     """
-
-    # --- Print CLI Header ---
     title = f"{SETUP_NAME} v{__version__}"
     print(f"\n{title}")
     print("=" * len(title))
     print("(CTRL+C) beendet das Programm\n")
 
     try:
-        # --- Resolve TRSC working directory ---
-        project_root = Path.cwd()
-
-        # --- Validate TRSC working directory structure ---
-        ensure_valid_working_directory(project_root)
-
-        # --- Initialize config paths ---
+        # --- Resolve project root and configuration paths ---
+        project_root = Path(__file__).resolve().parents[2]
         config_path = project_root / "config.toml"
         env_path = project_root / ".env"
 
