@@ -33,9 +33,9 @@ def main() -> int:
 
     Workflow:
     ---------
-    1. Check required system dependencies and validates the working directory.
+    1. Check required system dependencies and validate the working directory.
     2. Load environment variables and runtime configuration.
-    3. Ask whether an audiofile already exists.
+    3. Ask whether an audio file already exists.
     4. Either resolve the input audio path or switch to live recording.
     5. Ask whether the result should only be saved or also sent by email.
     6. Run Whisper transcription.
@@ -56,7 +56,6 @@ def main() -> int:
     print("=" * len(title))
     print("(CTRL+C) beendet das Programm\n")
 
-
     try:
         # --- System checks ---
         ensure_ffmpeg_available()
@@ -64,7 +63,7 @@ def main() -> int:
         # --- Resolve TRSC working directory ---
         project_root = Path.cwd()
 
-        # --- Validate TRSC working structure ---
+        # --- Validate TRSC working directory structure ---
         ensure_valid_working_directory(project_root)
 
         # --- Load config ---
@@ -113,8 +112,15 @@ def main() -> int:
         # --- Record audio if no existing file is used ---
         if not audio_vorhanden:
             recordings_dir = project_root / "input" / "recordings"
-            audio_path = record_until_enter(output_dir=recordings_dir)
-            log.info("Recorded audio saved: %s", audio_path)
+
+            try:
+                audio_path = record_until_enter(output_dir=recordings_dir)
+                log.info("Recorded audio saved: %s", audio_path)
+            
+            except RuntimeError as exc:
+                log.exception("Audio recording failed: %s", exc)
+                print(f"\n{exc}\n")
+                return 1
 
         # --- Type-Safety: audio_path must exist at this point ---
         if audio_path is None:

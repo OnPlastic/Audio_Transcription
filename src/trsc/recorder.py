@@ -34,6 +34,27 @@ class RecordingSettings:
     """NumPy-compatible audio data type used by sounddevice (float 32)."""
 
 
+def ensure_input_device_available() -> None:
+    """
+    Ensure that a usable audio input device is available.
+    """
+
+    import sounddevice as sd
+
+    try:
+        devices = sd.query_devices()
+
+        has_input = any(d["max_input_channels"] > 0 for d in devices)
+
+        if not has_input:
+            raise RuntimeError("Kein nutzbares Eingabegerät gefunden.")
+        
+    except Exception as exc:
+        raise RuntimeError(
+            "Kein nutzbares Eingabegerät gefunden."
+        ) from exc
+
+
 def record_until_enter(
     *,
     output_dir: Path,
@@ -63,11 +84,15 @@ def record_until_enter(
     Raises
     ------
         RuntimeError
+            If no usable input device is available.
+            If the input stream cannot be started.
             If no audio data is recorded.
     """
     import numpy as np
     import sounddevice as sd
     from scipy.io.wavfile import write as wav_write
+
+    ensure_input_device_available()
 
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -83,7 +108,6 @@ def record_until_enter(
 
     print("\n-> Aufnahme läuft... Drücke <ENTER> zum Stoppen.")
 
-    #frames: list[np.ndarray] = []
     frames: list = []
     t0 = perf_counter()
 
@@ -97,13 +121,21 @@ def record_until_enter(
         frames.append(indata.copy())
 
     # --- Start audio input stream and stop on ENTER ---
-    with sd.InputStream(
-        samplerate=settings.samplerate,
-        channels=settings.channels,
-        dtype=settings.dtype,
-        callback=callback,
-    ):
-        input()  # Wait for ENTER
+    try:
+        with sd.InputStream(
+            samplerate=settings.samplerate,
+            channels=settings.channels,
+            dtype=settings.dtype,
+            callback=callback,
+        ):
+            input()  # Wait for ENTER
+    
+    except Exception as exc:
+        log.exception("Audio input stream could not be started: %s", exc)
+        raise RuntimeError(
+            "Mikrofonaufnahme konnte nicht gestartet werden. "
+            "Bitte prüfe die Audio-Konfiguration des Systems."
+        ) from exc
 
     dt = perf_counter() - t0
 

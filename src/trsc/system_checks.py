@@ -47,7 +47,7 @@ def ensure_valid_working_directory(project_root: Path) -> None:
         for item in missing:
             print(f" - {item}")
         
-        print("\nBitte führe 'trsc' im Projektordner aus,")
-        print("oder stelle sicher dass die TRSC-Struktur vorhanden ist.\n")
+        print("\nBitte führe 'trsc' im TRSC-Projektordner aus,")
+        print("oder stelle sicher, dass die TRSC-Struktur vorhanden ist.\n")
 
         raise SystemExit(1)
