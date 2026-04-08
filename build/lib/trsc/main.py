@@ -12,7 +12,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-from .system_checks import ensure_ffmpeg_available
+from .system_checks import ensure_ffmpeg_available, ensure_valid_working_directory
 from .config import load_config
 from .version import APP_NAME, __version__
 from .mail_config import is_mail_configured
@@ -33,13 +33,14 @@ def main() -> int:
 
     Workflow:
     ---------
-    1. Load environment variables and runtime configuration.
-    2. Ask whether an audiofile already exists.
-    3. Either resolve the input audio path or switch to live recording.
-    4. Ask whether the result should only be saved or also sent by email.
-    5. Run Whisper transcription.
-    6. Save transcript to disk.
-    7. Optionally send the transcript by email.
+    1. Check required system dependencies and validates the working directory.
+    2. Load environment variables and runtime configuration.
+    3. Ask whether an audiofile already exists.
+    4. Either resolve the input audio path or switch to live recording.
+    5. Ask whether the result should only be saved or also sent by email.
+    6. Run Whisper transcription.
+    7. Save transcript to disk.
+    8. Optionally send the transcript by email.
 
     Returns
     -------
@@ -55,13 +56,18 @@ def main() -> int:
     print("=" * len(title))
     print("(CTRL+C) beendet das Programm\n")
 
-    # --- System checks ---
-    ensure_ffmpeg_available()
 
     try:
-        # --- Resolve project root and load configuration ---
-        # project_root = Path(__file__).resolve().parents[2]
+        # --- System checks ---
+        ensure_ffmpeg_available()
+
+        # --- Resolve TRSC working directory ---
         project_root = Path.cwd()
+
+        # --- Validate TRSC working structure ---
+        ensure_valid_working_directory(project_root)
+
+        # --- Load config ---
         cfg = load_config(project_root)
 
         # --- Initialize logging ---
