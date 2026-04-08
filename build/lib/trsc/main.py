@@ -12,6 +12,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
+from .system_checks import ensure_ffmpeg_available
 from .config import load_config
 from .version import APP_NAME, __version__
 from .mail_config import is_mail_configured
@@ -53,6 +54,9 @@ def main() -> int:
     print(f"\n{title}")
     print("=" * len(title))
     print("(CTRL+C) beendet das Programm\n")
+
+    # --- System checks ---
+    ensure_ffmpeg_available()
 
     try:
         # --- Resolve project root and load configuration ---

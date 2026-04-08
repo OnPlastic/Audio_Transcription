@@ -13,6 +13,7 @@ src/trsc/main.py
 src/trsc/output.py
 src/trsc/paths.py
 src/trsc/recorder.py
+src/trsc/system_checks.py
 src/trsc/version.py
 src/trsc/whisper_asr.py
 src/trsc.egg-info/PKG-INFO
