@@ -23,6 +23,7 @@ src/trsc.egg-info/dependency_links.txt
 src/trsc.egg-info/entry_points.txt
 src/trsc.egg-info/requires.txt
 src/trsc.egg-info/top_level.txt
+tests/test_init_setup.py
 tests/test_input_utils.py
 tests/test_logging_setup.py
 tests/test_mail_config.py
