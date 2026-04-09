@@ -4,6 +4,7 @@ pyproject.toml
 src/trsc/__init__.py
 src/trsc/__main__.py
 src/trsc/config.py
+src/trsc/init_setup.py
 src/trsc/input_utils.py
 src/trsc/logging_setup.py
 src/trsc/mail_config.py
@@ -27,3 +28,4 @@ tests/test_logging_setup.py
 tests/test_mail_config.py
 tests/test_output.py
 tests/test_smoke.py
+tests/test_system_checks.py
